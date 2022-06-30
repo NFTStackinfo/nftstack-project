@@ -80,6 +80,7 @@ export const DesignSystemStyle = styled.div`
 
         &-variant {
           display: flex;
+          max-width: 400px;
 
           >span {
             margin-right: 16px;
