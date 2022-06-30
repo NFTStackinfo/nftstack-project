@@ -10,24 +10,18 @@ import { addressFormat, truncate } from "../../../utils/text"
 import HeaderLogo from "../Header/HeaderLogo"
 import Footer from "../Footer/Footer"
 
-function SectionHeader(props) {
+function SectionFooter(props) {
   return (
-    <section className="section section-header">
-      <div className="section-header__container">
+    <section className="section section-footer">
+      <div className="section-footer__container">
         <div className="content">
           <div className="container">
-            <h2 className="section-title">Header</h2>
+            <h2 className="section-title">Footer</h2>
           </div>
 
-          <div className="section-header__container_inner">
-            <div className="header-variant-container">
-              <Header
-                address={addressFormat('0x0E086Bfb73Dd4F52a42753C0848f426FA079A76e')}
-              />
-            </div>
-
-            <div className="header-variant-container">
-              <HeaderLogo />
+          <div className="section-footer__container_inner">
+            <div className="footer-variant-container">
+              <Footer />
             </div>
           </div>
         </div>
@@ -36,4 +30,4 @@ function SectionHeader(props) {
   )
 }
 
-export default SectionHeader
+export default SectionFooter

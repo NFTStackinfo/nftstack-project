@@ -22,7 +22,7 @@ export const DesignSystemStyle = styled.div`
     .content {
       width: 100%;
 
-      >h2 {
+      >h2, .section-title {
         font-weight: 600;
         margin-bottom: 24px;
       }
@@ -98,12 +98,27 @@ export const DesignSystemStyle = styled.div`
 
     &-header {
       &__container {
-        background-color: ${({ theme }) => theme.colors.cadetBlue};
-        display: grid;
-        row-gap: 56px;
-        padding: 56px 0;
-        border: 1px dashed #9747FF;
-        border-radius: 5px;
+        &_inner {
+          background-color: ${({ theme }) => theme.colors.cadetBlue};
+          display: grid;
+          row-gap: 56px;
+          padding: 56px 0;
+          border: 1px dashed #9747FF;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    &-footer {
+      &__container {
+        &_inner {
+          background-color: ${({ theme }) => theme.colors.interBlue};
+          display: grid;
+          row-gap: 56px;
+          padding: 56px 0;
+          border: 1px dashed #9747FF;
+          border-radius: 5px;
+        }
       }
     }
   }

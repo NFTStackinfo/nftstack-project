@@ -6,6 +6,7 @@ import SectionCard from "./SectionCard"
 import SectionModal from "./SectionModal"
 import SectionBanner from "./SectionBanner"
 import SectionHeader from "./SectionHeader"
+import SectionFooter from "./SectionFooter"
 
 function DesignSystem(props) {
   return (
@@ -21,6 +22,8 @@ function DesignSystem(props) {
       <SectionBanner />
 
       <SectionHeader />
+
+      <SectionFooter />
     </DesignSystemStyle>
   )
 }
