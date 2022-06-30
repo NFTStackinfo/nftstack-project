@@ -84,6 +84,13 @@ export const DesignSystemStyle = styled.div`
           >span {
             margin-right: 16px;
           }
+
+          &__list {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: max-content;
+            column-gap: 16px;
+          }
         }
       }
     }

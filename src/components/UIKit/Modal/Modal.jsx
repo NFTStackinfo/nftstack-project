@@ -14,13 +14,6 @@ function Modal({ isActive, onModalToggle, network, link='#' }) {
     setIsModalActive(() => !isModalActive)
   }
 
-  const handleClose = e => {
-    e.stopPropagation()
-    if (e.target.dataset.overlay) {
-      toggleModal()
-    }
-  }
-
   useEffect(() => {
     setLocked(() => isActive)
     setIsModalActive(() => isActive)
@@ -31,7 +24,7 @@ function Modal({ isActive, onModalToggle, network, link='#' }) {
 
     <ModalStyle
       className={["modal", isModalActive ? "active" : ""].join(" ")}
-      data-overlay onClick={handleClose}>
+      data-overlay>
       <div className="modal__container">
         <div className="modal__content">
           <h3 className="text-h3 font-semibold">DEPLOYING
