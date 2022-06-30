@@ -3,7 +3,7 @@ import { innerBorder } from "../../../utils/utils"
 import { theme } from "../../../styles/theme"
 
 export const ButtonStyle = styled.button`
-  display: grid;
+  display: inline-grid;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
   justify-content: center;
@@ -21,6 +21,7 @@ export const ButtonStyle = styled.button`
   height: 40px;
   cursor: pointer;
   transition: all 300ms linear;
+  text-decoration: none;
 
   &.btn_px {
     &-4 {

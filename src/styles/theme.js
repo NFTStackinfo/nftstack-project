@@ -13,7 +13,7 @@ export const theme = {
     ghostWhite: "#f9f7ff",
     waterspout: "#9bffff",
 
-    raisinBlack: '#232323',
+    raisinBlack: "#232323",
     sonicSilver: "#6e727d",
     cadetBlue: "#acb0bd",
     gainsboro: "#d8dde9",
@@ -26,16 +26,16 @@ export const theme = {
     carnationPink: "#ffa7b8",
     snow: "#fff8f9",
 
-    modelOverlay: 'rgba(48, 52, 62, 0.5)',
+    modelOverlay: "rgba(48, 52, 62, 0.5)"
   },
   gradients: {
     gradient1: "radial-gradient(110.97% 359.55% at 101.01% 12.12%, #7ABDF3 0%, rgba(0, 99, 216, 0.8) 50.52%, #3900DB 100%)",
     gradient2: "linear-gradient(77.28deg, rgba(66, 0, 255, 0.12) 8.15%, rgba(221, 221, 221, 0) 52.3%, rgba(203, 255, 252, 0.46) 97.94%, #E1FFFF 97.94%)"
   },
   shadows: {
-    lvl1: '0px 1px 1px rgba(102, 105, 109, 0.14), 0px 2px 1px rgba(102, 105, 109, 0.12), 0px 1px 3px rgba(102, 105, 109, 0.2)',
-    lvl2: '0px 3px 4px rgba(102, 105, 109, 0.14), 0px 3px 3px rgba(102, 105, 109, 0.12), 0px 1px 8px rgba(102, 105, 109, 0.2)',
-    lvl5: '0px 6px 10px rgba(102, 105, 109, 0.14), 0px 1px 18px rgba(102, 105, 109, 0.12), 0px 3px 5px rgba(102, 105, 109, 0.2)'
+    lvl1: "0px 1px 1px rgba(102, 105, 109, 0.14), 0px 2px 1px rgba(102, 105, 109, 0.12), 0px 1px 3px rgba(102, 105, 109, 0.2)",
+    lvl2: "0px 3px 4px rgba(102, 105, 109, 0.14), 0px 3px 3px rgba(102, 105, 109, 0.12), 0px 1px 8px rgba(102, 105, 109, 0.2)",
+    lvl5: "0px 6px 10px rgba(102, 105, 109, 0.14), 0px 1px 18px rgba(102, 105, 109, 0.12), 0px 3px 5px rgba(102, 105, 109, 0.2)"
   },
   font: {
     primary: "'Poppins', sans-serif",
@@ -84,8 +84,10 @@ export const theme = {
   },
 
   breakpoints: {
-    sm: "359px",
-    md: "767px",
+    xxs: "359px",
+    xs: "575px",
+    sm: "767px",
+    md: "991px",
     lg: "1199px",
     xl: "1439px"
   },

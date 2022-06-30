@@ -4,6 +4,7 @@ import SectionButtons from "./SectionButtons"
 import SectionTypography from "./SectionTypography"
 import SectionCard from "./SectionCard"
 import SectionModal from "./SectionModal"
+import SectionBanner from "./SectionBanner"
 
 function DesignSystem(props) {
   return (
@@ -15,6 +16,8 @@ function DesignSystem(props) {
       <SectionCard />
 
       <SectionModal />
+
+      <SectionBanner />
     </DesignSystemStyle>
   )
 }

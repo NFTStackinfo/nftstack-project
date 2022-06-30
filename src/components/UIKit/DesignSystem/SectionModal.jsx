@@ -4,7 +4,7 @@ import Card from "../Card/Card"
 import { Button } from "../Button/Button"
 import Modal from "../Modal/Modal"
 
-function SectionCard(props) {
+function SectionModal(props) {
   const [isModalActive, setIsModalActive] = useState(false)
   const modalHandler = (state) => setIsModalActive(state)
 
@@ -14,7 +14,7 @@ function SectionCard(props) {
         <div className="content">
           <h2>Modal</h2>
 
-          <div className="section-card__container">
+          <div className="section-modal__container">
             <div className="modal-container">
               <Button variant="primary" onClick={() => modalHandler(true)}>Open modal</Button>
 
@@ -27,4 +27,4 @@ function SectionCard(props) {
   )
 }
 
-export default SectionCard
+export default SectionModal

@@ -4,7 +4,6 @@ import { ButtonStyle } from "./Button.style"
 
 function Button({
                   children,
-                  link,
                   disabled = false,
                   onClick,
                   className = "",
@@ -17,18 +16,15 @@ function Button({
                 }) {
   return (
     <>
-      {link ? (
+      {props?.href ? (
         <ButtonStyle
           as="a"
-          href={link}
           className={[
             "btn",
             ...variant.split(" "),
             children ? "btn_px-4" : "btn_px-2",
             className
           ].join(" ")}
-          target="_blank"
-          rel="noopener noreferrer"
           {...props}
         >
           {prefixIcon && <Icon name={prefixIcon} />}
