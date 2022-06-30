@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import  {  useMoralis } from "react-moralis";
 import SmartContractForm
   from './components/SmartContractForm/SmartContractForm';
