@@ -95,5 +95,16 @@ export const DesignSystemStyle = styled.div`
         }
       }
     }
+
+    &-header {
+      &__container {
+        background-color: ${({ theme }) => theme.colors.cadetBlue};
+        display: grid;
+        row-gap: 56px;
+        padding: 56px 0;
+        border: 1px dashed #9747FF;
+        border-radius: 5px;
+      }
+    }
   }
 `

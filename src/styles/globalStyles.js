@@ -38,8 +38,9 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
   }
 
-  img {
+  img, video{
     max-width: 100%;
+    width: 100%;
     display: block;
   }
 

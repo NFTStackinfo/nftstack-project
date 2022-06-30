@@ -28,7 +28,7 @@ export const ModalStyle = styled.div`
   }
 
   &.entering {
-    animation: modal-entering 0.5s ease-in-out;
+    animation: modal-entering 0.3s ease-in-out;
   }
 
   &.entered {
@@ -38,7 +38,7 @@ export const ModalStyle = styled.div`
   }
 
   &.exiting {
-    animation: modal-entering 0.5s ease-in-out reverse;
+    animation: modal-entering 0.3s ease-in-out reverse;
   }
 
   &.exited {

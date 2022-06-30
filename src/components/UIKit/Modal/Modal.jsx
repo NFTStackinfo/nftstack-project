@@ -23,7 +23,7 @@ function Modal({ isActive, onModalToggle, network, link = "#" }) {
 
   return (
     <Portal>
-      <Transition in={isModalActive} timeout={500} mountOnEnter unmountOnExit>
+      <Transition in={isModalActive} timeout={300} mountOnEnter unmountOnExit>
         {state => (
           <ModalStyle
             className={["modal", isModalActive ? "active" : "", state].join(" ")}
