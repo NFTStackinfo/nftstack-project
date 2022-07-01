@@ -17,6 +17,9 @@ export const DesignSystemStyle = styled.div`
       color: ${({ theme }) => theme.colors.neonBlue};
       font-weight: 600;
       margin-bottom: 16px;
+      font-size: ${({ theme }) => theme.font.b2.DEFAULT};
+      line-height: ${({ theme }) => theme.font.b2.lineHeight};
+      letter-spacing: ${({ theme }) => theme.font.b2.letterSpacing};
     }
 
     .content {
@@ -96,6 +99,15 @@ export const DesignSystemStyle = styled.div`
       }
     }
 
+    &-modal {
+      &__container {
+        &_inner {
+          display: grid;
+          row-gap: 24px;
+        }
+      }
+    }
+
     &-header {
       &__container {
         &_inner {
@@ -118,6 +130,24 @@ export const DesignSystemStyle = styled.div`
           padding: 56px 0;
           border: 1px dashed #9747FF;
           border-radius: 5px;
+        }
+      }
+    }
+
+    &-text-field {
+      &__sections {
+        display: grid;
+        row-gap: 56px;
+        max-width: 400px;
+      }
+
+      &__section {
+        //background-color: red;
+
+
+        &__variants {
+          display: grid;
+          row-gap: 24px;
         }
       }
     }

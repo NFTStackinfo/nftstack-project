@@ -1,13 +1,4 @@
 import React, { useState } from "react"
-import Tag from "../Tag/Tag"
-import Card from "../Card/Card"
-import { Button } from "../Button/Button"
-import Modal from "../Modal/Modal"
-import Banner from "../Banner/Banner"
-import He from "styled-components/dist/styled-components.browser.esm"
-import Header from "../Header/Header"
-import { addressFormat, truncate } from "../../../utils/text"
-import HeaderLogo from "../Header/HeaderLogo"
 import Footer from "../Footer/Footer"
 
 function SectionFooter(props) {

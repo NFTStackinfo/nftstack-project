@@ -1,8 +1,4 @@
 import React, { useState } from "react"
-import Tag from "../Tag/Tag"
-import Card from "../Card/Card"
-import { Button } from "../Button/Button"
-import Modal from "../Modal/Modal"
 import Banner from "../Banner/Banner"
 
 function SectionBanner(props) {

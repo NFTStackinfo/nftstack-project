@@ -1,4 +1,4 @@
-export const messages = {
+export const formMessages = {
     required: 'This field is required',
     email: 'Wrong email format.',
     phone: 'Wrong phone format.',

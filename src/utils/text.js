@@ -18,3 +18,15 @@ export function truncate(fullStr, strLen, separator) {
 export const addressFormat = address => (
   address?.substring(0, 6) + " ... " + address?.substring(address.length - 4, address.length)
 )
+
+export const randomStr = (length) => {
+  let result = ""
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  const charactersLength = characters.length
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() *
+      charactersLength))
+  }
+
+  return result
+}

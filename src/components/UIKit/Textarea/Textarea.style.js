@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { outsideBorder } from "../../../utils/utils"
 import { theme } from "../../../styles/theme"
 
-export const InputStyle = styled.div`
+export const TextareaStyle = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const InputStyle = styled.div`
       }
 
       &__input {
-        > input {
+        > textarea {
           border-color: ${({ theme }) => theme.colors.vividCrimson};
         }
       }
@@ -34,22 +34,20 @@ export const InputStyle = styled.div`
         >.icon {
           ${({ isIconColored }) =>
             !isIconColored && css`
-              path {
-                fill: ${({ theme }) => theme.colors.cadetBlue} !important;
-              }
-            `}
+            path {
+              fill: ${({ theme }) => theme.colors.cadetBlue} !important;
+            }
+          `}
         }
 
-        > input {
+        > textarea {
           border-color: ${({ theme }) => theme.colors.cadetBlue} !important;
           color: ${({ theme }) => theme.colors.cadetBlue} !important;
 
           ::placeholder {
             color: ${({ theme }) => theme.colors.cadetBlue} !important;
           }
-
         }
-
       }
     }
   }
@@ -80,8 +78,10 @@ export const InputStyle = styled.div`
           `}
       }
 
-      > input {
-        height: 40px;
+      > textarea {
+        resize: none;
+        max-height: 100%;
+        height: ${({ textareaHeight }) => textareaHeight};
         width: 100%;
         border: 1px solid ${({ theme }) => theme.colors.sonicSilver};
         border-radius: 25px;

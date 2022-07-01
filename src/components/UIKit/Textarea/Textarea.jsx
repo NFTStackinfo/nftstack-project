@@ -1,27 +1,27 @@
 import React, { forwardRef, useState } from "react"
-import { InputStyle } from "./Input.style"
+import { TextareaStyle } from "./Textarea.style"
 import { Icon } from "../Icon/Icon"
 import { randomStr } from "../../../utils/text"
 
-const Input = forwardRef(({
-                 className,
-                 value,
-                 onChange,
-                 onBlur,
-                 icon,
-                 isIconColored = false,
-                 label = "Label*",
-                 helperText,
-                 errorMessage,
-                 charactersCount = false,
-                 disabled = false,
-                 type = "text",
-                 placeholder = "",
-               }, ref) => {
+const Textarea = forwardRef(({
+                               className,
+                               value,
+                               onChange,
+                               onBlur,
+                               icon,
+                               isIconColored = false,
+                               label = "Label*",
+                               helperText,
+                               errorMessage,
+                               charactersCount = false,
+                               disabled = false,
+                               placeholder = "",
+                               textareaHeight='100px'
+                             }, ref) => {
   const [inputId] = useState(randomStr(8))
 
   return (
-    <InputStyle
+    <TextareaStyle
       className={[
         "input-group",
         className,
@@ -29,23 +29,25 @@ const Input = forwardRef(({
         disabled ? "disabled" : ""
       ].join(" ")}
       icon={icon}
-      isIconColored={isIconColored}>
+      isIconColored={isIconColored}
+      textareaHeight={textareaHeight}
+    >
       <label className="input-group__label text-c font-semibold"
              htmlFor={inputId}>{label}</label>
 
       <div className="input-group__input">
         {icon && <Icon name={icon} />}
 
-        <input
+        <textarea
           ref={ref}
           value={value}
           onChange={onChange}
           onBlur={onBlur}
-          type={type}
           placeholder={placeholder}
           className="text-b3 font-regular"
           id={inputId}
           disabled={disabled}
+
         />
       </div>
 
@@ -64,8 +66,8 @@ const Input = forwardRef(({
         </div>
       ) : ""}
 
-    </InputStyle>
+    </TextareaStyle>
   )
 })
 
-export default Input
+export default Textarea

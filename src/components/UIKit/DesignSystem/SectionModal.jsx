@@ -1,12 +1,16 @@
 import React, { useState } from "react"
-import Tag from "../Tag/Tag"
-import Card from "../Card/Card"
 import { Button } from "../Button/Button"
-import Modal from "../Modal/Modal"
+import { ModalDeploying, ModalFeature } from "../Modal"
 
 function SectionModal(props) {
-  const [isModalActive, setIsModalActive] = useState(false)
-  const modalHandler = (state) => setIsModalActive(state)
+  const [isModalDeployingActive, setIsModalDeployingActive] = useState(false)
+  const modalDeployingHandler = (state) => setIsModalDeployingActive(state)
+
+  const [isModalFeatureActive, setIsModalFeatureActive] = useState(false)
+  const modalFeatureHandler = (state) => setIsModalFeatureActive(state)
+  const onFeatureSubmit = data => {
+    console.log('data : ', data)
+  }
 
   return (
     <section className="section section-modal">
@@ -15,10 +19,31 @@ function SectionModal(props) {
           <h2>Modal</h2>
 
           <div className="section-modal__container">
-            <div className="modal-container">
-              <Button variant="primary" onClick={() => modalHandler(true)}>Open modal</Button>
+            <div className="section-modal__container_inner">
+              <div className="modal-variant">
+                <Button variant="primary" onClick={() => modalDeployingHandler(true)}>
+                  Open modal deploying</Button>
 
-              <Modal isActive={isModalActive} onModalToggle={modalHandler} network="rinkeby"/>
+                <ModalDeploying
+                  isActive={isModalDeployingActive}
+                  onModalToggle={modalDeployingHandler}
+                  network="rinkeby"
+                />
+              </div>
+
+
+              <div className="modal-variant">
+                <Button variant="primary" onClick={() => modalFeatureHandler(true)}>
+                  Open modal feature
+                </Button>
+
+                <ModalFeature
+                  isActive={isModalFeatureActive}
+                  onModalToggle={modalFeatureHandler}
+                  network="rinkeby"
+                  onSubmit={onFeatureSubmit}
+                />
+              </div>
             </div>
           </div>
         </div>

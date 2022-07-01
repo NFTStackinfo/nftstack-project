@@ -1,29 +1,29 @@
-import {messages} from "./messages";
-import {regex} from "./regex";
+import { formMessages } from "./messages"
+import { regex } from "./regex"
 
-export const required = {
-    required: messages.required,
+export const requiredValidate = {
+  required: { value: true, message: formMessages.required }
 }
 
 export const emailValidate = {
-    required: messages.required,
-    pattern: {
-        value: regex.email,
-        message: messages.email,
-    }
+  required: { value: true, message: formMessages.required },
+  pattern: {
+    value: regex.email,
+    message: formMessages.email
+  }
 }
 
 export const phoneValidate = {
-    required: messages.required,
-    pattern: {
-        value: regex.phone,
-        message: messages.phone,
-    }
+  required: { value: true, message: formMessages.required },
+  pattern: {
+    value: regex.phone,
+    message: formMessages.phone
+  }
 }
 
 export const carPriceValidation = {
-    maxLength: {
-        value: 10,
-        message: messages.price,
-    },
+  maxLength: {
+    value: 10,
+    message: formMessages.price
+  }
 }

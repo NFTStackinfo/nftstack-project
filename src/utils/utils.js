@@ -17,6 +17,12 @@ export const innerBorder = ({ color, size = 1, important=false }) => (`
     box-shadow:inset 0 0 0 ${size}px ${color} ${important ? '!important' : ''};
 `)
 
+export const outsideBorder = ({ color, size = 1, important=false }) => (`
+  -webkit-box-shadow: 0 0 0 ${size}px ${color} ${important ? '!important' : ''};
+    -moz-box-shadow: 0 0 0 ${size}px ${color} ${important ? '!important' : ''};
+    box-shadow: 0 0 0 ${size}px ${color} ${important ? '!important' : ''};
+`)
+
 export const generateSpaceClassNames = (array) => {
   let classNames = ``
   array.forEach((n, i) => {

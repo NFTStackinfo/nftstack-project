@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ModalStyle = styled.div`
+export const ModalDeployingStyle = styled.div`
   position: fixed;
   inset: 0;
   background: ${({ theme }) => theme.colors.modelOverlay};
@@ -110,3 +110,25 @@ export const ModalStyle = styled.div`
     }
   }
 `
+
+export const ModalFeatureStyle = styled.div`
+  .modal {
+    &__form {
+      margin-top: 24px;
+      display: grid;
+      row-gap: 16px;
+
+      &__btn {
+        &-container {
+          display: flex;
+          justify-content: end;
+        }
+
+        &_send{
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+`
+
