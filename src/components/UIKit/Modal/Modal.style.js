@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const ModalDeployingStyle = styled.div`
   position: fixed;
   inset: 0;
-  background: ${({ theme }) => theme.colors.modelOverlay};
+  background: ${({ theme }) => theme.colors.modalOverlay};
   overflow: auto;
   justify-content: center;
   align-items: center;

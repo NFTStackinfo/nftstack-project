@@ -198,7 +198,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0 40px;
     margin: 0 auto;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
       padding: 0 16px;
     }
   }
@@ -206,14 +206,14 @@ export const GlobalStyle = createGlobalStyle`
   .container {
     max-width: 1200px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
       max-width: 1152px;
     }
 
     &-md {
       max-width: 1010px;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+      @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
         max-width: 962px;
       }
     }
@@ -221,7 +221,7 @@ export const GlobalStyle = createGlobalStyle`
     &-sm {
       max-width: 818px;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+      @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
         max-width: 770px;
       }
     }
