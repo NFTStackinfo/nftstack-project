@@ -124,12 +124,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   //typography
-  a {
-    color: ${({ theme }) => theme.colors.electricUltramarine};
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
   h1, h2, h3, p, button, a, span {
     font-weight: 400;
   }

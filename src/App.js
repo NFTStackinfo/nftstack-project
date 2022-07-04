@@ -1,6 +1,6 @@
 import  {  useMoralis } from "react-moralis";
-import SmartContractForm
-  from './components/SmartContractForm/SmartContractForm';
+import SmartContractFormPage
+  from './pages/SmartContractFormPage/SmartContractFormPage';
 import {useEffect} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './pages/Auth/Login';
@@ -46,6 +46,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index path='/' element={<Login/>} />
+          <Route index path='/smart-contract' element={<SmartContractFormPage/>} />
           <Route path="design" element={<DesignSystem />} />
         </Routes>
       </BrowserRouter>
