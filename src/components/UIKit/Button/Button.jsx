@@ -12,6 +12,8 @@ function Button({
                   onPrefixClick,
                   onSuffixClick,
                   suffixIcon,
+                  isIconColored = false,
+                  width = "fit-content",
                   ...props
                 }) {
   return (
@@ -25,6 +27,8 @@ function Button({
             children ? "btn_px-4" : "btn_px-2",
             className
           ].join(" ")}
+          isIconColored={isIconColored}
+          width={width}
           {...props}
         >
           {prefixIcon && <Icon name={prefixIcon} />}
@@ -42,6 +46,8 @@ function Button({
           ].join(" ")}
           onClick={onClick}
           disabled={disabled}
+          isIconColored={isIconColored}
+          width={width}
           {...props}
         >
           {prefixIcon && (
