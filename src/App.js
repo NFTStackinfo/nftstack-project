@@ -42,7 +42,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Login />} />
+        {/*<Route index element={<Login />} />*/}
       </Routes>
     </BrowserRouter>
   )

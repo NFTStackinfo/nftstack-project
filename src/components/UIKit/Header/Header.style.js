@@ -131,7 +131,7 @@ export const HeaderStyle = styled.header`
       position: relative;
       width: 100%;
       background-color: ${({ theme }) => theme.colors.ghostWhite};
-      padding: 20px 24px;
+      padding: 16px 24px;
       border-radius: 36px;
       height: 72px;
 

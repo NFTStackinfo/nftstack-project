@@ -15,9 +15,8 @@ root.render(
       // <App/>
     // </MoralisProvider>,
   <ThemeProvider theme={theme}>
-    <GlobalStyle>
-      <App/>
-    </GlobalStyle>
+      {/*<App/>*/}
+    <GlobalStyle />
     <DesignSystem />
 
   </ThemeProvider>
