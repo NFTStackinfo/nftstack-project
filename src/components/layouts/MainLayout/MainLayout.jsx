@@ -8,7 +8,7 @@ const MainLayout = ({
                       headerAddress,
                       children,
                       container,
-                      back = "/"
+                      back
                     }) => {
   return (
     <MainLayoutStyle className="main-layout">
