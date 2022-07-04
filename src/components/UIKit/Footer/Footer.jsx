@@ -20,7 +20,7 @@ function Footer({ className }) {
           <div className="footer__socials">
             <ul className="footer__socials__list">
               {socialList.map(({ icon, link }, idx) => (
-                <li className="footer__socials__item">
+                <li className="footer__socials__item" key={`social_${idx}`}>
                   <Button href={link} target="_black" rel="noreferrer" suffixIcon={icon}/>
                 </li>
               ))}

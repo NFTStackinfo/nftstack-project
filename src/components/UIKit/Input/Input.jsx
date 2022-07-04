@@ -9,7 +9,7 @@ const Input = forwardRef(({
                  onChange,
                  onBlur,
                  icon,
-                 isIconColored = false,
+                 iconColored = false,
                  label = "Label*",
                  helperText,
                  errorMessage,
@@ -29,7 +29,7 @@ const Input = forwardRef(({
         disabled ? "disabled" : ""
       ].join(" ")}
       icon={icon}
-      isIconColored={isIconColored}>
+      isIconColored={iconColored}>
       <label className="input-group__label text-c font-semibold"
              htmlFor={inputId}>{label}</label>
 
