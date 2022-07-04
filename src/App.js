@@ -3,9 +3,11 @@ import SmartContractForm
   from './components/SmartContractForm/SmartContractForm';
 import {useEffect} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Login from './pages/Auth/Login';
+import DesignSystem from './components/UIKit/DesignSystem/DesignSystem';
 
 function App() {
-  const { refetchUserData, isUserUpdating, authenticate, isAuthenticated, user, logout, web3, enableWeb3, isWeb3Enabled, isWeb3EnableLoading, onAccountsChanged } = useMoralis();
+  // const { refetchUserData, isUserUpdating, authenticate, isAuthenticated, user, logout, web3, enableWeb3, isWeb3Enabled, isWeb3EnableLoading, onAccountsChanged } = useMoralis();
   // console.log(user?.id);
 
   // useEffect( () => {
@@ -40,12 +42,15 @@ function App() {
   // );
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Login />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route index path='/' element={<Login/>} />
+          <Route path="design" element={<DesignSystem />} />
+        </Routes>
+      </BrowserRouter>
+
   )
 }
+
 
 export default App;

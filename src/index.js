@@ -15,10 +15,8 @@ root.render(
       // <App/>
     // </MoralisProvider>,
   <ThemeProvider theme={theme}>
-    <GlobalStyle>
+    <GlobalStyle/>
       <App/>
-    </GlobalStyle>
-    <DesignSystem />
 
   </ThemeProvider>
 );
