@@ -36,6 +36,7 @@ export const LoginStyle = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
+    padding: 0 16px;
   }
 
   .login-box {

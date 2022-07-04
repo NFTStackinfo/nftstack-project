@@ -2,6 +2,7 @@ import React from 'react';
 import HeaderLogo from 'components/UIKit/Header/HeaderLogo';
 import {LoginStyle} from './Login.style';
 import Footer from 'components/UIKit/Footer/Footer';
+import {Button} from 'components/UIKit';
 
 const Login = () => {
   return (
@@ -14,6 +15,15 @@ const Login = () => {
           <div className="login-box">
             <h3 className='font-semibold'>CREATE AN ACCOUNT WITH METAMASK</h3>
             <p className='text'>Connect a wallet to continue</p>
+            <Button
+              prefixIcon="metamask"
+              variant="secondary"
+              iconColored
+              width="100%"
+              onClick={() => console.log('asd')}
+            >
+              Connect metamask
+            </Button>
           </div>
         </div>
 
