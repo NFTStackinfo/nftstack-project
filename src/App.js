@@ -2,6 +2,7 @@ import  {  useMoralis } from "react-moralis";
 import SmartContractForm
   from './components/SmartContractForm/SmartContractForm';
 import {useEffect} from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
   const { refetchUserData, isUserUpdating, authenticate, isAuthenticated, user, logout, web3, enableWeb3, isWeb3Enabled, isWeb3EnableLoading, onAccountsChanged } = useMoralis();
@@ -25,17 +26,26 @@ function App() {
   //   });
   //
   // }, [])
-  return (
-      <>
-        {
-          isAuthenticated ? <div><SmartContractForm /> <button onClick={() => logout()}>logout</button> <button onClick={() => enableWeb3()} disabled={isUserUpdating}>
-            Refetch user data
-          </button></div> : <div>
-            <button onClick={() =>authenticate()}>login</button></div>
-        }
-      </>
+  // return (
+  //     <>
+  //
+  //       {
+  //         isAuthenticated ? <div><SmartContractForm /> <button onClick={() => logout()}>logout</button> <button onClick={() => enableWeb3()} disabled={isUserUpdating}>
+  //           Refetch user data
+  //         </button></div> : <div>
+  //           <button onClick={() =>authenticate()}>login</button></div>
+  //       }
+  //     </>
+  //
+  // );
 
-  );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;

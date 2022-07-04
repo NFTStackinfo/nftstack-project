@@ -5,6 +5,8 @@ import SectionTypography from "./SectionTypography"
 import SectionCard from "./SectionCard"
 import SectionModal from "./SectionModal"
 import SectionBanner from "./SectionBanner"
+import SectionRadio from './SectionRadio';
+import SectionCheckbox from './SectionCheckbox';
 import SectionHeader from "./SectionHeader"
 import SectionFooter from "./SectionFooter"
 import SectionTextFields from "./SectionTextFields"
@@ -14,7 +16,10 @@ function DesignSystem(props) {
     <DesignSystemStyle>
       <SectionTypography />
 
+
       <SectionButtons/>
+      <SectionRadio/>
+      <SectionCheckbox/>
 
       <SectionCard />
 

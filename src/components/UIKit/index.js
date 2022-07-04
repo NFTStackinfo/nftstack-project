@@ -1,3 +1,5 @@
 export { Input } from "./Input_l/Input"
 export { Button } from "./Button/Button"
+export { Checkbox } from "./Checkbox/Checkbox"
+export { Radio } from "./Radio/Radio"
 export { Icon } from "./Icon/Icon"
