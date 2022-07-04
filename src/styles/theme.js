@@ -26,7 +26,7 @@ export const theme = {
     carnationPink: "#ffa7b8",
     snow: "#fff8f9",
 
-    modelOverlay: "rgba(48, 52, 62, 0.5)"
+    modalOverlay: "rgba(48, 52, 62, 0.5)"
   },
   gradients: {
     gradient1: "radial-gradient(110.97% 359.55% at 101.01% 12.12%, #7ABDF3 0%, rgba(0, 99, 216, 0.8) 50.52%, #3900DB 100%)",

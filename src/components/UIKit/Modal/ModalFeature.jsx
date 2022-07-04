@@ -8,6 +8,7 @@ import {
   requiredValidate
 } from "../../../helpers/validations/validations"
 import Textarea from "../Textarea/Textarea"
+import { ModalFeatureForm } from "./Modal.style"
 
 function ModalFeature({ isActive, onModalToggle, onSubmit }) {
   const [isModalActive, setIsModalActive] = useState(false)
@@ -45,7 +46,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
         Send Us A Short Description Of Custom Feature You Want
       </p>
 
-      <form onSubmit={handleSubmit(sendHandle)} className="modal__form">
+      <ModalFeatureForm onSubmit={handleSubmit(sendHandle)} className="modal__form">
         <Controller
           name="name"
           control={control}
@@ -119,7 +120,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
             type="submit"
           >Send request</Button>
         </div>
-      </form>
+      </ModalFeatureForm>
     </Modal>
   )
 }

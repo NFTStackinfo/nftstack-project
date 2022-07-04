@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { innerBorder } from "../../../utils/utils"
 import { theme } from "../../../styles/theme"
 
@@ -19,6 +19,7 @@ export const ButtonStyle = styled.button`
   text-transform: uppercase;
   border-radius: 30px;
   height: 40px;
+  width: ${({ width }) => width};
   cursor: pointer;
   transition: all 300ms linear;
   text-decoration: none;
@@ -43,29 +44,35 @@ export const ButtonStyle = styled.button`
     cursor: default !important;
     color: ${({ theme }) => theme.colors.cadetBlue} !important;
 
-    .icon path {
-      fill: ${({ theme }) => theme.colors.cadetBlue} !important;
-    }
+    ${({ isIconColored }) =>
+      !isIconColored && css`
+        .icon path {
+          fill: ${({ theme }) => theme.colors.cadetBlue} !important;
+        }
+      `}
   }
 
   .icon {
     width: 24px;
     height: 24px;
 
-    path {
-      fill: ${({ theme }) => theme.colors.white};
-    }
+    ${({ isIconColored }) =>
+      !isIconColored && css`
+        path {
+          fill: ${({ theme }) => theme.colors.white};
+        }
+      `}
   }
 
   &.blue {
     color: ${({ theme }) => theme.colors.electricUltramarine};
 
-    .icon {
-      path {
-        fill: ${({ theme }) => theme.colors.electricUltramarine};
-      }
-    }
-
+    ${({ isIconColored }) =>
+      !isIconColored && css`
+        .icon path {
+          fill: ${({ theme }) => theme.colors.electricUltramarine};
+        }
+      `}
     :not(:disabled):hover {
       background-color: ${({ theme }) => theme.colors.ghostWhite};
     }
@@ -74,12 +81,12 @@ export const ButtonStyle = styled.button`
   &.black {
     color: ${({ theme }) => theme.colors.outerSpace};
 
-    .icon {
-      path {
-        fill: ${({ theme }) => theme.colors.outerSpace};
-      }
-    }
-
+    ${({ isIconColored }) =>
+      !isIconColored && css`
+        .icon path {
+          fill: ${({ theme }) => theme.colors.outerSpace};
+        }
+      `}
     :not(:disabled):hover {
       background-color: ${({ theme }) => theme.colors.ghostWhite};
     }
@@ -87,11 +94,6 @@ export const ButtonStyle = styled.button`
 
   &.primary {
     background-color: ${({ theme }) => theme.colors.electricUltramarine};
-
-    .icon {
-      path {
-      }
-    }
 
     :not(:disabled):hover {
       background-color: ${({ theme }) => theme.colors.interBlue};
@@ -101,9 +103,12 @@ export const ButtonStyle = styled.button`
       color: ${({ theme }) => theme.colors.ghostWhite} !important;
       background-color: ${({ theme }) => theme.colors.cadetBlue} !important;
 
-      .icon path {
-        fill: ${({ theme }) => theme.colors.ghostWhite} !important;
-      }
+      ${({ isIconColored }) =>
+        !isIconColored && css`
+          .icon path {
+            fill: ${({ theme }) => theme.colors.ghostWhite} !important;
+          }
+        `}
     }
   }
 
@@ -111,12 +116,12 @@ export const ButtonStyle = styled.button`
     color: ${({ theme }) => theme.colors.outerSpace};
 
     ${innerBorder({ color: theme.colors.outerSpace })}
-    .icon {
-      path {
-        fill: ${({ theme }) => theme.colors.outerSpace};
-      }
-    }
-
+    ${({ isIconColored }) =>
+      !isIconColored && css`
+        .icon path {
+          fill: ${({ theme }) => theme.colors.outerSpace};
+        }
+      `}
     :not(:disabled):hover {
       background-color: ${({ theme }) => theme.colors.ghostWhite};
     }

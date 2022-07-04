@@ -30,7 +30,7 @@ function SectionTextFields(props) {
                     onChange={e => setValue(e.target.value)}
                     label="Label*"
                     icon="etherium"
-                    isIconColored={true}
+                    iconColored
                   />
                 </div>
 
@@ -50,7 +50,7 @@ function SectionTextFields(props) {
                     onChange={e => setValue(e.target.value)}
                     label="Label*"
                     icon="metamask"
-                    isIconColored={true}
+                    iconColored={true}
                     errorMessage="Error message"
                   />
                 </div>

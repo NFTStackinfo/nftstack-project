@@ -40,7 +40,6 @@ function SectionModal(props) {
                 <ModalFeature
                   isActive={isModalFeatureActive}
                   onModalToggle={modalFeatureHandler}
-                  network="rinkeby"
                   onSubmit={onFeatureSubmit}
                 />
               </div>

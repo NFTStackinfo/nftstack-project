@@ -16,31 +16,31 @@ const SectionCheckbox = (props) => {
               <div className="section-btn__container__inner">
                 <div className="section-btn_v">
                   <Checkbox
-                    label='hello from Checkbox'
+                    label='Prime'
                     name='checkbox1'
                     onChange={() => console.log('asd')}
                   />
                   <Checkbox
-                    label='hello from Checkbox'
+                    label='Prime'
                     name='checkbox2'
                     onChange={() => console.log('asd')}
                     checked
                   />
                   <Checkbox
-                    label='hello from Checkbox'
+                    label='Disabled'
                     name='checkbox3'
                     onChange={() => console.log('asd')}
                     size={18}
                     disabled
                   />
                   <Checkbox
-                    label='hello from indeterminate'
+                    label='Prime'
                     name='checkbox2'
                     onChange={() => console.log('asd')}
                     indeterminate
                   />
                   <Checkbox
-                    label='hello from indeterminate'
+                    label='Disabled'
                     name='checkbox3'
                     onChange={() => console.log('asd')}
                     size={18}

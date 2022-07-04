@@ -25,7 +25,7 @@ export const Checkbox = ({
         name={name}
       />
       <span className='checkbox-content'>
-        <Icon name={indeterminate ? 'indeterminate' : 'check'} size={14} />
+        <Icon name={indeterminate ? 'subtract' : 'checkmark'} size={16} />
       </span>
       {label && <span className='checkbox-label text-b2'>{label}</span>}
     </CheckboxStyle>
