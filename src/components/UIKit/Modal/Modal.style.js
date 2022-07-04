@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-export const ModalDeployingStyle = styled.div`
+export const ModalStyle = styled.div`
   position: fixed;
   inset: 0;
-  background: ${({ theme }) => theme.colors.modalOverlay};
+  background-color: ${({ theme }) => theme.colors.modalOverlay};
   overflow: auto;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,6 @@ export const ModalDeployingStyle = styled.div`
   visibility: visible;
   opacity: 0;
   pointer-events: none;
-  //transition: all 0.3s ease-in-out;
 
   @keyframes modal-entering {
     from {
@@ -24,6 +23,12 @@ export const ModalDeployingStyle = styled.div`
       visibility: visible;
       opacity: 1;
       pointer-events: auto;
+    }
+  }
+
+  .mt {
+    &-8 {
+      margin-top: 32px;
     }
   }
 
@@ -48,8 +53,19 @@ export const ModalDeployingStyle = styled.div`
   }
 
   .modal {
+
+    &__wrapper {
+      padding: 32px 0;
+      border-radius: 20px;
+      background-color: ${({ theme }) => theme.colors.white};
+      box-shadow: ${({ theme }) => theme.shadows.lvl5};
+      width: 100%;
+      height: fit-content;
+    }
+
     &__container {
       max-width: 520px;
+      padding: 0 32px;
       width: 100%;
       height: fit-content;
       margin-left: auto;
@@ -57,78 +73,50 @@ export const ModalDeployingStyle = styled.div`
     }
 
     &__content {
-      width: 100%;
-      height: fit-content;
-      background-color: ${({ theme }) => theme.colors.white};
-      padding: 32px;
-      border-radius: 20px;
-      box-shadow: ${({ theme }) => theme.shadows.lvl5};
-
-      > h3 {
-        text-align: center;
-        text-transform: uppercase;
-        color: ${({ theme }) => theme.colors.raisinBlack}
-      }
-
-      > p {
-        margin-top: 24px;
-      }
-
-      &__btn {
-        margin-top: 32px;
-        width: 100%;
-      }
-    }
-  }
-
-  .content {
-    background-color: #FFFFFF;
-    border-radius: 16px;
-    width: 100%;
-    padding: 16px 30px 0;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-
-
-    .modal-header {
-      align-self: center;
-      width: 100%;
-
-      &__btn-close {
-        margin-left: auto;
-
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.15);
-        }
-      }
-    }
-
-    .modal-body {
-      height: fit-content;
-      align-self: center;
-    }
-  }
-`
-
-export const ModalFeatureStyle = styled.div`
-  .modal {
-    &__form {
-      margin-top: 24px;
       display: grid;
-      row-gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
 
-      &__btn {
-        &-container {
-          display: flex;
-          justify-content: end;
-        }
+    &__title {
+      text-transform: uppercase;
+      font-size: ${({ theme }) => theme.font.h3.DEFAULT};
+      line-height: ${({ theme }) => theme.font.h3.lineHeight};
+      letter-spacing: ${({ theme }) => theme.font.h3.letterSpacing};
+      font-weight: 600;
+      color: ${({ theme }) => theme.colors.outerSpace};
+      text-align: center;
+    }
 
-        &_send{
-          margin-left: 12px;
-        }
+    &__text {
+      font-size: ${({ theme }) => theme.font.b3.DEFAULT};
+      line-height: ${({ theme }) => theme.font.b3.lineHeight};
+      letter-spacing: ${({ theme }) => theme.font.b3.letterSpacing};
+      color: ${({ theme }) => theme.colors.outerSpace};
+      font-weight: 400;
+      margin-top: 24px;
+      text-align: left;
+    }
+  }
+`
+
+export const ModalFeatureForm = styled.form`
+  margin-top: 24px;
+  display: grid;
+  row-gap: 16px;
+
+  .modal__form {
+    &__btn {
+      &-container {
+        display: flex;
+        justify-content: end;
+      }
+
+      &_send {
+        margin-left: 12px;
       }
     }
   }
 `
+
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useLockedBody } from "../../../hooks/useLockedBody"
-import { ModalFeatureStyle } from "./Modal.style"
+import { ModalStyle } from "./Modal.style"
 import { Portal } from "react-portal"
 import { Transition } from "react-transition-group"
 
@@ -18,7 +18,7 @@ function Modal({ isActive, onModalToggle, children }) {
     <Portal>
       <Transition in={isModalActive} timeout={300} mountOnEnter unmountOnExit>
         {state => (
-          <ModalFeatureStyle
+          <ModalStyle
             className={["modal", isModalActive ? "active" : "", state].join(" ")}
             data-overlay>
             <div className="modal__wrapper">
@@ -28,7 +28,7 @@ function Modal({ isActive, onModalToggle, children }) {
                 </div>
               </div>
             </div>
-          </ModalFeatureStyle>
+          </ModalStyle>
         )}
       </Transition>
     </Portal>

@@ -1,98 +1,111 @@
-// import React from "react"
-// import { HeaderStyle } from "./Header.style"
-//
-// function Header({ address, className = "" }) {
-//   return (
-//     <HeaderStyle className={["header", className].join(" ")}>
-//       <div className="container">
-//         <div className="content">
-//           <div className="header__logo">
-//             <a href="#">
-//               <img src="/assets/watermark-dark.svg" alt="Webly" />
-//             </a>
-//           </div>
-//
-//           <div>
-//             <span className="header__address text-b2">{address}</span>
-//           </div>
-//         </div>
-//       </div>
-//     </HeaderStyle>
-//   )
-// }
-
-// export default Header
-
 import { useEffect, useState } from "react"
 import { HeaderStyle } from "./Header.style"
 import { useLockedBody } from "../../../hooks/useLockedBody"
 import { Button } from "../Button/Button"
+import { Transition } from "react-transition-group"
+import { ModalFeature } from "../Modal"
 
-const Header = ({ onLinkClick }) => {
-  const [drawerOpened, setDrawerOpened] = useState(false)
+const Header = ({ address }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [locked, setLocked] = useLockedBody()
 
-  useEffect(() => {
-    if (drawerOpened) {
-      document.body.classList.add("overflow-hidden")
-    }
-    return () => {
-      document.body.classList.remove("overflow-hidden")
-    }
-  }, [drawerOpened])
-
-  const handleDrawerToggle = () => {
-    setDrawerOpened(!drawerOpened)
-    setLocked(!locked)
+  const [isModalFeatureActive, setIsModalFeatureActive] = useState(false)
+  const modalFeatureHandler = (state) => setIsModalFeatureActive(state)
+  const onFeatureSubmit = data => {
+    console.log("data : ", data)
   }
 
-  const handleMenuLinkClick = to => {
-    if (drawerOpened) {
-      setDrawerOpened(false)
+  const handleMenuToggle = () => {
+    setIsMenuOpen(() => !isMenuOpen)
+    setLocked(() => !locked)
+  }
+
+  const handleResize = () => {
+    const windowWidth = window.innerWidth
+
+    if (windowWidth > 575) {
       setLocked(false)
+      setIsMenuOpen(false)
     }
-    onLinkClick(to)
   }
-  return (
-    <HeaderStyle
-      className={["header", drawerOpened && "open", "wrapper"].join(" ")}>
-      <div className="header__container">
-        <div className="header__content">
-          <div className="header__logo">
-            <a href="#">
-              <img src="/assets/watermark-dark.svg" alt="Webly" />
-            </a>
-          </div>
 
-          <nav className="header__nav">
-            <div className="header__nav__inner">
-              <ul className="header__nav__list">
-                {/*{navList.map(({ to, title }) => {*/}
-                {/*  return (*/}
-                {/*    <li key={to} onClick={() => handleMenuLinkClick(to)}>*/}
-                {/*      {title}*/}
-                {/*    </li>*/}
-                {/*  )*/}
-                {/*})}*/}
-                <li onClick={() => {
-                }}>
-                  <Button variant="primary" className="header__nav__feature-btn">
+  const handleMobileFeatureBtn = () => {
+    console.log('handle')
+    handleMenuToggle()
+    setIsModalFeatureActive(true)
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return (
+    <Transition in={isMenuOpen} timeout={300}>
+      {state => (
+        <HeaderStyle
+          className={["header", isMenuOpen && "open", state, "wrapper"].join(" ")}>
+          <div className="header__container">
+            <div className="header__content">
+              <div className="header__navbar">
+                <div className="header__logo">
+                  <a href="#">
+                    <img src="/assets/watermark-dark.svg" alt="Webly" />
+                  </a>
+                </div>
+
+                <nav className="header__nav">
+                  <div className="header__nav__address">
+                    <span className="text-b2">{address}</span>
+                  </div>
+
+                  <div className="header__nav__inner">
+                    <Button
+                      variant="primary"
+                            className="header__nav__feature-btn"
+                      onClick={() => setIsModalFeatureActive(true)}
+                    >
+                      Custom feature
+                    </Button>
+                  </div>
+                </nav>
+
+
+                <Button
+                  onClick={handleMenuToggle}
+                  className="header__hamburger"
+                  variant="black"
+                  suffixIcon={isMenuOpen ? "close" : "menu"}
+                />
+              </div>
+
+
+              <div className="header__nav-mobile">
+                <div className="header__nav-mobile__inner">
+                  <Button
+                    variant="primary"
+                    className="header__nav__feature-btn"
+                    onClick={() => handleMobileFeatureBtn()}
+                  >
                     Custom feature
                   </Button>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
-          </nav>
+          </div>
 
-          <Button
-            onClick={handleDrawerToggle}
-            className="header__hamburger"
-            variant="black"
-            suffixIcon={drawerOpened ? "close" : "menu"}
+          <ModalFeature
+            isActive={isModalFeatureActive}
+            onModalToggle={modalFeatureHandler}
+            onSubmit={onFeatureSubmit}
           />
-        </div>
-      </div>
-    </HeaderStyle>
+        </HeaderStyle>
+      )}
+    </Transition>
+
   )
 }
 

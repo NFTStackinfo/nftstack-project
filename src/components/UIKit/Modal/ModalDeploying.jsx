@@ -23,7 +23,7 @@ function ModalDeploying({ isActive, onModalToggle, network, link = "#" }) {
       </p>
 
       <Button
-        className="modal__content__btn"
+        className="modal__content__btn mt-8"
         variant="primary"
         onClick={() => setIsModalActive(() => !isModalActive)}
       >Okay</Button>
