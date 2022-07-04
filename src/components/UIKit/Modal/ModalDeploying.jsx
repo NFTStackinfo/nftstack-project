@@ -26,6 +26,7 @@ function ModalDeploying({ isActive, onModalToggle, network, link = "#" }) {
         className="modal__content__btn mt-8"
         variant="primary"
         onClick={() => setIsModalActive(() => !isModalActive)}
+        width="100%"
       >Okay</Button>
     </Modal>
   )
