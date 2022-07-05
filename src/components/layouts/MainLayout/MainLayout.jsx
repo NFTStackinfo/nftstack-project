@@ -12,7 +12,7 @@ const MainLayout = ({
                       backPosition = "left"
                     }) => {
   return (
-    <MainLayoutStyle className="main-layout" backPosition={backPosition}>
+    <MainLayoutStyle className="main-layout" backPosition={backPosition} back={back || undefined}>
       <Header
         walletAddress={headerAddress}
       />

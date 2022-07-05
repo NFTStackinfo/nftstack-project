@@ -11,7 +11,8 @@ function Card({
                 date,
                 variant = "contract",
                 contractType,
-                className = ""
+                className = "",
+                state
               }) {
 
   return (
@@ -35,7 +36,7 @@ function Card({
             <p
               className="card__content__network text-b3">{cardData[network].text}</p>
 
-            <Tag type="default" className="default-tag" />
+            {state && <Tag type="default" className="default-tag" label={state}/>}
 
             <p className="card__content__date text-c">Submitted
                                                       on: {dateFormat(date)}</p>

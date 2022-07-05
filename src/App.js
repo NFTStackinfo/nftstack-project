@@ -5,6 +5,7 @@ import {useEffect} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './pages/Auth/Login';
 import DesignSystem from './components/UIKit/DesignSystem/DesignSystem';
+import DashboardPage from "./pages/DashboardPage/DashboardPage"
 
 function App() {
   // const { refetchUserData, isUserUpdating, authenticate, isAuthenticated, user, logout, web3, enableWeb3, isWeb3Enabled, isWeb3EnableLoading, onAccountsChanged } = useMoralis();
@@ -47,6 +48,7 @@ function App() {
         <Routes>
           <Route index path='/' element={<Login/>} />
           <Route index path='/smart-contract' element={<SmartContractFormPage/>} />
+          <Route index path='/dashboard' element={<DashboardPage/>} />
           <Route path="design" element={<DesignSystem />} />
         </Routes>
       </BrowserRouter>

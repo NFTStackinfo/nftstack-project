@@ -3,13 +3,46 @@ import styled, { css } from "styled-components"
 export const MainLayoutStyle = styled.div`
   .main-layout {
     &__wrapper {
-      padding-top: calc(72px + 16px + 80px);
-      padding-bottom: 80px;
+      padding-top: calc(72px + 16px +
+      ${({ backPosition, back }) => back
+        ? backPosition === "left" ? "80px" : "48px"
+        : "80px"
+      });
+
+      padding-bottom: ${({ backPosition, back }) => back
+        ? backPosition === "left" ? "80px" : "48px"
+        : "80px"
+      };
       min-height: 100vh;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-        padding-top: calc(72px + 16px + 24px);
+        ${({ back }) => back &&
+          css`
+            padding-top: calc(72px + 16px + 24px);
+            padding-bottom: 24px;
+          `
+        }
       }
+
+
+      ${({ back }) => back
+        ? css`
+          @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+
+          }
+        `
+        : css`
+          @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+            padding-top: calc(72px + 16px + 64px);
+          };
+
+          @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+            padding-top: calc(72px + 16px + 48px);
+          }
+        `
+      };
+
+
     }
 
     &__container {
