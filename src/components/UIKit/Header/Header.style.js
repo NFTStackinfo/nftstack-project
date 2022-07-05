@@ -18,7 +18,6 @@ export const HeaderStyle = styled.header`
     }
   }
 
-
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -29,9 +28,6 @@ export const HeaderStyle = styled.header`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-    height: 100%;
-    max-height: calc(100vh - 32px);
-
 
     ::before {
       content: '';
@@ -43,6 +39,9 @@ export const HeaderStyle = styled.header`
     }
 
     &.entering {
+      max-height: calc(100vh - 32px);
+      height: 100%;
+
       &::before, .header__nav-mobile {
         animation: fade-in 0.3s ease-in-out;
       }
@@ -56,6 +55,9 @@ export const HeaderStyle = styled.header`
     }
 
     &.entered {
+      max-height: calc(100vh - 32px);
+      height: 100%;
+
       &::before, .header__nav-mobile {
         opacity: 1;
       }
@@ -83,6 +85,10 @@ export const HeaderStyle = styled.header`
     &.exited {
       &::before, .header__nav-mobile {
         opacity: 0;
+      }
+
+      &::before {
+        content: none;
       }
 
       .header {
