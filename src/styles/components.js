@@ -1,38 +1,38 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  max-width: 1200px;
+  max-width: ${({ inner }) => inner ? '1120px' : '1200px'};
   width: 100%;
-  padding: 0 40px;
+  padding: 0 ${({ inner }) => inner ? '0' : '40px'};
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    max-width: 1152px;
-    padding: 0 16px;
+    max-width: ${({ inner }) => inner ? '1120px' : '1152px'};
+    padding: 0 ${({ inner }) => inner ? '0' : '16px'};
   }
 `
 
 export const ContainerMd = styled.div`
-  max-width: 818px;
+  max-width: ${({ inner }) => inner ? '738px' : '818px'};
   width: 100%;
-  padding: 0 40px;
+  padding: 0 ${({ inner }) => inner ? '0' : '40px'};
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    max-width: 770px;
-    padding: 0 16px;
+    max-width: ${({ inner }) => inner ? '738px' : '770px'};
+    padding: 0 ${({ inner }) => inner ? '0' : '16px'};
   }
 `
 
 export const ContainerSm = styled.div`
-  max-width: 540px;
+  max-width: ${({ inner }) => inner ? '460px' : '540px'}540px;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 ${({ inner }) => inner ? '0' : '40px'};
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    max-width: 490px;
-    padding: 0 16px;
+    max-width: ${({ inner }) => inner ? '460px' : '492px'};
+    padding: 0 ${({ inner }) => inner ? '0' : '16px'};
   }
 `
 

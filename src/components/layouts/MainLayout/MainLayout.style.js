@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const MainLayoutStyle = styled.div`
   .main-layout {
@@ -6,7 +6,7 @@ export const MainLayoutStyle = styled.div`
       padding-top: calc(72px + 16px + 80px);
 
       @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-          padding-top: calc(72px + 16px + 24px);
+        padding-top: calc(72px + 16px + 24px);
       }
     }
 
@@ -15,9 +15,17 @@ export const MainLayoutStyle = styled.div`
     }
 
     &__back {
-      position: absolute;
-      left: 40px;
-      top: 0;
+
+      ${({ backPosition }) => backPosition === "left"
+        ? css`
+          position: absolute;
+          left: 40px;
+          top: 0;
+        `
+        : css`
+          margin-bottom: 16px;
+        `
+      };
 
       @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
         left: 16px;

@@ -35,7 +35,7 @@ const SmartContractFormPage = ({}) => {
       back="/"
     >
       <SmartContractFormPageStyle>
-        <ContainerSm>
+        <ContainerSm inner>
           <Title>Create Smart Contract</Title>
 
           <Content>

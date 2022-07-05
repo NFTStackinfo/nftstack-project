@@ -8,10 +8,11 @@ const MainLayout = ({
                       headerAddress,
                       children,
                       container,
-                      back
+                      back,
+                      backPosition = "left"
                     }) => {
   return (
-    <MainLayoutStyle className="main-layout">
+    <MainLayoutStyle className="main-layout" backPosition={backPosition}>
       <Header
         address={addressFormat(headerAddress)}
       />
