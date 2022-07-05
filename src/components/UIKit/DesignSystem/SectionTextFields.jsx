@@ -29,7 +29,7 @@ function SectionTextFields(props) {
                     placeholder="Placeholder Text" value={value}
                     onChange={e => setValue(e.target.value)}
                     label="Label*"
-                    icon="etherium"
+                    icon="ethereum"
                     iconColored
                   />
                 </div>

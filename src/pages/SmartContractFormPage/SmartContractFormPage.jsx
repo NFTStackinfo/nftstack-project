@@ -62,15 +62,22 @@ const SmartContractFormPage = ({}) => {
               <div className="form__contract-type">
                 <span className="text-c font-semibold">ETH Contract Type*</span>
 
-                <div className="form__contract-type__radio-container">
-                  <Radio label="ERC721"
-                         value="ERC721" {...register("contractType")} />
+                <div className="form__radio-group">
+                  <Radio
+                    label="ERC721"
+                    value="ERC721" {...register("contractType")}
+                  />
 
-                  <Radio label="ERC721A"
-                         value="ERC721A" {...register("contractType")} />
+                  <Radio
+                    label="ERC721A"
+                    value="ERC721A"
+                    {...register("contractType")}
+                  />
 
-                  <Radio label="ERC1155"
-                         value="ERC1155" {...register("contractType")} />
+                  <Radio
+                    label="ERC1155"
+                    value="ERC1155" {...register("contractType")}
+                  />
                 </div>
               </div>
 
@@ -119,9 +126,85 @@ const SmartContractFormPage = ({}) => {
                     onChange={onChange}
                     onBlur={onBlur}
                     ref={ref}
-                    errorMessage={errors.collectionName?.message}
+                    errorMessage={errors.supplyCount?.message}
                   />)}
               />
+
+              <div className="form__input-row">
+                <Controller
+                  name="presaleMintPrice"
+                  control={control}
+                  rules={requiredValidate}
+
+                  render={({ field: { onChange, onBlur, value, ref } }) => (
+                    <Input
+                      value={value}
+                      type="number"
+                      label="Presale Mint Price*"
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      ref={ref}
+                      icon="ethereum"
+                      iconColored
+                      errorMessage={errors.presaleMintPrice?.message}
+                    />)}
+                />
+
+                <Controller
+                  name="presaleMintLimit"
+                  control={control}
+                  rules={requiredValidate}
+
+                  render={({ field: { onChange, onBlur, value, ref } }) => (
+                    <Input
+                      value={value}
+                      type="number"
+                      label="Presale Mint Limit Per Wallet*"
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      ref={ref}
+                      errorMessage={errors.presaleMintLimit?.message}
+                    />)}
+                />
+              </div>
+
+              <div className="form__input-row">
+                <Controller
+                  name="mintPrice"
+                  control={control}
+                  rules={requiredValidate}
+
+                  render={({ field: { onChange, onBlur, value, ref } }) => (
+                    <Input
+                      value={value}
+                      type="number"
+                      label="Mint Price*"
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      ref={ref}
+                      icon="ethereum"
+                      iconColored
+                      errorMessage={errors.mintPrice?.message}
+                    />)}
+                />
+
+                <Controller
+                  name="mintLimit"
+                  control={control}
+                  rules={requiredValidate}
+
+                  render={({ field: { onChange, onBlur, value, ref } }) => (
+                    <Input
+                      value={value}
+                      type="number"
+                      label="Mint Limit Per Wallet*"
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      ref={ref}
+                      errorMessage={errors.mintLimit?.message}
+                    />)}
+                />
+              </div>
 
               <Button variant="primary" width="100%">
                 Continue

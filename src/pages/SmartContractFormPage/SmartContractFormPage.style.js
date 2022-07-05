@@ -15,14 +15,20 @@ export const SmartContractForm = styled.form`
         padding-left: 12px;
         color: ${({ theme }) => theme.colors.sonicSilver};
       }
+    }
 
-      &__radio-container {
-        margin-top: 16px;
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: max-content;
-        column-gap: 16px;
-      }
+    &__radio-group {
+      margin-top: 16px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      column-gap: 16px;
+    }
+
+    &__input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
     }
   }
 `

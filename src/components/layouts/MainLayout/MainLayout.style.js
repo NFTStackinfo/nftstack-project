@@ -4,6 +4,8 @@ export const MainLayoutStyle = styled.div`
   .main-layout {
     &__wrapper {
       padding-top: calc(72px + 16px + 80px);
+      padding-bottom: 80px;
+      min-height: 100vh;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
         padding-top: calc(72px + 16px + 24px);
