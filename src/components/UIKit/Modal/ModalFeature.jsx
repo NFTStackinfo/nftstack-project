@@ -4,7 +4,7 @@ import Input from "../Input/Input"
 import { Button } from "../Button/Button"
 import { useForm, Controller } from "react-hook-form"
 import {
-  emailValidate,
+  validateEmail,
   validateRequired
 } from "../../../helpers/validations/validations"
 import Textarea from "../Textarea/Textarea"
@@ -70,7 +70,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
         <Controller
           name="email"
           control={control}
-          rules={emailValidate}
+          rules={validateEmail}
           render={({ field: { onChange, onBlur, value, ref } }) => (
             <Input
               value={value}
