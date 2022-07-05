@@ -25,7 +25,7 @@
         {}
       ],
       "properties": {
-        "order": 76,
+        "order": 80,
         "id": 41,
         "name": "checkmark",
         "prevSize": 32,
@@ -63,7 +63,7 @@
         {}
       ],
       "properties": {
-        "order": 75,
+        "order": 81,
         "id": 40,
         "name": "close",
         "prevSize": 32,
@@ -97,7 +97,7 @@
         {}
       ],
       "properties": {
-        "order": 74,
+        "order": 82,
         "id": 39,
         "name": "menu",
         "prevSize": 32,
@@ -131,7 +131,7 @@
         {}
       ],
       "properties": {
-        "order": 73,
+        "order": 83,
         "id": 38,
         "name": "subtract",
         "prevSize": 32,
@@ -153,7 +153,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "add-circle-24"
+          "add-circle"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -165,7 +165,7 @@
         {}
       ],
       "properties": {
-        "order": 30,
+        "order": 84,
         "id": 37,
         "name": "add-circle",
         "prevSize": 32,
@@ -187,7 +187,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "arrow-back-24"
+          "arrow-back"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -199,7 +199,7 @@
         {}
       ],
       "properties": {
-        "order": 33,
+        "order": 85,
         "id": 34,
         "name": "arrow-back",
         "prevSize": 32,
@@ -221,7 +221,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "arrow-forward-24"
+          "arrow-forward"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -233,7 +233,7 @@
         {}
       ],
       "properties": {
-        "order": 36,
+        "order": 86,
         "id": 31,
         "name": "arrow-forward",
         "prevSize": 32,
@@ -255,7 +255,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "carret-down-24"
+          "carret-down"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -267,7 +267,7 @@
         {}
       ],
       "properties": {
-        "order": 39,
+        "order": 87,
         "id": 28,
         "name": "carret-down",
         "prevSize": 32,
@@ -289,7 +289,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "carret-up-24"
+          "carret-up"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -301,7 +301,7 @@
         {}
       ],
       "properties": {
-        "order": 42,
+        "order": 88,
         "id": 25,
         "name": "carret-up",
         "prevSize": 32,
@@ -323,7 +323,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "discord-24"
+          "discord"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -335,7 +335,7 @@
         {}
       ],
       "properties": {
-        "order": 45,
+        "order": 89,
         "id": 22,
         "name": "discord",
         "prevSize": 32,
@@ -379,7 +379,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "etherium-24"
+          "ethereum"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -425,9 +425,9 @@
         }
       ],
       "properties": {
-        "order": 48,
+        "order": 90,
         "id": 19,
-        "name": "etherium",
+        "name": "ethereum",
         "prevSize": 32,
         "code": 59672,
         "codes": [
@@ -455,7 +455,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "info-24"
+          "info"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -467,7 +467,7 @@
         {}
       ],
       "properties": {
-        "order": 51,
+        "order": 91,
         "id": 16,
         "name": "info",
         "prevSize": 32,
@@ -489,7 +489,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "instagram-24"
+          "instagram"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -501,7 +501,7 @@
         {}
       ],
       "properties": {
-        "order": 54,
+        "order": 92,
         "id": 13,
         "name": "instagram",
         "prevSize": 32,
@@ -535,7 +535,7 @@
         {}
       ],
       "properties": {
-        "order": 57,
+        "order": 93,
         "id": 10,
         "name": "linkedin",
         "prevSize": 32,
@@ -603,7 +603,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "metamask-24"
+          "metamask"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -685,7 +685,7 @@
         }
       ],
       "properties": {
-        "order": 60,
+        "order": 94,
         "id": 7,
         "name": "metamask",
         "prevSize": 32,
@@ -721,7 +721,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "remove-circle-24"
+          "remove-circle"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -733,7 +733,7 @@
         {}
       ],
       "properties": {
-        "order": 63,
+        "order": 95,
         "id": 4,
         "name": "remove-circle",
         "prevSize": 32,
@@ -755,7 +755,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "twitter-24"
+          "twitter"
         ],
         "colorPermutations": {
           "1186226114014014011921721571202020120498401213191178122222212251193812261173712261183712451323113552711525252157575716060591": [
@@ -767,7 +767,7 @@
         {}
       ],
       "properties": {
-        "order": 66,
+        "order": 96,
         "id": 1,
         "name": "twitter",
         "prevSize": 32,

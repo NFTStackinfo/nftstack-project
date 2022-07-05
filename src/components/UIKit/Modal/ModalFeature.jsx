@@ -4,8 +4,8 @@ import Input from "../Input/Input"
 import { Button } from "../Button/Button"
 import { useForm, Controller } from "react-hook-form"
 import {
-  emailValidate,
-  requiredValidate
+  validateEmail,
+  validateRequired
 } from "../../../helpers/validations/validations"
 import Textarea from "../Textarea/Textarea"
 import { ModalFeatureForm } from "./Modal.style"
@@ -42,7 +42,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
     <Modal isActive={isModalActive} onModalToggle={onModalToggle}>
       <h3 className="modal__title">Custom Feature</h3>
 
-      <p className="modal__text">
+      <p className="modal__text text-center">
         Send Us A Short Description Of Custom Feature You Want
       </p>
 
@@ -50,7 +50,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
         <Controller
           name="name"
           control={control}
-          rules={requiredValidate}
+          rules={validateRequired}
           render={({ field: { onChange, onBlur, value, ref } }) => (
             <Input
               value={value}
@@ -70,7 +70,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
         <Controller
           name="email"
           control={control}
-          rules={emailValidate}
+          rules={validateEmail}
           render={({ field: { onChange, onBlur, value, ref } }) => (
             <Input
               value={value}
@@ -89,7 +89,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
         <Controller
           name="description"
           control={control}
-          rules={requiredValidate}
+          rules={validateRequired}
           render={({ field: { onChange, onBlur, value, ref } }) => (
             <Textarea
               value={value}

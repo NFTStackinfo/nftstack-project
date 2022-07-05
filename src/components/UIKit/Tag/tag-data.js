@@ -6,19 +6,19 @@ export const tagData = {
   },
 
   'erc721': {
-    icon: 'etherium',
+    icon: 'ethereum',
     label: 'ERC721',
     variant: 'eth'
   },
 
   'erc721a': {
-    icon: 'etherium',
+    icon: 'ethereum',
     label: 'ERC721A',
     variant: 'eth'
   },
 
   'erc1155': {
-    icon: 'etherium',
+    icon: 'ethereum',
     label: 'ERC1155',
     variant: 'eth'
   }

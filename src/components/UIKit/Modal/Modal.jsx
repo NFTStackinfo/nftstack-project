@@ -21,13 +21,11 @@ function Modal({ isActive, onModalToggle, children }) {
           <ModalStyle
             className={["modal", isModalActive ? "active" : "", state].join(" ")}
             data-overlay>
-            <div className="modal__wrapper">
               <div className="modal__container">
                 <div className="modal__content">
                   {children}
                 </div>
               </div>
-            </div>
           </ModalStyle>
         )}
       </Transition>

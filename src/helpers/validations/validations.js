@@ -1,11 +1,11 @@
-import { formMessages } from "./messages"
+import { formMessageMax, formMessageMin, formMessages } from "./messages"
 import { regex } from "./regex"
 
-export const requiredValidate = {
+export const validateRequired = {
   required: { value: true, message: formMessages.required }
 }
 
-export const emailValidate = {
+export const validateEmail = {
   required: { value: true, message: formMessages.required },
   pattern: {
     value: regex.email,
@@ -13,7 +13,7 @@ export const emailValidate = {
   }
 }
 
-export const phoneValidate = {
+export const validatePhone = {
   required: { value: true, message: formMessages.required },
   pattern: {
     value: regex.phone,
@@ -21,9 +21,48 @@ export const phoneValidate = {
   }
 }
 
-export const carPriceValidation = {
+export const validateMaxLength = (length) => ({
   maxLength: {
-    value: 10,
-    message: formMessages.price
+    value: length
   }
-}
+})
+
+export const validateMinLength = (length) => ({
+  minLength: {
+    value: length
+  }
+})
+
+export const validateMinMaxLength = (min, max) => ({
+  minLength: {
+    value: min
+  },
+  maxLength: {
+    value: max
+  }
+})
+
+export const validateMax = (value) => ({
+  max: {
+    value,
+    message: formMessageMax(value)
+  }
+})
+
+export const validateMin = (value) => ({
+  max: {
+    value,
+    message: formMessageMin(value)
+  }
+})
+
+export const validateMinMax = (min, max) => ({
+  min: {
+    value: min,
+    message: formMessageMin(min)
+  },
+  max: {
+    value: max,
+    message: formMessageMax(max)
+  }
+})

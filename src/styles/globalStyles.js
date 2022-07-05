@@ -38,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
   }
 
-  img, video{
+  img, video {
     max-width: 100%;
     width: 100%;
     display: block;
@@ -124,12 +124,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   //typography
-  a {
-    color: ${({ theme }) => theme.colors.electricUltramarine};
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
   h1, h2, h3, p, button, a, span {
     font-weight: 400;
   }
@@ -190,45 +184,75 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  //typography
+  .text {
+    &-left {
+      text-align: left;
+    }
 
-  // components
-  .container, .container-md, .container-sm {
-    width: 100%;
-    padding: 0 40px;
-    margin: 0 auto;
+    &-center {
+      text-align: center;
+    }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-      padding: 0 16px;
+    &-right {
+      text-align: right;
     }
   }
 
+  //typography
+
+  // components
   .container {
-    max-width: 1200px;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-      max-width: 1152px;
-    }
-
-    &-md {
-      max-width: 1010px;
+    &, &-md, &-sm {
+      padding: 0 40px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-        max-width: 962px;
+        padding: 0 16px;
       }
-    }
 
-    &-sm {
-      max-width: 818px;
-
-      @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-        max-width: 770px;
+      &, &-inner {
+        width: 100%;
+        margin: 0 auto;
       }
-    }
 
-    &-xs {
-      max-width: 360px;
-      width: 100%;
+      &-inner {
+        padding: 0;
+      }
+
+      & {
+        max-width: 1200px;
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+          max-width: 1152px;
+        }
+
+        &-inner {
+          max-width: 1120px;
+        }
+      }
+
+      &-md {
+        max-width: 818px;
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+          max-width: 770px;
+        }
+
+        &-inner {
+          max-width: 738px;
+        }
+      }
+
+      &-sm {
+        max-width: 540px;
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+          max-width: 492px;
+        }
+
+        &-inner {
+          max-width: 460px;
+        }
+      }
     }
   }
   // components

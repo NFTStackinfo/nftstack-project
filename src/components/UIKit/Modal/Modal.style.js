@@ -12,6 +12,12 @@ export const ModalStyle = styled.div`
   visibility: visible;
   opacity: 0;
   pointer-events: none;
+  padding: 40px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 
   @keyframes modal-entering {
     from {
@@ -53,29 +59,30 @@ export const ModalStyle = styled.div`
   }
 
   .modal {
-
-    &__wrapper {
-      padding: 32px 0;
-      border-radius: 20px;
-      background-color: ${({ theme }) => theme.colors.white};
-      box-shadow: ${({ theme }) => theme.shadows.lvl5};
-      width: 100%;
-      height: fit-content;
-    }
-
     &__container {
-      max-width: 520px;
-      padding: 0 32px;
+      max-width: 600px;
       width: 100%;
       height: fit-content;
       margin-left: auto;
       margin-right: auto;
+      padding: 0 40px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
     }
 
     &__content {
       display: grid;
       justify-content: center;
       align-items: center;
+      padding: 32px;
+      border-radius: 20px;
+      background-color: ${({ theme }) => theme.colors.white};
+      box-shadow: ${({ theme }) => theme.shadows.lvl5};
+      width: 100%;
+      height: fit-content;
     }
 
     &__title {
@@ -95,7 +102,6 @@ export const ModalStyle = styled.div`
       color: ${({ theme }) => theme.colors.outerSpace};
       font-weight: 400;
       margin-top: 24px;
-      text-align: left;
     }
   }
 `

@@ -4,20 +4,21 @@ import { Icon } from "../Icon/Icon"
 import { randomStr } from "../../../utils/text"
 
 const Input = forwardRef(({
-                 className,
-                 value,
-                 onChange,
-                 onBlur,
-                 icon,
-                 iconColored = false,
-                 label = "Label*",
-                 helperText,
-                 errorMessage,
-                 charactersCount = false,
-                 disabled = false,
-                 type = "text",
-                 placeholder = "",
-               }, ref) => {
+                            className,
+                            value,
+                            onChange,
+                            onBlur,
+                            icon,
+                            iconColored = false,
+                            label = "Label*",
+                            helperText,
+                            errorMessage,
+                            charactersCount = false,
+                            disabled = false,
+                            type = "text",
+                            placeholder = "",
+                            ...props
+                          }, ref) => {
   const [inputId] = useState(randomStr(8))
 
   return (
@@ -29,7 +30,7 @@ const Input = forwardRef(({
         disabled ? "disabled" : ""
       ].join(" ")}
       icon={icon}
-      isIconColored={iconColored}>
+      isiconcolored={iconColored ? true : undefined}>
       <label className="input-group__label text-c font-semibold"
              htmlFor={inputId}>{label}</label>
 
@@ -46,6 +47,7 @@ const Input = forwardRef(({
           className="text-b3 font-regular"
           id={inputId}
           disabled={disabled}
+          {...props}
         />
       </div>
 

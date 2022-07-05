@@ -12,7 +12,7 @@ import {
   carPriceValidation,
   emailValidate,
   phoneValidate,
-  requiredValidate
+  validateRequired
 } from "helpers/validations/validations"
 
 const SmartContractForm = () => {
@@ -73,7 +73,7 @@ const SmartContractForm = () => {
               )}
               name="projectName"
               control={control}
-              rules={requiredValidate}
+              rules={validateRequired}
             />
             <div>
               <label>
@@ -107,7 +107,7 @@ const SmartContractForm = () => {
               )}
               name="collectionName"
               control={control}
-              rules={requiredValidate}
+              rules={validateRequired}
             />
             <Controller
               render={({ field }) => (
@@ -121,7 +121,7 @@ const SmartContractForm = () => {
               )}
               name="symbol"
               control={control}
-              rules={requiredValidate}
+              rules={validateRequired}
             />
             <ul>
               {fields.map((item, index) => {
@@ -139,7 +139,7 @@ const SmartContractForm = () => {
                       )}
                       name={`test[${index}].address`}
                       control={control}
-                      rules={requiredValidate}
+                      rules={validateRequired}
                     />
                     <button type="button" onClick={() => remove(index)}>
                       Delete

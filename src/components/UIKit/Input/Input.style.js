@@ -32,8 +32,8 @@ export const InputStyle = styled.div`
     .input-group {
       &__input {
         >.icon {
-          ${({ isIconColored }) =>
-            !isIconColored && css`
+          ${({ isiconcolored }) =>
+            !isiconcolored && css`
               path {
                 fill: ${({ theme }) => theme.colors.cadetBlue} !important;
               }
@@ -72,8 +72,8 @@ export const InputStyle = styled.div`
         width: 24px;
         height: 24px;
 
-        ${({ isIconColored }) =>
-          !isIconColored && css`
+        ${({ isiconcolored }) =>
+          !isiconcolored && css`
             path {
               fill: ${({ theme }) => theme.colors.sonicSilver}
             }

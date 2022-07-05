@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { modalData } from "./modal-data"
 import { Button } from "../Button/Button"
 import { Modal } from "./Modal"
+import { A } from "../../../styles/components"
 
 function ModalDeploying({ isActive, onModalToggle, network, link = "#" }) {
   const [isModalActive, setIsModalActive] = useState(false)
@@ -16,9 +17,9 @@ function ModalDeploying({ isActive, onModalToggle, network, link = "#" }) {
 
       <p className="modal__text">
         Deployment is being processed and can take a while.
-        You can look for the status updates on <a href={link}
+        You can look for the status updates on <A href={link}
                                                   target="_blank"
-                                                  rel="noreferrer">Etherscan</a> or
+                                                  rel="noreferrer">Etherscan</A> or
         directly on here
       </p>
 
