@@ -25,7 +25,7 @@ export const ContainerMd = styled.div`
 `
 
 export const ContainerSm = styled.div`
-  max-width: ${({ inner }) => inner ? '460px' : '540px'}540px;
+  max-width: ${({ inner }) => inner ? '460px' : '540px'};
   width: 100%;
   padding: 0 ${({ inner }) => inner ? '0' : '40px'};
   margin: 0 auto;

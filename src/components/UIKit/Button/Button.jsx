@@ -28,7 +28,7 @@ function Button({
               children ? "btn_px-4" : "btn_px-2",
               className
             ].join(" ")}
-            isIconColored={iconColored}
+            isiconcolored={iconColored ? true : undefined}
             width={width}
             {...props}
           >
@@ -47,7 +47,7 @@ function Button({
               ].join(" ")}
               onClick={onClick}
               disabled={disabled}
-              isIconColored={iconColored}
+              isiconcolored={iconColored ? true : undefined}
               width={width}
               to={to}
               {...props}
@@ -80,7 +80,7 @@ function Button({
               ].join(" ")}
               onClick={onClick}
               disabled={disabled}
-              isIconColored={iconColored}
+              isiconcolored={iconColored ? true : undefined}
               width={width}
               {...props}
             >

@@ -8,7 +8,7 @@ import { ContainerSm, Content, Title } from "../../styles/components"
 import { useForm, Controller } from "react-hook-form"
 import { requiredValidate } from "../../helpers/validations/validations"
 import Input from "../../components/UIKit/Input/Input"
-import { Radio } from "../../components/UIKit"
+import { Button, Radio } from "../../components/UIKit"
 
 const SmartContractFormPage = ({}) => {
   const {
@@ -21,7 +21,10 @@ const SmartContractFormPage = ({}) => {
     mode: "onChange",
     defaultValues: {
       projectName: "New project 1",
-      collectionName: ""
+      contractType: "ERC721",
+      collectionName: "",
+      symbol: "",
+      supplyCount: ""
     }
   })
 
@@ -48,7 +51,6 @@ const SmartContractFormPage = ({}) => {
                 render={({ field: { onChange, onBlur, value, ref } }) => (
                   <Input
                     value={value}
-                    type="text"
                     label="Project Name*"
                     onChange={onChange}
                     onBlur={onBlur}
@@ -61,11 +63,14 @@ const SmartContractFormPage = ({}) => {
                 <span className="text-c font-semibold">ETH Contract Type*</span>
 
                 <div className="form__contract-type__radio-container">
-                  <Radio label="ERC721" checked />
+                  <Radio label="ERC721"
+                         value="ERC721" {...register("contractType")} />
 
-                  <Radio label="ERC721A" />
+                  <Radio label="ERC721A"
+                         value="ERC721A" {...register("contractType")} />
 
-                  <Radio label="ERC1155" />
+                  <Radio label="ERC1155"
+                         value="ERC1155" {...register("contractType")} />
                 </div>
               </div>
 
@@ -77,7 +82,6 @@ const SmartContractFormPage = ({}) => {
                 render={({ field: { onChange, onBlur, value, ref } }) => (
                   <Input
                     value={value}
-                    type="text"
                     label="Collection Name*"
                     onChange={onChange}
                     onBlur={onBlur}
@@ -94,7 +98,6 @@ const SmartContractFormPage = ({}) => {
                 render={({ field: { onChange, onBlur, value, ref } }) => (
                   <Input
                     value={value}
-                    type="text"
                     label="Symbol*"
                     onChange={onChange}
                     onBlur={onBlur}
@@ -111,7 +114,7 @@ const SmartContractFormPage = ({}) => {
                 render={({ field: { onChange, onBlur, value, ref } }) => (
                   <Input
                     value={value}
-                    type="text"
+                    type="number"
                     label="Total Supply Count*"
                     onChange={onChange}
                     onBlur={onBlur}
@@ -119,6 +122,10 @@ const SmartContractFormPage = ({}) => {
                     errorMessage={errors.collectionName?.message}
                   />)}
               />
+
+              <Button variant="primary" width="100%">
+                Continue
+              </Button>
 
             </SmartContractForm>
           </Content>

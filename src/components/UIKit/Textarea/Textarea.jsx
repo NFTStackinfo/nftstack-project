@@ -29,7 +29,7 @@ const Textarea = forwardRef(({
         disabled ? "disabled" : ""
       ].join(" ")}
       icon={icon}
-      isIconColored={iconColored}
+      isiconcolored={iconColored ? true : undefined}
       textareaHeight={textareaHeight}
     >
       <label className="input-group__label text-c font-semibold"

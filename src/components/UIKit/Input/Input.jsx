@@ -29,7 +29,7 @@ const Input = forwardRef(({
         disabled ? "disabled" : ""
       ].join(" ")}
       icon={icon}
-      isIconColored={iconColored}>
+      isiconcolored={iconColored ? true : undefined}>
       <label className="input-group__label text-c font-semibold"
              htmlFor={inputId}>{label}</label>
 

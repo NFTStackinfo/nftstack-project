@@ -51,8 +51,8 @@ export const ButtonStyle = styled.button`
       color: ${({ theme }) => theme.colors.cadetBlue} !important;
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.cadetBlue} !important;
         }
@@ -63,8 +63,8 @@ export const ButtonStyle = styled.button`
     width: 24px;
     height: 24px;
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         path {
           fill: ${({ theme }) => theme.colors.white};
         }
@@ -76,8 +76,8 @@ export const ButtonStyle = styled.button`
       color: ${({ theme }) => theme.colors.electricUltramarine};
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.electricUltramarine};
         }
@@ -92,8 +92,8 @@ export const ButtonStyle = styled.button`
       color: ${({ theme }) => theme.colors.outerSpace};
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.outerSpace};
         }
@@ -117,8 +117,8 @@ export const ButtonStyle = styled.button`
         color: ${({ theme }) => theme.colors.ghostWhite} !important;
       }
 
-      ${({ isIconColored }) =>
-        !isIconColored && css`
+      ${({ isiconcolored }) =>
+        !isiconcolored && css`
           .icon path {
             fill: ${({ theme }) => theme.colors.ghostWhite} !important;
           }
@@ -132,8 +132,8 @@ export const ButtonStyle = styled.button`
       color: ${({ theme }) => theme.colors.outerSpace};
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.outerSpace};
         }
@@ -196,8 +196,8 @@ export const LinkStyle = styled(Link)`
       color: ${({ theme }) => theme.colors.cadetBlue} !important;
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.cadetBlue} !important;
         }
@@ -208,8 +208,8 @@ export const LinkStyle = styled(Link)`
     width: 24px;
     height: 24px;
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         path {
           fill: ${({ theme }) => theme.colors.white};
         }
@@ -221,8 +221,8 @@ export const LinkStyle = styled(Link)`
       color: ${({ theme }) => theme.colors.electricUltramarine};
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.electricUltramarine};
         }
@@ -237,8 +237,8 @@ export const LinkStyle = styled(Link)`
       color: ${({ theme }) => theme.colors.outerSpace};
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.outerSpace};
         }
@@ -262,8 +262,8 @@ export const LinkStyle = styled(Link)`
         color: ${({ theme }) => theme.colors.ghostWhite} !important;
       }
 
-      ${({ isIconColored }) =>
-        !isIconColored && css`
+      ${({ isiconcolored }) =>
+        !isiconcolored && css`
           .icon path {
             fill: ${({ theme }) => theme.colors.ghostWhite} !important;
           }
@@ -277,8 +277,8 @@ export const LinkStyle = styled(Link)`
       color: ${({ theme }) => theme.colors.outerSpace};
     }
 
-    ${({ isIconColored }) =>
-      !isIconColored && css`
+    ${({ isiconcolored }) =>
+      !isiconcolored && css`
         .icon path {
           fill: ${({ theme }) => theme.colors.outerSpace};
         }
