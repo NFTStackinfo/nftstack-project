@@ -184,6 +184,20 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .text {
+    &-left {
+      text-align: left;
+    }
+
+    &-center {
+      text-align: center;
+    }
+
+    &-right {
+      text-align: right;
+    }
+  }
+
   //typography
 
   // components

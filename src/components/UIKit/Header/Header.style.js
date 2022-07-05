@@ -126,6 +126,7 @@ export const HeaderStyle = styled.header`
       padding: 0 40px;
       margin: 0 auto;
       height: 100%;
+      overflow: auto;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
         padding-left: 16px;
@@ -183,6 +184,10 @@ export const HeaderStyle = styled.header`
         height: 40px;
         display: flex;
         align-items: center;
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+            margin-right: 12px;
+        }
       }
 
       &__inner {

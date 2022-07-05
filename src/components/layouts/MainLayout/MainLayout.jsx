@@ -14,7 +14,7 @@ const MainLayout = ({
   return (
     <MainLayoutStyle className="main-layout" backPosition={backPosition}>
       <Header
-        address={addressFormat(headerAddress)}
+        walletAddress={headerAddress}
       />
 
       <div className="main-layout__wrapper">

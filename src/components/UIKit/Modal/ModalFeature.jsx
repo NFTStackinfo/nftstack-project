@@ -42,7 +42,7 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
     <Modal isActive={isModalActive} onModalToggle={onModalToggle}>
       <h3 className="modal__title">Custom Feature</h3>
 
-      <p className="modal__text">
+      <p className="modal__text text-center">
         Send Us A Short Description Of Custom Feature You Want
       </p>
 

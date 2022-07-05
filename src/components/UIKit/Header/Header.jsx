@@ -4,10 +4,12 @@ import { useLockedBody } from "../../../hooks/useLockedBody"
 import { Button } from "../Button/Button"
 import { Transition } from "react-transition-group"
 import { ModalFeature } from "../Modal"
+import { addressFormat } from "../../../utils/text"
 
-const Header = ({ address }) => {
+const Header = ({ walletAddress }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [locked, setLocked] = useLockedBody()
+  const [address, setAddress] = useState('')
 
   const [isModalFeatureActive, setIsModalFeatureActive] = useState(false)
   const modalFeatureHandler = (state) => setIsModalFeatureActive(state)
@@ -27,15 +29,17 @@ const Header = ({ address }) => {
       setLocked(false)
       setIsMenuOpen(false)
     }
+
+    setAddress(windowWidth > 575 ? addressFormat(walletAddress) : addressFormat(walletAddress, "sm"))
   }
 
   const handleMobileFeatureBtn = () => {
-    console.log('handle')
     handleMenuToggle()
     setIsModalFeatureActive(true)
   }
 
   useEffect(() => {
+    handleResize()
     window.addEventListener("resize", handleResize)
 
     return () => {
@@ -65,7 +69,7 @@ const Header = ({ address }) => {
                   <div className="header__nav__inner">
                     <Button
                       variant="primary"
-                            className="header__nav__feature-btn"
+                      className="header__nav__feature-btn"
                       onClick={() => setIsModalFeatureActive(true)}
                     >
                       Custom feature
