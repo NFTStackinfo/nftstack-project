@@ -1,4 +1,4 @@
-export function truncate(fullStr, strLen, separator) {
+export function truncateMiddle(fullStr, strLen, separator) {
   const realStrLength = strLen + separator.length
 
   if (fullStr.length <= realStrLength) return fullStr
@@ -17,6 +17,10 @@ export function truncate(fullStr, strLen, separator) {
 
 export const addressFormat = (address, length = "lg") => (
   address?.substring(0, length === "lg" ? 6 : 4) + " ... " + address?.substring(address.length - 4, address.length)
+)
+
+export const truncate = (str, start, startEnd, endStart, end, separator) => (
+  str.substring(start, startEnd) + separator + str.substring(endStart, end)
 )
 
 export const randomStr = (length) => {

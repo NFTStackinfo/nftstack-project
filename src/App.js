@@ -1,11 +1,12 @@
-import  {  useMoralis } from "react-moralis";
+import { useMoralis } from "react-moralis"
 import SmartContractFormPage
-  from './pages/SmartContractFormPage/SmartContractFormPage';
-import {useEffect} from 'react';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Login from './pages/Auth/Login';
-import DesignSystem from './components/UIKit/DesignSystem/DesignSystem';
+  from "./pages/SmartContractFormPage/SmartContractFormPage"
+import { useEffect } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Login from "./pages/Auth/Login"
+import DesignSystem from "./components/UIKit/DesignSystem/DesignSystem"
 import DashboardPage from "./pages/DashboardPage/DashboardPage"
+import OverviewPage from "./pages/OverviewPage/OverviewPage"
 
 function App() {
   // const { refetchUserData, isUserUpdating, authenticate, isAuthenticated, user, logout, web3, enableWeb3, isWeb3Enabled, isWeb3EnableLoading, onAccountsChanged } = useMoralis();
@@ -44,17 +45,19 @@ function App() {
 
   return (
 
-      <BrowserRouter>
-        <Routes>
-          <Route index path='/' element={<Login/>} />
-          <Route index path='/smart-contract' element={<SmartContractFormPage/>} />
-          <Route index path='/dashboard' element={<DashboardPage/>} />
-          <Route path="design" element={<DesignSystem />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route index path="/" element={<Login />} />
+        <Route index path="/smart-contract"
+               element={<SmartContractFormPage />} />
+        <Route index path="/dashboard" element={<DashboardPage />} />
+        <Route index path="/overview" element={<OverviewPage />} />
+        <Route path="design" element={<DesignSystem />} />
+      </Routes>
+    </BrowserRouter>
 
   )
 }
 
 
-export default App;
+export default App
