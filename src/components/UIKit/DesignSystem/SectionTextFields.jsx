@@ -41,6 +41,7 @@ function SectionTextFields(props) {
                     label="Label*"
                     icon="info"
                     helperText="Helper text"
+                    charactersCount
                   />
                 </div>
 
@@ -85,6 +86,7 @@ function SectionTextFields(props) {
                     onChange={e => setValue(e.target.value)}
                     label="Label*"
                     helperText="Helper text"
+                    charactersCount
                   />
                 </div>
 
