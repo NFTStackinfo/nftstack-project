@@ -10,12 +10,12 @@ export const Input = forwardRef(({
                             onChange,
                             onBlur,
                             icon,
-                            iconColored = false,
+                            iconColored,
                             label = "Label*",
                             helperText,
                             errorMessage,
-                            charactersCount = false,
-                            disabled = false,
+                            charactersCount,
+                            disabled,
                             type = "text",
                             placeholder = "",
                             ...props
@@ -31,7 +31,7 @@ export const Input = forwardRef(({
         disabled ? "disabled" : ""
       ].join(" ")}
       icon={icon}
-      isiconcolored={iconColored ? true : undefined}>
+      isIconColored={iconColored}>
       <label className="input-group__label text-c font-semibold"
              htmlFor={inputId}>{label}</label>
 

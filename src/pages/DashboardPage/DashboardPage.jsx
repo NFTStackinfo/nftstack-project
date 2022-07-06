@@ -12,9 +12,7 @@ import { Card } from "components/UIKit"
 
 const DashboardPage = ({}) => {
   return (
-    <MainLayout
-      headerAddress="0x0E086Bfb73Dd4F52a42753C0848f426FA079A76e"
-    >
+    <MainLayout>
       <DashboardPageStyle className={['dashboard']}>
         <Container inner>
           <DashboardContent>

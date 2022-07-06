@@ -1,30 +1,31 @@
 import React from "react"
-import { MainLayoutStyle } from "./MainLayout.style"
+import {
+  MainLayoutBack,
+  MainLayoutContainer, MainLayoutContent,
+  MainLayoutStyle, MainLayoutWrapper
+} from "./MainLayout.style"
 import { Button, Header } from "components/UIKit"
 
 export const MainLayout = ({
-                             headerAddress,
                              children,
                              container,
                              back,
                              backPosition = "left"
                            }) => {
   return (
-    <MainLayoutStyle className="main-layout" backPosition={backPosition}
-                     back={back || undefined}>
-      <Header
-        walletAddress={headerAddress}
-      />
+    <MainLayoutStyle className="main-layout">
 
-      <div className="main-layout__wrapper">
-        <div
+      <Header />
+
+      <MainLayoutWrapper backPosition={backPosition}
+                         back={back}>
+        <MainLayoutContainer
           className={[
-            "main-layout__container",
             "container" + (container ? `-${container}` : "")
           ].join(" ")}
         >
           {back && (
-            <div className="main-layout__back">
+            <MainLayoutBack backPosition={backPosition}>
               <Button
                 variant="black"
                 prefixIcon="arrow-back"
@@ -32,14 +33,14 @@ export const MainLayout = ({
               >
                 Back
               </Button>
-            </div>
+            </MainLayoutBack>
           )}
 
-          <div className="main-layout__content">
+          <MainLayoutContent>
             {children}
-          </div>
-        </div>
-      </div>
+          </MainLayoutContent>
+        </MainLayoutContainer>
+      </MainLayoutWrapper>
     </MainLayoutStyle>
   )
 }
