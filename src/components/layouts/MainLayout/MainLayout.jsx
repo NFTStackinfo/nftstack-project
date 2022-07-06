@@ -18,7 +18,7 @@ export const MainLayout = ({
       <Header />
 
       <MainLayoutWrapper backPosition={backPosition}
-                         back={back || undefined}>
+                         back={back}>
         <MainLayoutContainer
           className={[
             "container" + (container ? `-${container}` : "")

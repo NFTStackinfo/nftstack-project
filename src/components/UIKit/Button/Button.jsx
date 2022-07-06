@@ -4,7 +4,7 @@ import { ButtonStyle, LinkStyle } from "./Button.style"
 
 export const Button = ({
                          children,
-                         disabled = false,
+                         disabled,
                          onClick,
                          className = "",
                          variant = "",
@@ -12,7 +12,7 @@ export const Button = ({
                          onPrefixClick,
                          onSuffixClick,
                          suffixIcon,
-                         iconColored = false,
+                         iconColored,
                          width = "fit-content",
                          to,
                          ...props
@@ -28,7 +28,7 @@ export const Button = ({
               children ? "btn_px-4" : "btn_px-2",
               className
             ].join(" ")}
-            isiconcolored={iconColored ? true : undefined}
+            isIconColored={iconColored}
             width={width}
             {...props}
           >
@@ -47,7 +47,7 @@ export const Button = ({
               ].join(" ")}
               onClick={onClick}
               disabled={disabled}
-              isiconcolored={iconColored ? true : undefined}
+              isIconColored={iconColored}
               width={width}
               to={to}
               {...props}
@@ -80,7 +80,7 @@ export const Button = ({
               ].join(" ")}
               onClick={onClick}
               disabled={disabled}
-              isiconcolored={iconColored ? true : undefined}
+              isIconColored={iconColored}
               width={width}
               {...props}
             >

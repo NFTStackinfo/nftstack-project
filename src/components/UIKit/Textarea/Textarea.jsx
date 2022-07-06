@@ -10,12 +10,12 @@ export const Textarea = forwardRef(({
                                       onChange,
                                       onBlur,
                                       icon,
-                                      iconColored = false,
+                                      iconColored,
                                       label = "Label*",
                                       helperText,
                                       errorMessage,
-                                      charactersCount = false,
-                                      disabled = false,
+                                      charactersCount,
+                                      disabled,
                                       placeholder = "",
                                       textareaHeight = "100px"
                                     }, ref) => {
@@ -30,7 +30,7 @@ export const Textarea = forwardRef(({
         disabled ? "disabled" : ""
       ].join(" ")}
       icon={icon}
-      isiconcolored={iconColored ? true : undefined}
+      isIconColored={iconColored}
       textareaHeight={textareaHeight}
     >
       <label className="input-group__label text-c font-semibold"
