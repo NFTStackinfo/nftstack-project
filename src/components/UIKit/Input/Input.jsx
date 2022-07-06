@@ -1,9 +1,10 @@
 import React, { forwardRef, useState } from "react"
 import { InputStyle } from "./Input.style"
-import { Icon } from "../Icon/Icon"
 import { randomStr } from "../../../utils/text"
+import { Icon } from "../index"
 
-const Input = forwardRef(({
+
+export const Input = forwardRef(({
                             className,
                             value,
                             onChange,
@@ -69,5 +70,3 @@ const Input = forwardRef(({
     </InputStyle>
   )
 })
-
-export default Input

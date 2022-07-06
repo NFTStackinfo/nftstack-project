@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import Banner from "../Banner/Banner"
+import { Banner } from "../index"
+
 
 function SectionBanner(props) {
   return (

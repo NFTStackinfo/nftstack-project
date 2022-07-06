@@ -1,6 +1,6 @@
 import React from "react"
-import { Button } from "../Button/Button"
-import {Radio} from '../Radio/Radio';
+import { Radio } from "../index"
+
 
 const SectionRadio = (props) => {
   return (

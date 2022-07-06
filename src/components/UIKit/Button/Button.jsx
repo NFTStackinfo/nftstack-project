@@ -2,21 +2,21 @@ import React from "react"
 import { Icon } from "../index"
 import { ButtonStyle, LinkStyle } from "./Button.style"
 
-function Button({
-                  children,
-                  disabled = false,
-                  onClick,
-                  className = "",
-                  variant = "",
-                  prefixIcon,
-                  onPrefixClick,
-                  onSuffixClick,
-                  suffixIcon,
-                  iconColored = false,
-                  width = "fit-content",
-                  to,
-                  ...props
-                }) {
+export const Button = ({
+                         children,
+                         disabled = false,
+                         onClick,
+                         className = "",
+                         variant = "",
+                         prefixIcon,
+                         onPrefixClick,
+                         onSuffixClick,
+                         suffixIcon,
+                         iconColored = false,
+                         width = "fit-content",
+                         to,
+                         ...props
+                       }) => {
   return (
     <>
       {props?.href ? (
@@ -32,7 +32,7 @@ function Button({
             width={width}
             {...props}
           >
-            {prefixIcon && <Icon name={prefixIcon}/>}
+            {prefixIcon && <Icon name={prefixIcon} />}
             {children && <span className="btn__label">{children}</span>}
             {suffixIcon && <Icon name={suffixIcon} />}
           </ButtonStyle>
@@ -105,5 +105,3 @@ function Button({
     </>
   )
 }
-
-export { Button }

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { HeaderStyle } from "./Header.style"
 import { useLockedBody } from "../../../hooks/useLockedBody"
-import { Button } from "../Button/Button"
 import { Transition } from "react-transition-group"
-import { ModalFeature } from "../Modal"
 import { addressFormat } from "../../../utils/text"
+import { Button, ModalFeature } from "../index"
 
-const Header = ({ walletAddress }) => {
+
+export const Header = ({ walletAddress }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [locked, setLocked] = useLockedBody()
   const [address, setAddress] = useState('')
@@ -112,6 +112,3 @@ const Header = ({ walletAddress }) => {
 
   )
 }
-
-export default Header
-

@@ -3,15 +3,15 @@ import {
   SmartContractForm,
   SmartContractFormPageStyle
 } from "./SmartContractFormPage.style"
-import MainLayout from "../../components/layouts/MainLayout/MainLayout"
 import { ContainerSm, Content, Title } from "../../styles/components"
 import { useForm, Controller, useFieldArray } from "react-hook-form"
 import {
   validateMinMax,
   validateRequired
 } from "../../helpers/validations/validations"
-import Input from "../../components/UIKit/Input/Input"
-import { Button, Radio } from "../../components/UIKit"
+import { MainLayout } from "components/layouts"
+import { Input, Button, Radio } from "components/UIKit"
+
 
 const SmartContractFormPage = ({}) => {
   const {
@@ -60,7 +60,7 @@ const SmartContractFormPage = ({}) => {
   return (
     <MainLayout
       headerAddress="0x0E086Bfb73Dd4F52a42753C0848f426FA079A76e"
-      back="/"
+      back="/dashboard"
     >
       <SmartContractFormPageStyle>
         <ContainerSm inner>

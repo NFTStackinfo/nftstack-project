@@ -4,14 +4,9 @@ import {SmartContractFormStyle} from './SmartContractForm.style';
 import {
   Controller,
   useForm,
-  useFormState,
-  useFieldArrayuseFieldArray,
   useFieldArray,
 } from 'react-hook-form';
 import {
-  carPriceValidation,
-  emailValidate,
-  phoneValidate,
   validateRequired
 } from "helpers/validations/validations"
 

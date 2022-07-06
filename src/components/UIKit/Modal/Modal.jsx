@@ -4,7 +4,7 @@ import { ModalStyle } from "./Modal.style"
 import { Portal } from "react-portal"
 import { Transition } from "react-transition-group"
 
-function Modal({ isActive, onModalToggle, children }) {
+export const Modal = ({ isActive, onModalToggle, children }) => {
   const [, setLocked] = useLockedBody()
   const [isModalActive, setIsModalActive] = useState(false)
 
@@ -21,16 +21,14 @@ function Modal({ isActive, onModalToggle, children }) {
           <ModalStyle
             className={["modal", isModalActive ? "active" : "", state].join(" ")}
             data-overlay>
-              <div className="modal__container">
-                <div className="modal__content">
-                  {children}
-                </div>
+            <div className="modal__container">
+              <div className="modal__content">
+                {children}
               </div>
+            </div>
           </ModalStyle>
         )}
       </Transition>
     </Portal>
   )
 }
-
-export { Modal }

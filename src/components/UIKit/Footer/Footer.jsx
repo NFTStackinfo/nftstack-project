@@ -1,10 +1,11 @@
 import React from "react"
 import { FooterStyle } from "./Footer.style"
 import { socialList } from "./footer-data"
-import { Icon } from "../Icon/Icon"
-import { Button } from "../Button/Button"
+import { Button } from "../index"
 
-function Footer({ className }) {
+
+
+export const Footer = ({ className }) => {
   return (
     <FooterStyle className={["footer", className].join(" ")}>
       <div className="container">
@@ -31,5 +32,3 @@ function Footer({ className }) {
     </FooterStyle>
   )
 }
-
-export default Footer

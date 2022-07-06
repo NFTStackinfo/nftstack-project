@@ -2,7 +2,7 @@ import * as React from "react"
 import IcomoonReact from "icomoon-react"
 import iconSet from "./selection.json"
 
-const Icon = ({ name, className = "", onClick, size }) => {
+export const Icon = ({ name, className = "", onClick, size }) => {
   return (
     <IcomoonReact
       onClick={onClick}
@@ -13,5 +13,3 @@ const Icon = ({ name, className = "", onClick, size }) => {
     />
   )
 }
-
-export { Icon }

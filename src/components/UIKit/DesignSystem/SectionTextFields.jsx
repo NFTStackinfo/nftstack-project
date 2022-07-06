@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import Input from "../Input/Input"
-import Textarea from "../Textarea/Textarea"
+import { Input, Textarea } from "../index"
+
 
 function SectionTextFields(props) {
   const [value, setValue] = useState("")

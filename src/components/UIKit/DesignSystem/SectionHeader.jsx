@@ -1,7 +1,6 @@
-import React, { useState } from "react"
-import Header from "../Header/Header"
-import { addressFormat, truncate } from "../../../utils/text"
-import HeaderLogo from "../Header/HeaderLogo"
+import React  from "react"
+import { addressFormat } from "../../../utils/text"
+import { HeaderLogo, Header } from "../index"
 
 function SectionHeader(props) {
   return (
