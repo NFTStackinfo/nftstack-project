@@ -320,4 +320,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ${({ theme }) => generateSpaceClassNames(theme.spaces)}
+
+  //web3 modal
+  .web3modal-provider-name {
+    font-weight: 600 !important;
+  }
 `

@@ -1,6 +1,9 @@
 import React from 'react';
 import {LoginStyle} from './Login.style';
-import { Button, Footer, HeaderLogo } from "components/UIKit"
+import { Footer, HeaderLogo } from "components/UIKit"
+import {
+  ConnectWalletBtnEther
+} from "../../components/Auth/ConnectWalletBtnEther/ConnectWalletBtnEther"
 
 
 const Login = () => {
@@ -14,15 +17,7 @@ const Login = () => {
           <div className="login-box">
             <h3 className='font-semibold'>CREATE AN ACCOUNT WITH METAMASK</h3>
             <p className='text'>Connect a wallet to continue</p>
-            <Button
-              prefixIcon="metamask"
-              variant="secondary"
-              iconColored
-              width="100%"
-              onClick={() => console.log('asd')}
-            >
-              Connect metamask
-            </Button>
+           <ConnectWalletBtnEther />
           </div>
         </div>
 
