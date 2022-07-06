@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from "./pages/Auth/Login"
 import DesignSystem from "./components/UIKit/DesignSystem/DesignSystem"
 import DashboardPage from "./pages/DashboardPage/DashboardPage"
+import DeployPage from "./pages/DeployPage/DeployPage"
 import OverviewPage from "./pages/OverviewPage/OverviewPage"
 
 function App() {
@@ -47,11 +48,12 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route index path="/" element={<Login />} />
-        <Route index path="/smart-contract"
+        <Route  path="/" element={<Login />} />
+        <Route  path="/smart-contract"
                element={<SmartContractFormPage />} />
-        <Route index path="/dashboard" element={<DashboardPage />} />
-        <Route index path="/overview" element={<OverviewPage />} />
+        <Route  path="/dashboard" element={<DashboardPage />} />
+        <Route  path="/deploy" element={<DeployPage />} />
+        <Route  path="/overview" element={<OverviewPage />} />
         <Route path="design" element={<DesignSystem />} />
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const RadioStyle = styled.label`
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
   width: ${(props) => props.count ? "100%" : "auto"};
 
 
@@ -24,6 +23,7 @@ export const RadioStyle = styled.label`
     border-radius: 50%;
     transition: 0.3s;
     box-sizing: border-box;
+    margin-top: 2px;
 
     &:after {
       content: '';
@@ -45,6 +45,7 @@ export const RadioStyle = styled.label`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: 0;
 
 
     &:not(:empty) {

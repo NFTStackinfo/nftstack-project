@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const CheckboxStyle = styled.label`
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
   width: ${(props) => props.count ? "100%" : "auto"};
 
 
@@ -24,6 +23,7 @@ export const CheckboxStyle = styled.label`
     border-radius: 3px;
     transition: 0.3s;
     box-sizing: border-box;
+    margin-top: 2px;
 
     .icon {
       fill: ${({theme}) => theme.colors.white};
@@ -32,10 +32,9 @@ export const CheckboxStyle = styled.label`
   }
   .checkbox-label {
     transition: 0.3s;
-    line-height: 23px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: 0;
 
 
     &:not(:empty) {

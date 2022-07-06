@@ -286,6 +286,10 @@ export const GlobalStyle = createGlobalStyle`
     animation: ${fadeIn} .5s ease-in forwards;
   }
 
+  .link {
+    text-decoration: underline;
+    color: ${({theme}) => theme.colors.electricUltramarine}
+  }
 
   body iframe {
     pointer-events: none !important; /*for development*/
