@@ -1,59 +1,28 @@
-import { useMoralis } from "react-moralis"
 import SmartContractFormPage
   from "./pages/SmartContractFormPage/SmartContractFormPage"
-import { useEffect } from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from "./pages/Auth/Login"
 import DesignSystem from "./components/UIKit/DesignSystem/DesignSystem"
 import DashboardPage from "./pages/DashboardPage/DashboardPage"
 import DeployPage from "./pages/DeployPage/DeployPage"
 import OverviewPage from "./pages/OverviewPage/OverviewPage"
+import {ProtectedRoute, PublicRoute} from 'helpers/routes/routes';
 
-function App() {
-  // const { refetchUserData, isUserUpdating, authenticate, isAuthenticated, user, logout, web3, enableWeb3, isWeb3Enabled, isWeb3EnableLoading, onAccountsChanged } = useMoralis();
-  // console.log(user?.id);
+const App = () => {
 
-  // useEffect( () => {
-  //
-  //   if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
-  //     console.log('asd');
-  //      enableWeb3();
-  // }, [isAuthenticated, isWeb3Enabled]);
-  // console.log(web3);
-  // console.log(isAuthenticated);
-  //
-  //
-  // useEffect( () => {
-  //   onAccountsChanged(() =>{
-  //
-  //     console.log("x", 'asdasd');
-  //
-  //   });
-  //
-  // }, [])
-  // return (
-  //     <>
-  //
-  //       {
-  //         isAuthenticated ? <div><SmartContractForm /> <button onClick={() => logout()}>logout</button> <button onClick={() => enableWeb3()} disabled={isUserUpdating}>
-  //           Refetch user data
-  //         </button></div> : <div>
-  //           <button onClick={() =>authenticate()}>login</button></div>
-  //       }
-  //     </>
-  //
-  // );
+  const user = false
 
   return (
 
     <BrowserRouter>
       <Routes>
-        <Route  path="/" element={<Login />} />
-        <Route  path="/smart-contract"
-               element={<SmartContractFormPage />} />
-        <Route  path="/dashboard" element={<DashboardPage />} />
-        <Route  path="/deploy" element={<DeployPage />} />
-        <Route  path="/overview" element={<OverviewPage />} />
+        <Route path='/' element={<PublicRoute user={user} children={<Login/>}/> }/>
+        {/*<Route path='*' element={<PublicRoute user={user}  children={<Login/>}/> }/>*/}
+        <Route   path='smart-contract' element={<ProtectedRoute user={user} children={<SmartContractFormPage/>}/> }/>
+        <Route   path='dashboard' element={<ProtectedRoute user={user} children={<DashboardPage/>}/> }/>
+        <Route   path='deploy' element={<ProtectedRoute user={user} children={<DeployPage/>}/> }/>
+        <Route   path='overview' element={<ProtectedRoute user={user} children={<OverviewPage/>}/> }/>
+        <Route   path='*' element={<ProtectedRoute user={user}  children={<SmartContractFormPage/>}/> }/>
         <Route path="design" element={<DesignSystem />} />
       </Routes>
     </BrowserRouter>
