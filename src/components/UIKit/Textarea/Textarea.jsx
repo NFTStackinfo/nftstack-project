@@ -1,23 +1,24 @@
 import React, { forwardRef, useState } from "react"
 import { TextareaStyle } from "./Textarea.style"
-import { Icon } from "../Icon/Icon"
 import { randomStr } from "../../../utils/text"
+import { Icon } from "../index"
 
-const Textarea = forwardRef(({
-                               className,
-                               value,
-                               onChange,
-                               onBlur,
-                               icon,
-                               iconColored = false,
-                               label = "Label*",
-                               helperText,
-                               errorMessage,
-                               charactersCount = false,
-                               disabled = false,
-                               placeholder = "",
-                               textareaHeight='100px'
-                             }, ref) => {
+
+export const Textarea = forwardRef(({
+                                      className,
+                                      value,
+                                      onChange,
+                                      onBlur,
+                                      icon,
+                                      iconColored = false,
+                                      label = "Label*",
+                                      helperText,
+                                      errorMessage,
+                                      charactersCount = false,
+                                      disabled = false,
+                                      placeholder = "",
+                                      textareaHeight = "100px"
+                                    }, ref) => {
   const [inputId] = useState(randomStr(8))
 
   return (
@@ -69,5 +70,3 @@ const Textarea = forwardRef(({
     </TextareaStyle>
   )
 })
-
-export default Textarea

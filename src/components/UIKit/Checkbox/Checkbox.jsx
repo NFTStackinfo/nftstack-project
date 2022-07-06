@@ -1,7 +1,8 @@
 import * as React from "react"
 import { CheckboxStyle } from "./Checkbox.style"
-import { Icon } from "../Icon/Icon"
 import { forwardRef } from "react"
+import { Icon } from "../index"
+
 
 export const Checkbox = forwardRef(({
                                       label,

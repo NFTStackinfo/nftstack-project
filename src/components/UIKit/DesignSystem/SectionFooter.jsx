@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import Footer from "../Footer/Footer"
+import { Footer } from "../index"
+
 
 function SectionFooter(props) {
   return (

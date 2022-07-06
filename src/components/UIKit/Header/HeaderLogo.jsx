@@ -1,7 +1,7 @@
 import React from "react"
 import { HeaderLogoStyle } from "./Header.style"
 
-function HeaderLogo({ address, className = "" }) {
+export const HeaderLogo = ({ address, className = "" }) => {
   return (
     <HeaderLogoStyle className={["header-logo", className].join(" ")}>
       <div className="container">

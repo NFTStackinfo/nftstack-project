@@ -9,8 +9,9 @@ import {
   RevenueSplitStyle, RevenueSplitList, RevenueSplitListPercent, RevenueSplitBody
 } from "./RevenueSplit.style"
 import { truncate } from "../../../utils/text"
-import { Button } from "../../UIKit"
 import { Transition } from "react-transition-group"
+import { Button } from "components/UIKit"
+
 
 const RevenueSplit = ({
                         className,

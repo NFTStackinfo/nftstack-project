@@ -3,11 +3,12 @@ import {
   DashboardContent,
   DashboardPageStyle
 } from "./DashboardPage.style"
-import MainLayout from "../../components/layouts/MainLayout/MainLayout"
 import { Container } from "../../styles/components"
-import Card from "../../components/UIKit/Card/Card"
 import { dashboardPageData } from "./dashboard-page-data"
 import { Link } from "react-router-dom"
+import { MainLayout } from "components/layouts"
+import { Card } from "components/UIKit"
+
 
 const DashboardPage = ({}) => {
   return (

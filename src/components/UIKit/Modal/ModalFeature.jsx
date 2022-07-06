@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { Modal } from "./Modal"
-import Input from "../Input/Input"
-import { Button } from "../Button/Button"
 import { useForm, Controller } from "react-hook-form"
 import {
   validateEmail,
   validateRequired
 } from "../../../helpers/validations/validations"
-import Textarea from "../Textarea/Textarea"
 import { ModalFeatureForm } from "./Modal.style"
+import { Textarea, Input, Button } from "../index"
 
-function ModalFeature({ isActive, onModalToggle, onSubmit }) {
+
+export const ModalFeature = ({ isActive, onModalToggle, onSubmit }) => {
   const [isModalActive, setIsModalActive] = useState(false)
 
   useEffect(() => {
@@ -31,9 +30,9 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
   })
 
   const sendHandle = (data) => {
-    setValue('name', '')
-    setValue('email', '')
-    setValue('description', '')
+    setValue("name", "")
+    setValue("email", "")
+    setValue("description", "")
     setIsModalActive(false)
     onSubmit(data)
   }
@@ -46,7 +45,8 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
         Send Us A Short Description Of Custom Feature You Want
       </p>
 
-      <ModalFeatureForm onSubmit={handleSubmit(sendHandle)} className="modal__form">
+      <ModalFeatureForm onSubmit={handleSubmit(sendHandle)}
+                        className="modal__form">
         <Controller
           name="name"
           control={control}
@@ -124,5 +124,3 @@ function ModalFeature({ isActive, onModalToggle, onSubmit }) {
     </Modal>
   )
 }
-
-export { ModalFeature }

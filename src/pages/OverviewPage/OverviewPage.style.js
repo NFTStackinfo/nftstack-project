@@ -6,6 +6,10 @@ export const OverviewPageStyle = styled.div`
       border: 1px solid ${({ theme }) => theme.colors.cadetBlue};
       border-radius: 12px;
       padding: 24px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+          padding: 16px;
+      }
     }
 
     &__header {

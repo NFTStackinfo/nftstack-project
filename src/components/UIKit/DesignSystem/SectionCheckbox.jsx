@@ -1,5 +1,6 @@
 import React from "react"
-import {Checkbox} from 'components/UIKit';
+import { Checkbox } from "../index"
+
 
 const SectionCheckbox = (props) => {
   return (

@@ -1,16 +1,15 @@
-import React, { useEffect } from "react"
+import React  from "react"
 import {
   OverviewPageStyle
 } from "./OverviewPage.style"
-import MainLayout from "../../components/layouts/MainLayout/MainLayout"
 import {
   ContainerMd
 } from "../../styles/components"
-import Tag from "../../components/UIKit/Tag/Tag"
 import { networkData } from "./overview-page-data"
-import Banner from "../../components/UIKit/Banner/Banner"
-import { Button } from "../../components/UIKit"
 import RevenueSplit from "../../components/Overview/RevenueSplit/RevenueSplit"
+import { MainLayout } from "components/layouts"
+import { Tag, Banner, Button } from "components/UIKit"
+
 
 
 const OverviewPage = ({
@@ -23,7 +22,7 @@ const OverviewPage = ({
   return (
     <MainLayout
       headerAddress="0x0E086Bfb73Dd4F52a42753C0848f426FA079A76e"
-      back="/"
+      back="/dashboard"
       backPosition="top"
       container="md"
     >

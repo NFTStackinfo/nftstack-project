@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { modalData } from "./modal-data"
-import { Button } from "../Button/Button"
 import { Modal } from "./Modal"
 import { A } from "../../../styles/components"
+import { Button } from "../index"
 
-function ModalDeploying({ isActive, onModalToggle, network, link = "#" }) {
+export const ModalDeploying = ({ isActive, onModalToggle, network, link = "#" }) => {
   const [isModalActive, setIsModalActive] = useState(false)
 
   useEffect(() => {
@@ -32,5 +32,3 @@ function ModalDeploying({ isActive, onModalToggle, network, link = "#" }) {
     </Modal>
   )
 }
-
-export { ModalDeploying }

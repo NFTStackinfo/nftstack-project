@@ -1,18 +1,17 @@
 import React from "react"
 import { MainLayoutStyle } from "./MainLayout.style"
-import Header from "../../UIKit/Header/Header"
-import { addressFormat } from "../../../utils/text"
-import { Button } from "../../UIKit"
+import { Button, Header } from "components/UIKit"
 
-const MainLayout = ({
-                      headerAddress,
-                      children,
-                      container,
-                      back,
-                      backPosition = "left"
-                    }) => {
+export const MainLayout = ({
+                             headerAddress,
+                             children,
+                             container,
+                             back,
+                             backPosition = "left"
+                           }) => {
   return (
-    <MainLayoutStyle className="main-layout" backPosition={backPosition} back={back || undefined}>
+    <MainLayoutStyle className="main-layout" backPosition={backPosition}
+                     back={back || undefined}>
       <Header
         walletAddress={headerAddress}
       />
@@ -45,4 +44,3 @@ const MainLayout = ({
   )
 }
 
-export default MainLayout

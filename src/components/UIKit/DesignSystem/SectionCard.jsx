@@ -1,6 +1,6 @@
 import React from "react"
-import Tag from "../Tag/Tag"
-import Card from "../Card/Card"
+import { Card, Tag } from "../index"
+
 
 function SectionCard(props) {
   return (

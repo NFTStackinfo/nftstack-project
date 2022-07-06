@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Button } from "../Button/Button"
-import { ModalDeploying, ModalFeature } from "../Modal"
+import { ModalDeploying, ModalFeature, Button } from "../index"
+
 
 function SectionModal(props) {
   const [isModalDeployingActive, setIsModalDeployingActive] = useState(false)

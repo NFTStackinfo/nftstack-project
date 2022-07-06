@@ -1,8 +1,7 @@
 import React from 'react';
-import HeaderLogo from 'components/UIKit/Header/HeaderLogo';
 import {LoginStyle} from './Login.style';
-import Footer from 'components/UIKit/Footer/Footer';
-import {Button} from 'components/UIKit';
+import { Button, Footer, HeaderLogo } from "components/UIKit"
+
 
 const Login = () => {
   return (
