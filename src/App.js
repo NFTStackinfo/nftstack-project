@@ -6,27 +6,45 @@ import DesignSystem from "./components/UIKit/DesignSystem/DesignSystem"
 import DashboardPage from "./pages/DashboardPage/DashboardPage"
 import DeployPage from "./pages/DeployPage/DeployPage"
 import OverviewPage from "./pages/OverviewPage/OverviewPage"
-import {ProtectedRoute, PublicRoute} from 'helpers/routes/routes';
+import {ProtectedRoute, PublicRoute} from 'helpers/validations/routes/routes';
+import {QueryClient, QueryClientProvider} from 'react-query';
+import {useRef} from 'react';
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 const App = () => {
 
-  const user = false
+  const user = true
 
+  const queryClientRef = useRef(null);
+
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient({
+      defaultOptions: {
+        queries: {
+          keepPreviousData: true,
+          retry: 0,
+          refetchOnWindowFocus: false,
+          retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
+        },
+      },
+    });
+  }
   return (
 
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<PublicRoute user={user} children={<Login/>}/> }/>
-        {/*<Route path='*' element={<PublicRoute user={user}  children={<Login/>}/> }/>*/}
-        <Route   path='smart-contract' element={<ProtectedRoute user={user} children={<SmartContractFormPage/>}/> }/>
-        <Route   path='dashboard' element={<ProtectedRoute user={user} children={<DashboardPage/>}/> }/>
-        <Route   path='deploy' element={<ProtectedRoute user={user} children={<DeployPage/>}/> }/>
-        <Route   path='overview' element={<ProtectedRoute user={user} children={<OverviewPage/>}/> }/>
-        <Route   path='*' element={<ProtectedRoute user={user}  children={<SmartContractFormPage/>}/> }/>
-        <Route path="design" element={<DesignSystem />} />
-      </Routes>
-    </BrowserRouter>
-
+    <QueryClientProvider client={queryClientRef.current}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<PublicRoute user={user} children={<Login/>}/> }/>
+          <Route   path='smart-contract' element={<ProtectedRoute user={user} children={<SmartContractFormPage/>}/> }/>
+          <Route   path='dashboard' element={<ProtectedRoute user={user} children={<DashboardPage/>}/> }/>
+          <Route   path='deploy' element={<ProtectedRoute user={user} children={<DeployPage/>}/> }/>
+          <Route   path='overview' element={<ProtectedRoute user={user} children={<OverviewPage/>}/> }/>
+          <Route   path='*' element={<ProtectedRoute user={user}  children={<SmartContractFormPage/>}/> }/>
+          <Route path="design" element={<DesignSystem />} />
+        </Routes>
+      </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }
 
