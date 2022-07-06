@@ -21,7 +21,6 @@ const OverviewPage = ({
                       }) => {
   return (
     <MainLayout
-      headerAddress="0x0E086Bfb73Dd4F52a42753C0848f426FA079A76e"
       back="/dashboard"
       backPosition="top"
       container="md"

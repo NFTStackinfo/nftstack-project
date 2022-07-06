@@ -6,7 +6,8 @@ import { addressFormat } from "../../../utils/text"
 import { Button, ModalFeature } from "../index"
 
 
-export const Header = ({ walletAddress }) => {
+export const Header = ({} ) => {
+  const walletAddress = '0x0E086Bfb73Dd4F52a42753C0848f426FA079A76e'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [locked, setLocked] = useLockedBody()
   const [address, setAddress] = useState('')
