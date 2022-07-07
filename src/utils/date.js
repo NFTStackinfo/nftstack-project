@@ -7,11 +7,6 @@ export const dateFormat = (date) => {
     'December'
   ]
 
-  const days = [
-    'Sun', 'Mon', 'Tue', 'Wed',
-    'Thu', 'Fri', 'Sat'
-  ]
-
   const monthName = months[date.getMonth()]
 
   return `${monthName} ${date.getDate()}, ${date.getFullYear()}`

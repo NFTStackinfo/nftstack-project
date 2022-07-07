@@ -8,9 +8,13 @@ import { dashboardPageData } from "./dashboard-page-data"
 import { Link } from "react-router-dom"
 import { MainLayout } from "components/layouts"
 import { Card } from "components/UIKit"
+import {useDashboard} from '../../fetchHooks/useDashboard';
 
 
 const DashboardPage = ({}) => {
+  const {data, isLoading} = useDashboard()
+  console.log(data);
+  console.log(isLoading);
   return (
     <MainLayout>
       <DashboardPageStyle className={['dashboard']}>
