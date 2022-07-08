@@ -4,9 +4,17 @@ import { Footer, HeaderLogo } from "components/UIKit"
 import {
   ConnectWalletBtnEther
 } from "../../components/Auth/ConnectWalletBtnEther/ConnectWalletBtnEther"
+import {useUserDispatch, userActions } from 'context/UserContext';
 
 
 const Login = () => {
+  const dispatch = useUserDispatch()
+
+  const handleWalletConnect = (hash) => {
+    dispatch(
+      userActions.isLoggedIn(hash),
+    );
+  }
   return (
     <LoginStyle>
       <img src="assets/Auth/pattern-1.png" className="pattern pattern-1" alt=""/>
@@ -17,7 +25,7 @@ const Login = () => {
           <div className="login-box">
             <h3 className='font-semibold'>CREATE AN ACCOUNT WITH METAMASK</h3>
             <p className='text'>Connect a wallet to continue</p>
-           <ConnectWalletBtnEther />
+           <ConnectWalletBtnEther onWalletConnect={handleWalletConnect} />
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 export const Endpoints =  {
-    Get_Albums: '/albums',
-    Post_UploadPhoto: '/inventory-service/vehicle/public/uploadPhoto?vin=',
-    Delete_VehiclePhoto: '/inventory-service/vehicle/public/photo',
+    GET_ALBUMS: '/albums',
+    GET_LOGIN_MESSAGE: '/login-message',
+    GET_LOGIN_VERIFY: '/login-verify',
+    GET_LOGOUT: '/logout',
 }

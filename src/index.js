@@ -5,12 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from "styled-components"
 import { theme } from "./styles/theme"
 import { GlobalStyle } from "./styles/globalStyles"
+import {UserProvider} from './context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <ThemeProvider theme={theme}>
+    <UserProvider>
     <GlobalStyle/>
       <App/>
+    </UserProvider>
   </ThemeProvider>
 );
 
