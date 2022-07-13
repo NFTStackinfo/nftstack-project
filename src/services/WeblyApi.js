@@ -12,11 +12,11 @@ export const login = async () => {
   return response.nonce
 };
 
-export const logout = async (address) => {
+export const logout = async () => {
   const api = new API();
 
   try {
-    await api.get(`${Endpoints.GET_LOGOUT}/${address}`)
+    await api.get(Endpoints.GET_LOGOUT)
     LocalStorage.clear()
   } catch (e) {
     console.log(e);

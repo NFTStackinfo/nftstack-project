@@ -67,8 +67,8 @@ export const Header = ({} ) => {
   }
 
   const handleLogout = () => {
-    LocalStorage.clear()
     logout(accountAddress)
+    LocalStorage.clear()
     dispatch(userActions.clearUser())
   }
 
