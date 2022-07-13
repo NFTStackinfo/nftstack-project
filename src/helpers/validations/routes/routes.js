@@ -7,7 +7,7 @@ export const ProtectedRoute = ({ user, redirectPath = '/', children }) => {
   return children;
 };
 
-export const PublicRoute = ({ user, redirectPath = '/smart-contract', children }) => {
+export const PublicRoute = ({ user, redirectPath = '/dashboard', children }) => {
   if (user) {
     return <Navigate to={redirectPath} replace />;
   }

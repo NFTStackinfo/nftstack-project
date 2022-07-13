@@ -73,19 +73,19 @@ const SmartContractForm = () => {
             <div>
               <label>
                 <div>
-                  <input type="radio" value="ERC721" {...register("contractType")} />
+                  <input type="radio" value="ERC721" {...register("typeId")} />
                   ERC721
                 </div>
               </label>
               <label>
                 <div>
-                  <input type="radio" value="ERS721A" {...register("contractType")} />
+                  <input type="radio" value="ERS721A" {...register("typeId")} />
                   ERS721A
                 </div>
               </label>
               <label>
                 <div>
-                  <input type="radio" value="ERC1155" {...register("contractType")} />
+                  <input type="radio" value="ERC1155" {...register("typeId")} />
                   ERC1155
                 </div>
               </label>

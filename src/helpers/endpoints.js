@@ -1,5 +1,9 @@
 export const Endpoints =  {
-    Get_Albums: '/albums',
-    Post_UploadPhoto: '/inventory-service/vehicle/public/uploadPhoto?vin=',
-    Delete_VehiclePhoto: '/inventory-service/vehicle/public/photo',
+    GET_LOGIN_MESSAGE: '/login-message',
+    GET_LOGIN_VERIFY: '/login-verify',
+    GET_LOGOUT: '/logout',
+    CREATE_CONTRACT: '/contract/create',
+    UPDATE_CONTRACT: '/contract/update',
+    GET_ALL_CONTRACTS: '/contract/get',
+    GET_CONTRACTS_BY_ID: '/contract/get',
 }

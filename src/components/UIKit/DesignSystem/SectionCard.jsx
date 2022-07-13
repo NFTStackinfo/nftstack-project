@@ -27,9 +27,9 @@ function SectionCard(props) {
                   <span className="text-b2">Network ETH: </span>
 
                   <div className="tag-variant__list">
-                    <Tag type="erc721" />
-                    <Tag type="erc721a" />
-                    <Tag type="erc1155" />
+                    <Tag type="1" />
+                    <Tag type="2" />
+                    <Tag type="3" />
                   </div>
                 </div>
               </div>
@@ -46,7 +46,7 @@ function SectionCard(props) {
                 <div className="card-variant">
                   <Card
                     network="rinkeby"
-                    contractType="erc721a"
+                    typeId="1"
                     date={new Date}
                     projectName="Racing Social Club"
                   />

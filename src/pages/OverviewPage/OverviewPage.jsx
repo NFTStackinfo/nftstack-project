@@ -14,7 +14,7 @@ import { Tag, Banner, Button } from "components/UIKit"
 
 const OverviewPage = ({
                         projectName = "Racing Social Club",
-                        contractType = "erc721",
+                        typeId = "erc721",
                         network = "rinkeby",
                         contractAddress = "0x01d2e2FDEEAFa7809C9e0036e131859B14E0E0Ea",
                         processed=true
@@ -32,7 +32,7 @@ const OverviewPage = ({
               <div>
                 <h3 className="text-b2 font-semibold">{projectName}</h3>
 
-                <Tag type={contractType} />
+                <Tag type={typeId} />
               </div>
 
               <p className="text-b3 font-regular">

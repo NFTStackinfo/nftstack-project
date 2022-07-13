@@ -14,11 +14,15 @@ const DeployCard = ({data}) => {
     },
     {
       label: 'Symbol',
-      value: data.symbol
+      value: data.collectionSymbol
     },
     {
       label: 'Total Supply Count',
-      value: data.totalSupplyCount
+      value: data.totalCount
+    },
+    {
+      label: 'Reserve Count',
+      value: data.reserveCount
     },
     {
       label: 'Presale Mint Price',
@@ -26,7 +30,7 @@ const DeployCard = ({data}) => {
     },
     {
       label: 'Presale Mint Limit Per Wallet',
-      value: data.presaleMintLimitPerWallet
+      value: data.presaleLimitPerWallet
     },
     {
       label: 'Mint Price',
@@ -34,7 +38,7 @@ const DeployCard = ({data}) => {
     },
     {
       label: 'Mint Limit Per Wallet',
-      value: data.mintLimitPerWallet
+      value: data.limitPerWallet
     },
   ]
   return (

@@ -7,8 +7,8 @@ class API {
     baseURL: process.env.REACT_APP_BASE_URL,
     headers: {
       'Content-Type': 'application/json',
-      ...(localStorage?.getItem('X-current-user-id') && {
-        'X-current-user-id': localStorage?.getItem('X-current-user-id'),
+      ...(localStorage?.getItem('address') && {
+        'address': localStorage?.getItem('address'),
       }),
     },
   });

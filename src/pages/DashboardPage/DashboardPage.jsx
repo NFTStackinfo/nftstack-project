@@ -9,12 +9,13 @@ import { Link } from "react-router-dom"
 import { MainLayout } from "components/layouts"
 import { Card } from "components/UIKit"
 import {useDashboard} from '../../fetchHooks/useDashboard';
+import {useContractById} from '../../fetchHooks/useContractById';
 
 
 const DashboardPage = ({}) => {
   const {data, isLoading} = useDashboard()
-  console.log(data);
-  console.log(isLoading);
+
+  const contracts = data?.contracts
   return (
     <MainLayout>
       <DashboardPageStyle className={['dashboard']}>
@@ -24,8 +25,10 @@ const DashboardPage = ({}) => {
               <Card variant="create"/>
             </Link>
 
-            {dashboardPageData.map((data, idx) => (
-              <Card {...data} key={`card_${idx}`}/>
+            {contracts?.map((data, idx) => (
+              <Link to={`/smart-contract/${data.id}`} key={`card_${idx}`}>
+              <Card {...data} />
+              </Link>
             ))}
           </DashboardContent>
         </Container>

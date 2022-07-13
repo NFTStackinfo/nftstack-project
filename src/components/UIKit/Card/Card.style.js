@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const CardStyle = styled.div`
   max-height: 173px;

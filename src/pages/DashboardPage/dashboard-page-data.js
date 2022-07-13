@@ -1,14 +1,14 @@
 export const dashboardPageData = [
   {
     network: 'rinkeby',
-    contractType: 'erc721a',
+    typeId: 'erc721a',
     date: new Date(),
     projectName: 'Project 1'
   },
 
   {
     network: 'rinkeby',
-    contractType: 'erc721',
+    typeId: 'erc721',
     date: new Date(),
     projectName: 'Project 2',
     state: 'Deployment is processed'
@@ -16,7 +16,7 @@ export const dashboardPageData = [
 
   {
     network: 'rinkeby',
-    contractType: 'erc1155',
+    typeId: 'erc1155',
     date: new Date(),
     projectName: 'Project 3'
   }

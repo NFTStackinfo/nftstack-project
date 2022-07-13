@@ -207,7 +207,7 @@ export const HeaderStyle = styled.header`
     &__hamburger {
       display: none;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
         display: inline-grid;
       }
     }

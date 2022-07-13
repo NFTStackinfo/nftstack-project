@@ -7,15 +7,16 @@ import { Icon, Tag } from "../index"
 export const Card = ({
                        projectName,
                        network,
-                       date,
+                       updatedAt,
                        variant = "contract",
-                       contractType,
+                       typeId,
+                       chainId,
                        className = "",
                        state
                      }) => {
 
   return (
-    <CardStyle className={["card", variant, className].join(" ")}>
+    <CardStyle  className={["card", variant, className].join(" ")}>
       <div className="card__content">
         {variant === "create"
           ? (<>
@@ -29,17 +30,16 @@ export const Card = ({
             <div className="card__content__header">
               <h3 className="text-b2 font-semibold">{projectName}</h3>
 
-              <Tag type={contractType} />
+              <Tag type={typeId} />
             </div>
 
-            <p
-              className="card__content__network text-b3">{cardData[network].text}</p>
+            <p className="card__content__network text-b3">{cardData[chainId]?.text}</p>
 
             {state &&
               <Tag type="default" className="default-tag" label={state} />}
 
             <p className="card__content__date text-c">Submitted
-                                                      on: {dateFormat(date)}</p>
+                                                      on: {updatedAt}</p>
           </>)
         }
       </div>

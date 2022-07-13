@@ -57,6 +57,10 @@ export const validateMin = (value) => ({
 })
 
 export const validateMinMax = (min, max) => ({
+  required: { value: true, message: formMessages.required },
+  // pattern: {
+  //
+  // },
   min: {
     value: min,
     message: formMessageMin(min)

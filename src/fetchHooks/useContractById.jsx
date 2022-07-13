@@ -1,16 +1,16 @@
 import {useQuery} from 'react-query';
-import {getAllContracts} from 'services/WeblyApi';
+import {getContractById} from 'services/WeblyApi';
 
-const useDashboard = () => {
+const useContractById = (id) => {
   return useQuery(
     ['dashboardData'],
-    () => getAllContracts(),
+    () => getContractById(id),
     {
-      // enabled: !!address,
+      enabled: !!id,
       // keepPreviousData: true,
       // staleTime: Infinity
     },
   );
 };
 
-export { useDashboard };
+export { useContractById };
