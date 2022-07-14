@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useLockedBody } from "../../../hooks/useLockedBody"
 import { ModalStyle } from "./Modal.style"
 import { Portal } from "react-portal"
 import { Transition } from "react-transition-group"
 
-export const Modal = ({ isActive, onModalToggle, children }) => {
+export const Modal = ({ isActive, children }) => {
   const [, setLocked] = useLockedBody()
-  const [isModalActive, setIsModalActive] = useState(false)
 
   useEffect(() => {
-    onModalToggle(isActive)
     setLocked(() => isActive)
-    setIsModalActive(() => isActive)
   }, [isActive])
 
   return (
     <Portal>
-      <Transition in={isModalActive} timeout={300} mountOnEnter unmountOnExit>
+      <Transition in={isActive} timeout={300} mountOnEnter unmountOnExit>
         {state => (
           <ModalStyle
-            className={["modal", isModalActive ? "active" : "", state].join(" ")}
+            className={["modal", isActive ? "active" : "", state].join(" ")}
             data-overlay>
             <div className="modal__container">
               <div className="modal__content">

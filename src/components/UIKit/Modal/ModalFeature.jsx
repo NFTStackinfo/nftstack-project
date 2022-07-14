@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React  from "react"
 import { Modal } from "./Modal"
 import { useForm, Controller } from "react-hook-form"
 import {
@@ -9,18 +9,12 @@ import { ModalFeatureForm } from "./Modal.style"
 import { Textarea, Input, Button } from "../index"
 
 
-export const ModalFeature = ({ isActive, onModalToggle, onSubmit }) => {
-  const [isModalActive, setIsModalActive] = useState(false)
-
-  useEffect(() => {
-    setIsModalActive(isActive)
-  }, [isActive])
-
+export const ModalFeature = ({ isActive, toggleModal, onSubmit }) => {
   const {
     handleSubmit,
     control,
     formState: { errors },
-    setValue
+    reset,
   } = useForm({
     defaultValues: {
       name: "",
@@ -30,15 +24,18 @@ export const ModalFeature = ({ isActive, onModalToggle, onSubmit }) => {
   })
 
   const sendHandle = (data) => {
-    setValue("name", "")
-    setValue("email", "")
-    setValue("description", "")
-    setIsModalActive(false)
+    reset()
+    toggleModal()
     onSubmit(data)
   }
 
+  const handleCancel = () => {
+    reset()
+    toggleModal()
+  }
+
   return (
-    <Modal isActive={isModalActive} onModalToggle={onModalToggle}>
+    <Modal isActive={isActive}>
       <h3 className="modal__title">Custom Feature</h3>
 
       <p className="modal__text text-center">
@@ -111,7 +108,7 @@ export const ModalFeature = ({ isActive, onModalToggle, onSubmit }) => {
             variant="secondary"
             className="modal__form__btn_close"
             type="button"
-            onClick={() => setIsModalActive(false)}
+            onClick={() => handleCancel()}
           >Cancel</Button>
 
           <Button

@@ -93,6 +93,14 @@ export const ModalStyle = styled.div`
       font-weight: 600;
       color: ${({ theme }) => theme.colors.outerSpace};
       text-align: center;
+
+      &.left {
+        text-align: left;
+      }
+
+      &.right {
+        text-align: right;
+      }
     }
 
     &__text {
@@ -121,6 +129,29 @@ export const ModalFeatureForm = styled.form`
       &_send {
         margin-left: 12px;
       }
+    }
+  }
+`
+
+export const ModalFooter = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  column-gap: 12px;
+  justify-content: end;
+  width: 100%;
+  margin-top: 32px;
+
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    grid-auto-columns: unset;
+    grid-auto-flow: unset;
+    row-gap: 12px;
+    column-gap: 0;
+    grid-template-columns: 1fr;
+
+    >.btn {
+      width: 100%;
     }
   }
 `
