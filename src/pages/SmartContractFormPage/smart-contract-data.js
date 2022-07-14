@@ -1,5 +1,5 @@
 const SmartContractData = {
-  projectName: "New project",
+  projectName: "",
   typeId: "1",
   collectionName: "",
   collectionSymbol: "",

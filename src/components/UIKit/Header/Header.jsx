@@ -44,7 +44,6 @@ export const Header = ({ setPageLeaveCallback }) => {
 
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
-    console.log(provider)
     if (provider) {
       provider.provider.on("accountsChanged", () => handleLogout())
     } else {
