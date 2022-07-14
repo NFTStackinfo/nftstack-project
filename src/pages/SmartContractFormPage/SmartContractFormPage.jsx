@@ -1,7 +1,12 @@
 import React, { useEffect } from "react"
-import {useNavigate, useParams} from 'react-router-dom';
-import {useMutation, useQueryClient} from 'react-query';
-import {useForm, Controller, useFieldArray, useFormState} from 'react-hook-form';
+import { useNavigate, useParams } from "react-router-dom"
+import { useMutation, useQueryClient } from "react-query"
+import {
+  useForm,
+  Controller,
+  useFieldArray,
+  useFormState
+} from "react-hook-form"
 import {
   SmartContractForm,
   SmartContractFormPageStyle
@@ -13,23 +18,24 @@ import {
 } from "../../helpers/validations/validations"
 import { MainLayout } from "components/layouts"
 import { Input, Button, Radio } from "components/UIKit"
-import {createContract, editContract} from 'services/WeblyApi';
-import defaultValues, {typeId} from './smart-contract-data';
+import { createContract, editContract } from "services/WeblyApi"
+import defaultValues, { typeId } from "./smart-contract-data"
 import {
   contractActions,
   useContractDispatch,
-  useContractState,
-} from 'context/ContractContext';
-import {useContractById} from '../../fetchHooks/useContractById';
+  useContractState
+} from "context/ContractContext"
+import { useContractById } from "../../fetchHooks/useContractById"
+import Preloader from "../../components/UIKit/Preloader/Preloader"
 
 const SmartContractFormPage = ({}) => {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
   // const {contract} = useContractState()
   const dispatch = useContractDispatch()
   const navigate = useNavigate()
-  const {contract_id} = useParams()
+  const { contract_id } = useParams()
 
-  const {data} = useContractById(contract_id)
+  const { data, isLoading: isLoadingContract } = useContractById(contract_id)
 
   const contract = data?.contract
 
@@ -46,8 +52,8 @@ const SmartContractFormPage = ({}) => {
 
   const { dirtyFields } = useFormState({
     control
-  });
-  console.log(dirtyFields);
+  })
+  console.log(dirtyFields)
 
   const { fields, append, remove } = useFieldArray(
     {
@@ -57,36 +63,37 @@ const SmartContractFormPage = ({}) => {
   )
 
   useEffect(() => {
-      if(contract) {
-        Object.keys(contract).map(key => {
-          if(key === 'walletAddresses') {
-            contract[key]?.map((row, index) => {
-              setValue(`${key}[${index}].split`, row.percent)
-              setValue(`${key}[${index}].address`, row.address)
-            })
-          }
-          else setValue(key, contract[key]?.toString());
-        })
-      }
-  }, [contract]);
+    if (contract) {
+      Object.keys(contract).map(key => {
+        if (key === "walletAddresses") {
+          contract[key]?.map((row, index) => {
+            setValue(`${key}[${index}].split`, row.percent)
+            setValue(`${key}[${index}].address`, row.address)
+          })
+        } else setValue(key, contract[key]?.toString())
+      })
+    }
+  }, [contract])
 
-  console.log({typeId});
-  const { mutate, isLoading } = useMutation(contract ? editContract : createContract, {
+  console.log({ typeId })
+  const {
+    mutate,
+  } = useMutation(contract ? editContract : createContract, {
     onSuccess: data => {
-      console.log({data});
+      console.log({ data })
       // dispatch(contractActions.createContract(data))
-      navigate('/deploy')
+      navigate("/deploy")
     },
     onError: () => {
       console.log("there was an error")
     },
     onSettled: () => {
-      queryClient.invalidateQueries('create');
+      queryClient.invalidateQueries("create")
     }
-  });
+  })
 
   const onSubmit = (data) => {
-    if(contract) {
+    if (contract) {
       return mutate({
         ...data,
         contractId: contract.id
@@ -98,6 +105,14 @@ const SmartContractFormPage = ({}) => {
   const getWalletErrorMessage = (idx, name) => errors?.walletAddresses?.length > 0 && errors.walletAddresses[idx]
     ? errors.walletAddresses[idx][name]?.message
     : ""
+
+  if (isLoadingContract) {
+    return (
+      <MainLayout>
+        <Preloader />
+      </MainLayout>
+    )
+  }
 
   return (
     <MainLayout
