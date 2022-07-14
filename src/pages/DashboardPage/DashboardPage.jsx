@@ -10,29 +10,34 @@ import { MainLayout } from "components/layouts"
 import { Card } from "components/UIKit"
 import {useDashboard} from '../../fetchHooks/useDashboard';
 import {useContractById} from '../../fetchHooks/useContractById';
+import Preloader from "../../components/UIKit/Preloader/Preloader"
 
 
 const DashboardPage = ({}) => {
-  const {data, isLoading} = useDashboard()
+  const {data, isLoading, isFetching} = useDashboard()
 
   const contracts = data?.contracts
   return (
     <MainLayout>
-      <DashboardPageStyle className={['dashboard']}>
-        <Container inner>
-          <DashboardContent>
-            <Link to="/smart-contract">
-              <Card variant="create"/>
-            </Link>
+      {
+        (isLoading || isFetching) ? <Preloader /> :
+          <DashboardPageStyle className={['dashboard']}>
+            <Container inner>
+              <DashboardContent>
+                <Link to="/smart-contract">
+                  <Card variant="create"/>
+                </Link>
 
-            {contracts?.map((data, idx) => (
-              <Link to={`/smart-contract/${data.id}`} key={`card_${idx}`}>
-              <Card {...data} />
-              </Link>
-            ))}
-          </DashboardContent>
-        </Container>
-      </DashboardPageStyle>
+                {contracts?.map((data, idx) => (
+                  <Link to={`/smart-contract/${data.id}`} key={`card_${idx}`}>
+                    <Card {...data} />
+                  </Link>
+                ))}
+              </DashboardContent>
+            </Container>
+          </DashboardPageStyle>
+      }
+
     </MainLayout>
   )
 }
