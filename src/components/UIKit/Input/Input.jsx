@@ -1,26 +1,52 @@
-import React, { forwardRef, useState } from "react"
+import React, { forwardRef, useCallback, useState } from "react"
 import { InputStyle } from "./Input.style"
 import { randomStr } from "../../../utils/text"
 import { Icon } from "../index"
 
 
 export const Input = forwardRef(({
-                            className,
-                            value,
-                            onChange,
-                            onBlur,
-                            icon,
-                            iconColored,
-                            label = "Label*",
-                            helperText,
-                            errorMessage,
-                            charactersCount,
-                            disabled,
-                            type = "text",
-                            placeholder = "",
-                            ...props
-                          }, ref) => {
+                                   className,
+                                   value,
+                                   onChange,
+                                   onBlur,
+                                   onFocus,
+                                   icon,
+                                   iconColored,
+                                   label = "Label*",
+                                   helperText,
+                                   errorMessage,
+                                   charactersCount,
+                                   disabled,
+                                   type = "text",
+                                   placeholder = "",
+                                   ...props
+                                 }, ref) => {
   const [inputId] = useState(randomStr(8))
+
+  const handleWheel = useCallback((e) => {
+    e.target.blur()
+  }, [])
+
+  const focusHandler = (e) => {
+    if (type === "number") {
+      e.target.addEventListener("wheel", handleWheel)
+    }
+
+    if (onFocus) {
+      onFocus(e)
+    }
+  }
+
+  const blurHandler = (e) => {
+    if (type === "number") {
+      e.target.removeEventListener("wheel", handleWheel)
+    }
+
+    if (onBlur) {
+      onBlur(e)
+    }
+  }
+
 
   return (
     <InputStyle
@@ -42,7 +68,8 @@ export const Input = forwardRef(({
           ref={ref}
           value={value}
           onChange={onChange}
-          onBlur={onBlur}
+          onBlur={blurHandler}
+          onFocus={focusHandler}
           type={type}
           placeholder={placeholder}
           className="text-b3 font-regular"
