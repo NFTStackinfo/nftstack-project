@@ -22,12 +22,11 @@ export const MainLayout = ({
   const setPageLeaveCallback = callback => setModalCallback(() => callback)
 
   const [isModalUnsavedChangesActive, setIsModalUnsavedChangesActive] = useState(false)
-  const modalUnsavedChangesHandler = state => setIsModalUnsavedChangesActive(state)
+  const toggleModalUnsavedChanges = () => setIsModalUnsavedChangesActive(() => !isModalUnsavedChangesActive)
 
   const onBackClick = () => setPageLeaveCallback(() => navigate(back))
 
   useEffect(() => {
-    console.log("modalCallback : ", modalCallback)
     if (modalCallback) {
       if (location.pathname.includes("/smart-contract")) {
         setIsModalUnsavedChangesActive(true)
@@ -69,7 +68,7 @@ export const MainLayout = ({
 
       <ModalUnsavedChanges
         isActive={isModalUnsavedChangesActive}
-        onModalToggle={modalUnsavedChangesHandler}
+        toggleModal={toggleModalUnsavedChanges}
         callback={modalCallback}
         setCallback={setModalCallback}
       />

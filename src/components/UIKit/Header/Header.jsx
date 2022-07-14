@@ -53,7 +53,7 @@ export const Header = ({ setPageLeaveCallback }) => {
     }
   }, [])
 
-  const modalFeatureHandler = (state) => setIsModalFeatureActive(state)
+  const toggleModalFeature = () => setIsModalFeatureActive(() => !isModalFeatureActive)
   const onFeatureSubmit = data => {
     console.log("data : ", data)
   }
@@ -165,7 +165,7 @@ export const Header = ({ setPageLeaveCallback }) => {
 
           <ModalFeature
             isActive={isModalFeatureActive}
-            onModalToggle={modalFeatureHandler}
+            toggleModal={toggleModalFeature}
             onSubmit={onFeatureSubmit}
           />
         </HeaderStyle>

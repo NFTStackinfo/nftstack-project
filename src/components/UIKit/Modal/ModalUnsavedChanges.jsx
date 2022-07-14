@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React  from "react"
 import { Modal } from "./Modal"
 import { Button } from "../index"
 import { ModalFooter } from "./Modal.style"
 
-export const ModalUnsavedChanges = ({ isActive, onModalToggle, callback = () => {}, setCallback }) => {
-  const [isModalActive, setIsModalActive] = useState(false)
-
-  useEffect(() => {
-    setIsModalActive(isActive)
-  }, [isActive])
-
+export const ModalUnsavedChanges = ({ isActive, toggleModal, callback = () => {}, setCallback }) => {
   return (
-    <Modal isActive={isModalActive} onModalToggle={onModalToggle}>
+    <Modal isActive={isActive}>
       <h3 className="modal__title left">UNSAVED CHANGES</h3>
 
       <p className="modal__text">
@@ -25,7 +19,7 @@ export const ModalUnsavedChanges = ({ isActive, onModalToggle, callback = () => 
           className="modal__form__btn_close"
           type="button"
           onClick={() => {
-            setIsModalActive(false)
+            toggleModal()
             setCallback(null)
           }}
         >CONTINUE EDITING</Button>
