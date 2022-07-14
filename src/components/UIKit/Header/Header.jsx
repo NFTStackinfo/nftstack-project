@@ -4,31 +4,33 @@ import { useLockedBody } from "hooks/useLockedBody"
 import { Transition } from "react-transition-group"
 import { addressFormat } from "utils/text"
 import { Button, ModalFeature } from "../index"
-import {logout} from 'services/WeblyApi';
+import { logout } from "services/WeblyApi"
 import {
   userActions,
   useUserDispatch,
-  useUserState,
-} from 'context/UserContext';
-import LocalStorage from 'services/localStorage';
-import {ethers} from 'ethers';
+  useUserState
+} from "context/UserContext"
+import LocalStorage from "services/localStorage"
+import { ethers } from "ethers"
+import { useNavigate } from "react-router-dom"
 
 
-export const Header = ({} ) => {
+export const Header = ({ setPageLeaveCallback }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [locked, setLocked] = useLockedBody()
+  const navigate = useNavigate()
 
   const [isModalFeatureActive, setIsModalFeatureActive] = useState(false)
-  const {address: accountAddress} = useUserState()
+  const { address: accountAddress } = useUserState()
   const dispatch = useUserDispatch()
 
 
   useEffect(() => {
     const connect = async () => {
-      if(typeof window.ethereum !== 'undefined') {
+      if (typeof window.ethereum !== "undefined") {
         const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
+          method: "eth_requestAccounts"
+        })
         const account = accounts[0]
         dispatch(userActions.addUser(account))
         dispatch(userActions.isLoggedIn(account))
@@ -37,19 +39,19 @@ export const Header = ({} ) => {
 
     connect()
 
-  },[])
+  }, [])
 
 
   useEffect(() => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    console.log(provider);
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    console.log(provider)
     if (provider) {
-      provider.provider.on('accountsChanged', () => handleLogout());
+      provider.provider.on("accountsChanged", () => handleLogout())
     } else {
 
-      console.error("Please, install Metamask.");
+      console.error("Please, install Metamask.")
     }
-}, []);
+  }, [])
 
   const modalFeatureHandler = (state) => setIsModalFeatureActive(state)
   const onFeatureSubmit = data => {
@@ -72,6 +74,8 @@ export const Header = ({} ) => {
     dispatch(userActions.clearUser())
   }
 
+  const handleDashboard = () => navigate("/dashboard")
+
   return (
     <Transition in={isMenuOpen} timeout={300}>
       {state => (
@@ -87,31 +91,33 @@ export const Header = ({} ) => {
                 </div>
 
                 <nav className="header__nav">
-                  <div className="header__nav__address">
-                    {/*<span className="text-b2">{address}</span>*/}
-                    <span className="text-b2">{addressFormat(accountAddress)}</span>
-                  </div>
+                  <ul className="header__nav__list text-b2">
+                    <li onClick={() => setPageLeaveCallback(handleDashboard)}>
+                      Dashboard
+                    </li>
 
-                  <div className="header__nav__inner">
-                    <Button
-                      variant="primary"
-                      className="header__nav__feature-btn"
+                    <li
                       onClick={() => setIsModalFeatureActive(true)}
                     >
-                      Custom feature
-                    </Button>
-                  </div>
-
-                  <div className="header__nav__inner logout-btn">
-                    <Button
-                      variant="secondary"
-                      onClick={handleLogout}
-                    >
-                      Logout
-                    </Button>
-                  </div>
+                      Request feature
+                    </li>
+                  </ul>
                 </nav>
 
+                <div className="header__right-bar">
+                  <div className="header__address">
+                    {/*<span className="text-b2">{address}</span>*/}
+                    <span
+                      className="text-b2">{addressFormat(accountAddress)}</span>
+                  </div>
+
+                  <Button
+                    variant="secondary"
+                    onClick={() => setPageLeaveCallback(handleLogout)}
+                  >
+                    Logout
+                  </Button>
+                </div>
 
                 <Button
                   onClick={handleMenuToggle}
@@ -121,25 +127,37 @@ export const Header = ({} ) => {
                 />
               </div>
 
-
               <div className="header__nav-mobile">
                 <div className="header__nav-mobile__inner">
-                  <Button
-                    variant="primary"
-                    className="header__nav__feature-btn"
-                    onClick={handleMobileFeatureBtn}
-                    width='100%'
+                  <ul className="header__nav-mobile__list text-h3">
+                    <li
+                      onClick={() => {
+                        handleMenuToggle()
+                        setPageLeaveCallback(handleDashboard)
+                      }}
+                    >Dashboard
+                    </li>
+
+                    <li
+                      onClick={() => handleMobileFeatureBtn()}
+                    >
+                      Request feature
+                    </li>
+                  </ul>
+
+                  <div
+                    className="header__nav-mobile__logout"
                   >
-                    Custom feature
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    className="header__nav__feature-btn logout-mobile"
-                    onClick={handleLogout}
-                    width='100%'
-                  >
+                     <span
+
+                       onClick={() => {
+                         handleMenuToggle()
+                         setPageLeaveCallback(handleLogout)
+                       }}
+                     >
                     Logout
-                  </Button>
+                  </span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -14,7 +14,7 @@ export const HeaderStyle = styled.header`
       height: 72px;
     }
     to {
-      height: calc(72px + 80px + 2px + 40px);
+      height: calc(72px + 80px + 2px + 138px);
     }
   }
 
@@ -27,7 +27,7 @@ export const HeaderStyle = styled.header`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 
     ::before {
       content: '';
@@ -64,7 +64,7 @@ export const HeaderStyle = styled.header`
 
       .header {
         &__content {
-          height: calc(72px + 80px + 2px + 40px);
+          height: calc(72px + 80px + 2px + 138px);
         }
       }
     }
@@ -110,10 +110,33 @@ export const HeaderStyle = styled.header`
         border-top: 2px solid ${({ theme }) => theme.colors.gainsboro};
 
         &__inner {
-          padding: 40px 16px;
           display: flex;
           flex-direction: column;
           align-items: center;
+        }
+
+        &__list {
+          text-transform: uppercase;
+          text-align: center;
+          display: grid;
+          row-gap: 24px;
+          padding: 32px 16px;
+
+          >li {
+            cursor: pointer;
+          }
+        }
+
+        &__logout {
+          width: 100%;
+          border-top: 2px solid ${({ theme }) => theme.colors.gainsboro};
+          text-transform: uppercase;
+          padding: 24px 16px;
+          text-align: center;
+
+          >span {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -142,7 +165,7 @@ export const HeaderStyle = styled.header`
       border-radius: 36px;
       height: 72px;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
         padding-left: 16px;
         padding-right: 16px;
       }
@@ -168,37 +191,58 @@ export const HeaderStyle = styled.header`
       align-items: center;
     }
 
-    &__nav {
+    &__address {
+      flex-shrink: 0;
+      margin-right: 24px;
+      height: 40px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      width: 100%;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+        margin-right: 16px;
+      }
+    }
+
+    &__nav {
+      margin-left: 32px;
+      display: flex;
+      align-items: center;
+      //justify-content: flex-end;
+      width: fit-content;
 
       &::-webkit-scrollbar {
         display: none !important;
       }
 
-      &__address {
-        flex-shrink: 0;
-        margin-right: 24px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-
-        @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-            margin-right: 12px;
-        }
-      }
-
-      &__inner {
-        display: flex;
+      &__list {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        column-gap: 16px;
         overflow-y: auto;
         height: 100%;
         width: fit-content;
         align-items: center;
         justify-content: center;
+        text-transform: uppercase;
 
-        @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+        >li {
+          cursor: pointer;
+        }
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+          display: none;
+        }
+      }
+    }
+
+    &__right-bar {
+      display: flex;
+      margin-left: auto;
+      align-items: center;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+        >.btn {
           display: none;
         }
       }
