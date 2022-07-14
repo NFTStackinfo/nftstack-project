@@ -6,39 +6,39 @@ const DeployCard = ({data}) => {
   const cardData = [
     {
       label: 'Project Name',
-      value: data.projectName
+      value: data?.projectName
     },
     {
       label: 'Collection Name',
-      value: data.collectionName
+      value: data?.collectionName
     },
     {
       label: 'Symbol',
-      value: data.collectionSymbol
+      value: data?.collectionSymbol
     },
     {
       label: 'Total Supply Count',
-      value: data.totalCount
+      value: data?.totalCount
     },
     {
       label: 'Reserve Count',
-      value: data.reserveCount
+      value: data?.reserveCount
     },
     {
       label: 'Presale Mint Price',
-      value: `${data.presaleMintPrice} ETH`
+      value: `${data?.presaleMintPrice} ETH`
     },
     {
       label: 'Presale Mint Limit Per Wallet',
-      value: data.presaleLimitPerWallet
+      value: data?.presaleLimitPerWallet
     },
     {
       label: 'Mint Price',
-      value: `${data.mintPrice} ETH`
+      value: `${data?.mintPrice} ETH`
     },
     {
       label: 'Mint Limit Per Wallet',
-      value: data.limitPerWallet
+      value: data?.limitPerWallet
     },
   ]
   return (

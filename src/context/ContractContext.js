@@ -24,7 +24,7 @@ export const ContractProvider = (props) => {
     contract: {}
   };
 
-  const reducer = (state = initialState, action: action) => {
+  const reducer = (state = initialState, action) => {
     switch (action.type) {
       case CREATE_CONTRACT: {
         return {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import {useNavigate, useParams} from 'react-router-dom';
 import {useMutation, useQueryClient} from 'react-query';
 import {useForm, Controller, useFieldArray, useFormState} from 'react-hook-form';
@@ -24,12 +24,15 @@ import {useContractById} from '../../fetchHooks/useContractById';
 
 const SmartContractFormPage = ({}) => {
   const queryClient = useQueryClient();
-  // const {contract} = useContractState()
+  const asd = useContractState()
   const dispatch = useContractDispatch()
   const navigate = useNavigate()
   const {contract_id} = useParams()
 
-  const {data} = useContractById(contract_id)
+  const [id, setId] = useState(null)
+  const {data, isLoading, refetch} = useContractById(id)
+
+  console.log(asd)
 
   const contract = data?.contract
 
@@ -57,6 +60,13 @@ const SmartContractFormPage = ({}) => {
   )
 
   useEffect(() => {
+    if(contract_id) {
+      setId(contract_id)
+    }
+  }, [contract_id])
+
+
+  useEffect(() => {
       if(contract) {
         Object.keys(contract).map(key => {
           if(key === 'walletAddresses') {
@@ -70,28 +80,32 @@ const SmartContractFormPage = ({}) => {
       }
   }, [contract]);
 
-  console.log({typeId});
-  const { mutate, isLoading } = useMutation(contract ? editContract : createContract, {
-    onSuccess: data => {
-      console.log({data});
-      // dispatch(contractActions.createContract(data))
-      navigate('/deploy')
+  console.log({dirtyFields});
+  const { mutate } = useMutation(contract ? editContract : createContract, {
+    onSuccess: data  =>  {
+      if(data?.contractId) {
+        return navigate(`/deploy/${data?.contractId}`)
+      }
+      navigate(`/deploy/${id}`)
     },
     onError: () => {
       console.log("there was an error")
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries('create');
     }
   });
 
   const onSubmit = (data) => {
-    if(contract) {
-      return mutate({
+
+    if(contract && dirtyFields) {
+
+      mutate({
         ...data,
         contractId: contract.id
       })
+      console.log('mtav')
+      return navigate(`/deploy/${id}`)
+
     }
+    console.log('mtav1')
     mutate(data)
   }
 
@@ -99,6 +113,13 @@ const SmartContractFormPage = ({}) => {
     ? errors.walletAddresses[idx][name]?.message
     : ""
 
+  const handleRetch = () => {
+   refetch([11])
+  }
+
+  if(isLoading) {
+    return null
+  }
   return (
     <MainLayout
       back="/dashboard"
@@ -106,6 +127,7 @@ const SmartContractFormPage = ({}) => {
       <SmartContractFormPageStyle>
         <ContainerSm inner>
           <Title>Create Smart Contract</Title>
+          <button onClick={handleRetch}>refetch</button>
           <Content>
             <SmartContractForm onSubmit={handleSubmit(onSubmit)}>
               <Controller

@@ -6,24 +6,30 @@ import DeployCard from 'components/Deploy/DeployCard/DeployCard';
 import {Button} from 'components/UIKit';
 import PaymentBox from 'components/Deploy/PaymentBox/PaymentBox';
 import {useContractState} from '../../context/ContractContext';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate, useParams } from "react-router-dom"
+import { useContractById } from "../../fetchHooks/useContractById"
 
 const DeployPage = () => {
   const [error, setError] = useState(false)
   const [confirmed, setConfirmed] = useState(false)
-  const {contract} = useContractState()
+  // const {contract} = useContractState()
   const navigate = useNavigate()
+  const {contract_id} = useParams()
+  const {data, isLoading} = useContractById(contract_id)
+  const contract = data?.contract
 
-  console.log(contract);
+  console.log(contract)
+
+
 const handleChange = (e) => {
   setError(!e.target.checked);
   setConfirmed(e.target.checked);
 }
 
   useEffect(() => {
-     if(Object.keys(contract).length === 0) {
-       navigate('/smart-contract')
-     }
+     // if(Object.keys(contract).length === 0) {
+     //   navigate('/smart-contract')
+     // }
   }, []);
 
 
@@ -37,9 +43,13 @@ const handleDeploy = (chainId) => {
     }
     console.log(modifiedData);
 }
+
+if(isLoading) {
+  return null
+}
   return (
     <MainLayout
-      back="/smart-contract"
+      back={`/smart-contract/${contract_id}`}
     >
       <DeployPageStyle>
         <ContainerSm inner>
