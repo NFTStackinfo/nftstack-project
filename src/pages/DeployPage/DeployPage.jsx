@@ -49,7 +49,7 @@ const handleDeploy = async (chainId, abi, bytecode) => {
     console.log({ provider })
     const signature = await provider.getSigner()
     console.log(signature)
-    
+
     const factory = new ethers.ContractFactory(abi, bytecode, signature)
 
     console.log({ factory })
