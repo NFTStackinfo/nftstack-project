@@ -19,9 +19,9 @@ const SmartContractData = {
 }
 
 export const typeId = {
-  ERC721: '1',
-  ERC721A: '2',
-  ERC1155: '3'
+  ERC721: 1,
+  ERC721A: 2,
+  ERC1155: 3
 }
 
 export default SmartContractData

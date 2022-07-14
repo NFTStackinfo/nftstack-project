@@ -41,6 +41,13 @@ export const createContract = async (data) => {
 
 };
 
+export const editContract = async (data) => {
+  const api = new API();
+
+  return await api.put(Endpoints.EDIT_CONTRACT, data)
+
+};
+
 export const updateContract = async (data) => {
   const api = new API();
 
