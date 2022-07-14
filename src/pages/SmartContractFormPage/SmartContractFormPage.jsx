@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import {useNavigate, useParams} from 'react-router-dom';
 import {useMutation, useQueryClient} from 'react-query';
-import { useForm, Controller, useFieldArray } from "react-hook-form"
+import {useForm, Controller, useFieldArray, useFormState} from 'react-hook-form';
 import {
   SmartContractForm,
   SmartContractFormPageStyle
@@ -13,8 +13,8 @@ import {
 } from "../../helpers/validations/validations"
 import { MainLayout } from "components/layouts"
 import { Input, Button, Radio } from "components/UIKit"
-import {createContract} from 'services/WeblyApi';
-import initialData, {typeId} from './smart-contract-data';
+import {createContract, editContract} from 'services/WeblyApi';
+import defaultValues, {typeId} from './smart-contract-data';
 import {
   contractActions,
   useContractDispatch,
@@ -24,37 +24,30 @@ import {useContractById} from '../../fetchHooks/useContractById';
 
 const SmartContractFormPage = ({}) => {
   const queryClient = useQueryClient();
-  const {contract} = useContractState()
+  // const {contract} = useContractState()
   const dispatch = useContractDispatch()
   const navigate = useNavigate()
   const {contract_id} = useParams()
 
-  console.log(contract_id);
+  const {data} = useContractById(contract_id)
 
-  const {data, refetch} = useContractById(contract_id)
-  // console.log(asd);
+  const contract = data?.contract
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    control
+    control,
+    setValue
   } = useForm({
     mode: "onChange",
-    defaultValues: {
-      projectName: contract?.projectName || initialData.projectName,
-      typeId: contract?.typeId || initialData.typeId,
-      collectionName: contract?.collectionName || initialData.collectionName,
-      collectionSymbol: contract?.collectionSymbol || initialData.collectionSymbol,
-      totalCount: contract?.totalCount || initialData.totalCount,
-      reserveCount: contract?.reserveCount || initialData.reserveCount,
-      presaleMintPrice: contract?.presaleMintPrice || initialData.presaleMintPrice,
-      presaleLimitPerWallet: contract?.presaleLimitPerWallet || initialData.presaleLimitPerWallet,
-      mintPrice: contract?.mintPrice || initialData.mintPrice,
-      limitPerWallet: contract?.limitPerWallet || initialData.limitPerWallet,
-      metadataUri: contract?.metadataUri || initialData.metadataUri,
-      walletAddresses: contract?.walletAddresses || initialData.walletAddresses
-    }
+    defaultValues
   })
+
+  const { dirtyFields } = useFormState({
+    control
+  });
+  console.log(dirtyFields);
 
   const { fields, append, remove } = useFieldArray(
     {
@@ -62,11 +55,26 @@ const SmartContractFormPage = ({}) => {
       name: "walletAddresses"
     }
   )
-  console.log({contract});
-  const { mutate, isLoading } = useMutation(createContract, {
+
+  useEffect(() => {
+      if(contract) {
+        Object.keys(contract).map(key => {
+          if(key === 'walletAddresses') {
+            contract[key]?.map((row, index) => {
+              setValue(`${key}[${index}].split`, row.percent)
+              setValue(`${key}[${index}].address`, row.address)
+            })
+          }
+          else setValue(key, contract[key]?.toString());
+        })
+      }
+  }, [contract]);
+
+  console.log({typeId});
+  const { mutate, isLoading } = useMutation(contract ? editContract : createContract, {
     onSuccess: data => {
       console.log({data});
-      dispatch(contractActions.createContract(data))
+      // dispatch(contractActions.createContract(data))
       navigate('/deploy')
     },
     onError: () => {
@@ -78,43 +86,18 @@ const SmartContractFormPage = ({}) => {
   });
 
   const onSubmit = (data) => {
+    if(contract) {
+      return mutate({
+        ...data,
+        contractId: contract.id
+      })
+    }
     mutate(data)
   }
 
   const getWalletErrorMessage = (idx, name) => errors?.walletAddresses?.length > 0 && errors.walletAddresses[idx]
     ? errors.walletAddresses[idx][name]?.message
     : ""
-
-
-  // const modifiedData = () => contracts?.map(item => {
-  //   console.log(item);
-  //   return {
-  //     chainID: item.chain_id,
-  //     collectionName: item.collection_name,
-  //     collectionSymbol: item.collection_symbol,
-  //     createdAt: item.created_at,
-  //     id: item.id,
-  //     limitPerTransaction: item.limit_per_transaction,
-  //     limitPerWallet: item.limit_per_wallet,
-  //     mainnetAddress: item.mainnet_address,
-  //     metadataUri: item.metadata_uri,
-  //     mintPrice: item.mint_price,
-  //     presaleLimitPerWallet: item.presale_limit_per_wallet,
-  //     presaleMintPrice: item.presale_mint_price,
-  //     projectName: item.project_name,
-  //     reserveCount: item.reserve_count,
-  //     rinkebyAddress: item.rinkeby_address,
-  //     totalCount: item.total_count,
-  //     typeId: item.type_id,
-  //     updatedAt: item.updated_at,
-  //     userId: item.user_id
-  //   }
-  //
-  // })
-
-  const handleRefetch = () => {
-    refetch()
-  }
 
   return (
     <MainLayout
@@ -123,8 +106,6 @@ const SmartContractFormPage = ({}) => {
       <SmartContractFormPageStyle>
         <ContainerSm inner>
           <Title>Create Smart Contract</Title>
-
-          <button onClick={handleRefetch}>refetch</button>
           <Content>
             <SmartContractForm onSubmit={handleSubmit(onSubmit)}>
               <Controller
@@ -149,7 +130,8 @@ const SmartContractFormPage = ({}) => {
                 <div className="form__radio-group">
                   <Radio
                     label="ERC721"
-                    value={typeId.ERC721} {...register("typeId")}
+                    value={typeId.ERC721}
+                    {...register("typeId")}
                   />
 
                   <Radio
@@ -160,7 +142,8 @@ const SmartContractFormPage = ({}) => {
 
                   <Radio
                     label="ERC1155"
-                    value={typeId.ERC1155} {...register("typeId")}
+                    value={typeId.ERC1155}
+                    {...register("typeId")}
                   />
                 </div>
               </div>
