@@ -3,6 +3,7 @@ import { modalData } from "./modal-data"
 import { Modal } from "./Modal"
 import { A } from "../../../styles/components"
 import { Button } from "../index"
+import { ModalFooter } from "./Modal.style"
 
 export const ModalDeploying = ({ isActive, toggleModal, network, link = "#" }) => {
 
@@ -18,12 +19,12 @@ export const ModalDeploying = ({ isActive, toggleModal, network, link = "#" }) =
         directly on here
       </p>
 
-      <Button
-        className="modal__content__btn mt-8"
-        variant="primary"
-        onClick={() => toggleModal()}
-        width="100%"
-      >Okay</Button>
+      <ModalFooter buttonFit>
+        <Button
+          variant="primary"
+          onClick={() => toggleModal()}
+        >Okay</Button>
+      </ModalFooter>
     </Modal>
   )
 }

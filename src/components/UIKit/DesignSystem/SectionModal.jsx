@@ -1,11 +1,15 @@
 import React, { useState } from "react"
 import { ModalDeploying, ModalFeature, Button } from "../index"
 import { ModalUnsavedChanges } from "../Modal/ModalUnsavedChanges"
+import { ModalChangeNetwork } from "../Modal/ModalChangeNetwork"
 
 
 function SectionModal(props) {
   const [isModalDeployingActive, setIsModalDeployingActive] = useState(false)
   const toggleModalDeploying = () => setIsModalDeployingActive(() => !isModalDeployingActive)
+
+  const [isModalChangeNetworkActive, setIsModalChangeNetworkActive] = useState(false)
+  const toggleModalChangeNetwork = () => setIsModalChangeNetworkActive(() => !isModalChangeNetworkActive)
 
   const [isModalUnsavedChangesActive, setIsModalUnsavedChangesActive] = useState(false)
   const toggleModalUnsavedChanges = () => setIsModalUnsavedChangesActive(() => !isModalUnsavedChangesActive)
@@ -40,6 +44,17 @@ function SectionModal(props) {
                 />
               </div>
 
+              <div className="modal-variant">
+                <Button variant="primary"
+                        onClick={() => toggleModalChangeNetwork()}>
+                  Open modal change network</Button>
+
+                <ModalChangeNetwork
+                  isActive={isModalChangeNetworkActive}
+                  toggleModal={toggleModalChangeNetwork}
+                  network="4"
+                />
+              </div>
 
               <div className="modal-variant">
                 <Button variant="primary"

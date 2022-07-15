@@ -150,8 +150,9 @@ export const ModalFooter = styled.div`
     column-gap: 0;
     grid-template-columns: 1fr;
 
-    >.btn {
-      width: 100%;
+    > .btn {
+      width: ${({ buttonFit }) => buttonFit ? "fit-content" : "100%"};
+      justify-self: end;
     }
   }
 `
