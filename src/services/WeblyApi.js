@@ -42,18 +42,14 @@ export const createContract = async (data) => {
 };
 
 export const editContract = async (data, dirtyFields) => {
-  console.log(dirtyFields)
   const api = new API();
   return await api.put(Endpoints.EDIT_CONTRACT, data)
-  if(dirtyFields) {
-  }
-
 };
 
 export const updateContract = async (data) => {
   const api = new API();
 
-  return await api.post(Endpoints.UPDATE_CONTRACT, data)
+  return await api.put(Endpoints.UPDATE_CONTRACT, data)
 
 };
 

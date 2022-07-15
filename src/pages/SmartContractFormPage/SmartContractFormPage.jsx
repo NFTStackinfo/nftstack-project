@@ -105,6 +105,7 @@ const SmartContractFormPage = ({}) => {
   return (
     <MainLayout
       back={(!isLoading || !isFetching) &&"/dashboard"}
+      discardModal
     >
 
       {

@@ -10,6 +10,9 @@ class API {
       ...(localStorage?.getItem('address') && {
         'address': localStorage?.getItem('address'),
       }),
+      ...(localStorage?.getItem('hash') && {
+        'hash': localStorage?.getItem('hash'),
+      }),
     },
   });
 
