@@ -31,9 +31,9 @@ const SmartContractFormPage = ({}) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
     control,
-    setValue
+    setValue,
   } = useForm({
     mode: "onChange",
     defaultValues
@@ -87,13 +87,12 @@ const SmartContractFormPage = ({}) => {
   const onSubmit = (data) => {
 
     if(contract && dirtyFields) {
-
       mutate({
         ...data,
         contractId: contract.id
       })
-      return navigate(`/deploy/${id}`)
 
+      return navigate(`/deploy/${id}`)
     }
     mutate(data)
   }
@@ -105,7 +104,7 @@ const SmartContractFormPage = ({}) => {
   return (
     <MainLayout
       back={(!isLoading || !isFetching) &&"/dashboard"}
-      discardModal
+      discardModal={isDirty}
     >
 
       {

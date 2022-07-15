@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useLockedBody } from "../../../hooks/useLockedBody"
-import { ModalStyle } from "./Modal.style"
+import { ModalContainer, ModalContent, ModalStyle } from "./Modal.style"
 import { Portal } from "react-portal"
 import { Transition } from "react-transition-group"
 
@@ -18,11 +18,11 @@ export const Modal = ({ isActive, children }) => {
           <ModalStyle
             className={["modal", isActive ? "active" : "", state].join(" ")}
             data-overlay>
-            <div className="modal__container">
-              <div className="modal__content">
+            <ModalContainer>
+              <ModalContent>
                 {children}
-              </div>
-            </div>
+              </ModalContent>
+            </ModalContainer>
           </ModalStyle>
         )}
       </Transition>
