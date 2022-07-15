@@ -12,7 +12,8 @@ export const MainLayout = ({
                              children,
                              container,
                              back,
-                             backPosition = "left"
+                             backPosition = "left",
+                             discardModal
                            }) => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -28,7 +29,7 @@ export const MainLayout = ({
 
   useEffect(() => {
     if (modalCallback) {
-      if (location.pathname.includes("/smart-contract")) {
+      if (discardModal) {
         setIsModalUnsavedChangesActive(true)
       } else {
         modalCallback()
