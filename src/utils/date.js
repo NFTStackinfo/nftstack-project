@@ -1,4 +1,6 @@
 export const dateFormat = (date) => {
+  const dateObj = new Date(date);
+
   const months = [
     'January', 'February',
     'March', 'April', 'May',
@@ -7,7 +9,7 @@ export const dateFormat = (date) => {
     'December'
   ]
 
-  const monthName = months[date.getMonth()]
+  const monthName = months[dateObj.getMonth()]
 
-  return `${monthName} ${date.getDate()}, ${date.getFullYear()}`
+  return `${monthName} ${dateObj.getDate()}, ${dateObj.getFullYear()}`
 }
