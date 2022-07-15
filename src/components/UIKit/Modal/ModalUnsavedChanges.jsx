@@ -1,17 +1,17 @@
 import React  from "react"
 import { Modal } from "./Modal"
 import { Button } from "../index"
-import { ModalFooter } from "./Modal.style"
+import { ModalFooter, ModalText, ModalTitle } from "./Modal.style"
 
 export const ModalUnsavedChanges = ({ isActive, toggleModal, callback = () => {}, setCallback }) => {
   return (
     <Modal isActive={isActive}>
-      <h3 className="modal__title left">UNSAVED CHANGES</h3>
+      <ModalTitle>UNSAVED CHANGES</ModalTitle>
 
-      <p className="modal__text">
+      <ModalText>
         You have unsaved changes. Do you want to discard all changes and lost
         any work completed?
-      </p>
+      </ModalText>
 
       <ModalFooter>
         <Button

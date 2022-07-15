@@ -3,7 +3,7 @@ import { changeNetwork, modalData } from "./modal-data"
 import { Modal } from "./Modal"
 import { A } from "../../../styles/components"
 import { Button } from "../index"
-import { ModalFooter } from "./Modal.style"
+import { ModalFooter, ModalText, ModalTitle } from "./Modal.style"
 
 export const ModalChangeNetwork = ({
                                      isActive,
@@ -13,20 +13,20 @@ export const ModalChangeNetwork = ({
 
   return (
     <Modal isActive={isActive}>
-      <h3 className="modal__title">CHANGE NETWORK
-                                   TO {changeNetwork[network].toNetwork}</h3>
+      <ModalTitle>CHANGE NETWORK
+                  TO {changeNetwork[network].toNetwork}</ModalTitle>
 
-      <p className="modal__text">
+      <ModalText>
         To deploy the contract on {changeNetwork[network].deployNetwork}, please
         change your Metamask network
         from {changeNetwork[network].fromNetwork} to {changeNetwork[network].toNetwork}.
-      </p>
+      </ModalText>
 
       <ModalFooter buttonFit>
         <Button
           variant="primary"
           onClick={() => toggleModal()}
-        >Okay</Button>
+        >Close</Button>
       </ModalFooter>
     </Modal>
   )

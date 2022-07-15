@@ -5,7 +5,12 @@ import {
   validateEmail,
   validateRequired
 } from "../../../helpers/validations/validations"
-import { ModalFeatureForm } from "./Modal.style"
+import {
+  ModalFeatureForm,
+  ModalFooter,
+  ModalText,
+  ModalTitle
+} from "./Modal.style"
 import { Textarea, Input, Button } from "../index"
 
 
@@ -36,74 +41,75 @@ export const ModalFeature = ({ isActive, toggleModal, onSubmit }) => {
 
   return (
     <Modal isActive={isActive}>
-      <h3 className="modal__title">Custom Feature</h3>
+      <ModalTitle center>Custom Feature</ModalTitle>
 
-      <p className="modal__text text-center">
+      <ModalText center>
         Send Us A Short Description Of Custom Feature You Want
-      </p>
+      </ModalText>
 
       <ModalFeatureForm onSubmit={handleSubmit(sendHandle)}
                         className="modal__form">
-        <Controller
-          name="name"
-          control={control}
-          rules={validateRequired}
-          render={({ field: { onChange, onBlur, value, ref } }) => (
-            <Input
-              value={value}
-              type="text"
-              label="Name"
-              onChange={onChange}
-              onBlur={onBlur}
-              ref={ref}
-              errorMessage={errors.name?.message}
-            />
-          )}
+        <div className="fields-container">
+          <Controller
+            name="name"
+            control={control}
+            rules={validateRequired}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <Input
+                value={value}
+                type="text"
+                label="Name"
+                onChange={onChange}
+                onBlur={onBlur}
+                ref={ref}
+                errorMessage={errors.name?.message}
+              />
+            )}
 
-        >
-        </Controller>
+          >
+          </Controller>
 
 
-        <Controller
-          name="email"
-          control={control}
-          rules={validateEmail}
-          render={({ field: { onChange, onBlur, value, ref } }) => (
-            <Input
-              value={value}
-              type="email"
-              label="Email*"
-              onChange={onChange}
-              onBlur={onBlur}
-              ref={ref}
-              errorMessage={errors.email?.message}
-            />
-          )}
+          <Controller
+            name="email"
+            control={control}
+            rules={validateEmail}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <Input
+                value={value}
+                type="email"
+                label="Email*"
+                onChange={onChange}
+                onBlur={onBlur}
+                ref={ref}
+                errorMessage={errors.email?.message}
+              />
+            )}
 
-        >
-        </Controller>
+          >
+          </Controller>
 
-        <Controller
-          name="description"
-          control={control}
-          rules={validateRequired}
-          render={({ field: { onChange, onBlur, value, ref } }) => (
-            <Textarea
-              value={value}
-              type="description"
-              label="Feature Description*"
-              onChange={onChange}
-              onBlur={onBlur}
-              ref={ref}
-              textareaHeight="110px"
-              errorMessage={errors.description?.message}
-            />
-          )}
+          <Controller
+            name="description"
+            control={control}
+            rules={validateRequired}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <Textarea
+                value={value}
+                type="description"
+                label="Feature Description*"
+                onChange={onChange}
+                onBlur={onBlur}
+                ref={ref}
+                textareaHeight="110px"
+                errorMessage={errors.description?.message}
+              />
+            )}
+          >
+          </Controller>
+        </div>
 
-        >
-        </Controller>
-
-        <div className="modal__form__btn-container">
+        <ModalFooter buttonFit>
           <Button
             variant="secondary"
             className="modal__form__btn_close"
@@ -116,7 +122,7 @@ export const ModalFeature = ({ isActive, toggleModal, onSubmit }) => {
             className="modal__form__btn_send"
             type="submit"
           >Send request</Button>
-        </div>
+        </ModalFooter>
       </ModalFeatureForm>
     </Modal>
   )
