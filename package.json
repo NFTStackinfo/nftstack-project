@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "env-cmd -f .env.production npm run build",
     "build:dev": "env-cmd -f .env.development npm run build",
     "postbuild": "node ./scripts/comment.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
