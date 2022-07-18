@@ -31,6 +31,10 @@ export const ConnectWalletBtnEther = ({
         LocalStorage.setItem('hash', verifyResponse.hash)
         onWalletConnect(verifyResponse.hash)
       }
+    } else {
+      window.location.replace(
+        "https://metamask.app.link/dapp/app-webply.netlify.app/"
+      )
     }
   }
 
