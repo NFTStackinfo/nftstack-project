@@ -6,17 +6,14 @@ import { ThemeProvider } from "styled-components"
 import { theme } from "./styles/theme"
 import { GlobalStyle } from "./styles/globalStyles"
 import {UserProvider} from './context/UserContext';
-import {ContractProvider} from './context/ContractContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <ThemeProvider theme={theme}>
     <UserProvider>
-      <ContractProvider>
         <GlobalStyle/>
         <App/>
-      </ContractProvider>
     </UserProvider>
   </ThemeProvider>
 );

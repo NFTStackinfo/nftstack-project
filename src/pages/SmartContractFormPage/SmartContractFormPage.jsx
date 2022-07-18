@@ -42,7 +42,6 @@ const SmartContractFormPage = ({}) => {
   const { dirtyFields } = useFormState({
     control
   });
-  console.log(dirtyFields);
 
   const { fields, append, remove } = useFieldArray(
     {

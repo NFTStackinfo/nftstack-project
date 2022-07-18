@@ -35,6 +35,12 @@ const DeployPage = () => {
   };
 
   useEffect(() => {
+    if(!data?.contract) {
+      navigate(`/dashboard`)
+    }
+  }, [contract]);
+
+  useEffect(() => {
     if(contract?.rinkebyAddress) {
       setConfirmed(true)
       setError(false);

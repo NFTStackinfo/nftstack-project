@@ -3,7 +3,7 @@ import {LoginStyle} from './Login.style';
 import { Footer, HeaderLogo } from "components/UIKit"
 import {
   ConnectWalletBtnEther
-} from "../../components/Auth/ConnectWalletBtnEther/ConnectWalletBtnEther"
+} from "components/Auth/ConnectWalletBtnEther/ConnectWalletBtnEther"
 import {useUserDispatch, userActions} from 'context/UserContext';
 
 

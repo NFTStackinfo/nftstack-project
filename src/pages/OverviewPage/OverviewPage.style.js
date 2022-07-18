@@ -51,7 +51,7 @@ export const OverviewPageStyle = styled.div`
       justify-content: end;
       width: 100%;
 
-     &__btn-deploy {
+     &__btn-deploy, &__btn-view {
        margin-left: 16px;
      }
 

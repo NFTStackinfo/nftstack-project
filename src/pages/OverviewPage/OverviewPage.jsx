@@ -18,7 +18,6 @@ import {useMutation} from 'react-query';
 import {updateContract} from '../../services/WeblyApi';
 
 const OverviewPage = () => {
-  const [isModalDeployingActive, setIsModalDeployingActive] = useState(false);
   const {contract_id} = useParams();
   const navigate = useNavigate()
   const {data, isLoading, isFetching, refetch} = useContractById(contract_id);
@@ -31,10 +30,10 @@ const OverviewPage = () => {
   const deployData = data?.abi;
 
   // useEffect(() => {
-  //   if(contract?.rinkebyAddress === null) {
+  //   if(data?.contract?.rinkebyAddress === null) {
   //     navigate('/dashboard')
   //   }
-  // }, [contract?.rinkebyAddress]);
+  // }, [data?.contract]);
 
   const { mutate } = useMutation(updateContract, {
     onSuccess: data  =>  {
@@ -45,12 +44,9 @@ const OverviewPage = () => {
     }
   });
 
-  const toggleModalDeploying = () => setIsModalDeployingActive(
-    () => !isModalDeployingActive);
-
   const handleMainnetDeploy = async (abi, bytecode) => {
     if (typeof window.ethereum !== 'undefined') {
-      const contractAddress = await deployContract(4, abi, bytecode, (e) =>setIsDeploying(e), toggleModalDeploying)
+      const contractAddress = await deployContract(4, abi, bytecode, (e) =>setIsDeploying(e))
       if(contractAddress) {
         const modifiedData = {
           chainId: 4,
@@ -112,7 +108,6 @@ const OverviewPage = () => {
                           <Button
                             variant="secondary"
                             to={`/smart-contract/${contract_id}`}
-                            className="overview__footer__btn-view"
                           >
                             Edit
                           </Button>
@@ -141,11 +136,6 @@ const OverviewPage = () => {
                       </div>
                     </div>
                   </ContainerMd>
-                  <ModalDeploying
-                    isActive={isModalDeployingActive}
-                    toggleModal={toggleModalDeploying}
-                    network="rinkeby"
-                  />
                 </OverviewPageStyle>
             }
           </>

@@ -4,11 +4,9 @@ import LocalStorage from './localStorage';
 import {userActions} from '../context/UserContext';
 
 export const login = async () => {
-  console.log();
   const api = new API();
 
   const response = await api.get(Endpoints.GET_LOGIN_MESSAGE)
-  console.log(response.nonce);
   return response.nonce
 };
 

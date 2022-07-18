@@ -1,7 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-// import initialData  from 'pages/SmartContractFormPage/smart-contract-data';
 
-// console.log({initialData});
 //#region reducer
 const CREATE_CONTRACT = 'CREATE_CONTRACT';
 const CLEAR_CONTRACT = 'CLEAR_USER';

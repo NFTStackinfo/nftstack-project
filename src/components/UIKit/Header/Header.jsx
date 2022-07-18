@@ -67,8 +67,8 @@ export const Header = ({ setPageLeaveCallback }) => {
     setIsModalFeatureActive(true)
   }
 
-  const handleLogout = () => {
-    logout(accountAddress)
+  const handleLogout = async () => {
+    await logout(accountAddress)
     LocalStorage.clear()
     dispatch(userActions.clearUser())
   }

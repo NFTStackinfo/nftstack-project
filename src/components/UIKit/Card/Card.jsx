@@ -6,14 +6,17 @@ import { Icon, Tag } from "../index"
 
 export const Card = ({
                        projectName,
-                       network,
                        updatedAt,
                        variant = "contract",
                        typeId,
-                       chainId,
+                       draft,
+                       rinkebyAddress,
+                       mainnetAddress,
                        className = "",
-                       state
                      }) => {
+
+
+  const networkId = mainnetAddress ? '1' : rinkebyAddress ? '4' : ''
 
   return (
     <CardStyle  className={["card", variant, className].join(" ")}>
@@ -33,10 +36,10 @@ export const Card = ({
               <Tag type={typeId} />
             </div>
 
-            <p className="card__content__network text-b3">{cardData[chainId]?.text}</p>
+            <p className="card__content__network text-b3">{cardData[networkId]?.text}</p>
 
-            {state &&
-              <Tag type="default" className="default-tag" label={state} />}
+            {draft &&
+              <Tag type="default" className="default-tag" label='Draft' />}
 
             <p className="card__content__date text-c">Submitted
                                                       on: {dateFormat(updatedAt)}</p>
