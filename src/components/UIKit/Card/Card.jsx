@@ -39,7 +39,7 @@ export const Card = ({
               <Tag type="default" className="default-tag" label={state} />}
 
             <p className="card__content__date text-c">Submitted
-                                                      on: {updatedAt}</p>
+                                                      on: {dateFormat(updatedAt)}</p>
           </>)
         }
       </div>
