@@ -2,7 +2,7 @@ import React from 'react';
 import {PaymentBoxStyle} from './PaymentBox.style';
 import {Checkbox} from '../../UIKit';
 
-const PaymentBox = ({error, onchange, className}) => {
+const PaymentBox = ({error, onchange, className, checked}) => {
   return (
     <PaymentBoxStyle error={error} className={className}>
       <h5 className='title text-b3'>Payment</h5>
@@ -11,6 +11,7 @@ const PaymentBox = ({error, onchange, className}) => {
         label='I confirm to be charged 1,5% on the primary sale'
         name='checkbox1'
         onChange={onchange}
+        checked={checked}
       />
       {error && <p className='error text-b3'>Please Confirm Payment</p>}
     </PaymentBoxStyle>

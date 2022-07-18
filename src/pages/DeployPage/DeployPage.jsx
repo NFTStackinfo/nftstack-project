@@ -5,19 +5,15 @@ import {ContainerSm, Content, Title} from '../../styles/components';
 import DeployCard from 'components/Deploy/DeployCard/DeployCard';
 import {Button, ModalDeploying} from 'components/UIKit';
 import PaymentBox from 'components/Deploy/PaymentBox/PaymentBox';
-import {useContractState} from '../../context/ContractContext';
 import {useNavigate, useParams} from 'react-router-dom';
 import {useContractById} from '../../fetchHooks/useContractById';
-import {parseUnits} from 'ethers/lib.esm/utils';
-import {ethers, Signer} from 'ethers';
 import Preloader from '../../components/UIKit/Preloader/Preloader';
 import {useMutation} from 'react-query';
 import {
-  createContract,
-  editContract,
   updateContract,
 } from '../../services/WeblyApi';
 import {Network} from '../../helpers/consts';
+import {deployContract} from '../../utils/deploy';
 
 const DeployPage = () => {
   const [isModalDeployingActive, setIsModalDeployingActive] = useState(false);
@@ -39,14 +35,15 @@ const DeployPage = () => {
   };
 
   useEffect(() => {
-    // if(Object.keys(contract).length === 0) {
-    //   navigate('/smart-contract')
-    // }
-  }, []);
+    if(contract?.rinkebyAddress) {
+      setConfirmed(true)
+      setError(false);
+    }
+  }, [contract?.rinkebyAddress]);
 
   const { mutate } = useMutation(updateContract, {
     onSuccess: data  =>  {
-      console.log(data);
+      navigate(`/overview/${contract_id}`)
     },
     onError: () => {
       console.log("there was an error")
@@ -54,48 +51,25 @@ const DeployPage = () => {
   });
 
   const handleDeploy = async (chainId, abi, bytecode) => {
-    console.log(typeof chainId);
     if (!confirmed) {
       return setError(true);
     }
     if (typeof window.ethereum !== 'undefined') {
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      console.log({provider});
-      const signature = await provider.getSigner();
-      console.log(signature);
 
-      const {chainId: networkId} = await provider.getNetwork();
+      const contractAddress = await deployContract(chainId, abi, bytecode, (e) =>setIsDeploying(e), toggleModalDeploying)
 
-      if (networkId !== chainId) {
-         return  toggleModalDeploying();
+      if(contractAddress) {
+        const modifiedData = {
+          chainId: chainId.toString(),
+          contractId: contract_id,
+          ...(chainId ===  Network.MAINNET && { mainnetAddress: contractAddress }),
+          ...(chainId ===  Network.RINKEBY && { rinkebyAddress: contractAddress})
+        };
+
+        mutate(modifiedData)
       }
 
-
-
-      const factory = new ethers.ContractFactory(abi, bytecode, signature)
-
-      console.log({ factory })
-
-      setIsDeploying(true)
-      const contract = await factory.deploy(parseUnits("100"))
-
-      console.log({ contract })
-
-      const deployTransaction = await contract.deployTransaction.wait()
-      const contractAddress = deployTransaction?.contractAddress
-      console.log({ deployTransaction })
-      setIsDeploying(false)
-
-      const modifiedData = {
-        chainId: chainId.toString(),
-        contractId: contract_id,
-        ...(chainId ===  Network.MAINNET && { mainnetAddress: contractAddress }),
-        ...(chainId ===  Network.RINKEBY && { rinkebyAddress: contractAddress})
-      };
-      // console.log({modifiedData});
-
-      mutate(modifiedData)
     }
 
   };
@@ -116,7 +90,7 @@ const DeployPage = () => {
 
                     <Content>
                       <PaymentBox className="payment-box" error={error}
-                                  onchange={handleChange}/>
+                                  onchange={handleChange} checked={confirmed}/>
                       <DeployCard data={contract}/>
                       <p className="text-c warning-text">Note: Ethereum network must
                         be on
@@ -132,7 +106,8 @@ const DeployPage = () => {
                               onClick={() => handleDeploy(4, deployData?.abi,
                                 deployData?.bytecode)}>DEPLOY ON RINKEBY</Button>
                       <Button variant="secondary" width="100%"
-                              onClick={() => handleDeploy(1)}>DEPLOY ON
+                              onClick={() => handleDeploy(1, deployData?.abi,
+                                deployData?.bytecode)}>DEPLOY ON
                         MAINNET</Button>
                     </Content>
                   </ContainerSm>

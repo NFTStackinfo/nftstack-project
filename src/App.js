@@ -44,7 +44,7 @@ const App = () => {
             <Route   path='smart-contract/:contract_id' element={<ProtectedRoute user={user || storedHash} children={<SmartContractFormPage/>}/> }/>
             <Route   path='dashboard' element={<ProtectedRoute user={user || storedHash} children={<DashboardPage/>}/> }/>
             <Route   path='deploy/:contract_id' element={<ProtectedRoute user={user || storedHash} children={<DeployPage/>}/> }/>
-            <Route   path='overview' element={<ProtectedRoute user={user || storedHash} children={<OverviewPage/>}/> }/>
+            <Route   path='overview/:contract_id' element={<ProtectedRoute user={user || storedHash} children={<OverviewPage/>}/> }/>
             <Route   path='*' element={<ProtectedRoute user={user || storedHash}  children={<SmartContractFormPage/>}/> }/>
             <Route path="design" element={<DesignSystem />} />
           </Routes>
