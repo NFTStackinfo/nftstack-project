@@ -34,11 +34,11 @@ const DeployPage = () => {
     setConfirmed(e.target.checked);
   };
 
-  useEffect(() => {
-    if(!data?.contract) {
-      navigate(`/dashboard`)
-    }
-  }, [contract]);
+  // useEffect(() => {
+  //   if(!data?.contract) {
+  //     navigate(`/dashboard`)
+  //   }
+  // }, [contract]);
 
   useEffect(() => {
     if(contract?.rinkebyAddress) {
@@ -79,6 +79,8 @@ const DeployPage = () => {
     }
 
   };
+
+  console.log({deployData})
 
   return (
     <MainLayout
