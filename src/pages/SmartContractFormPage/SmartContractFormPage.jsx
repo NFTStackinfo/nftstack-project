@@ -1,41 +1,50 @@
 import React, { useEffect, useState } from "react"
-import {useNavigate, useParams} from 'react-router-dom';
-import {useMutation} from 'react-query';
-import {useForm, Controller, useFieldArray, useFormState} from 'react-hook-form';
+import { useNavigate, useParams } from "react-router-dom"
+import { useMutation } from "react-query"
+import {
+  useForm,
+  Controller,
+  useFieldArray,
+  useFormState
+} from "react-hook-form"
 import {
   SmartContractForm,
   SmartContractFormPageStyle
 } from "./SmartContractFormPage.style"
 import { ContainerSm, Content, Title } from "styles/components"
 import {
-  validateMinMax,
+  validateMinMaxRequired,
   validateRequired
 } from "../../helpers/validations/validations"
 import { MainLayout } from "components/layouts"
 import { Input, Button, Radio } from "components/UIKit"
-import {createContract, editContract} from 'services/WeblyApi';
-import defaultValues, {typeId} from './smart-contract-data';
-import {useContractById} from 'fetchHooks/useContractById';
+import { createContract, editContract } from "services/WeblyApi"
+import defaultValues, { typeId } from "./smart-contract-data"
+import { useContractById } from "fetchHooks/useContractById"
 import Preloader from "components/UIKit/Preloader/Preloader"
 
 const SmartContractFormPage = ({}) => {
   const navigate = useNavigate()
-  const {contract_id} = useParams()
+  const { contract_id } = useParams()
 
   const [id, setId] = useState(null)
-  const {data, isLoading, isFetching} = useContractById(id)
+  const { data, isLoading, isFetching } = useContractById(id)
 
 
   const contract = data?.contract
 
-  console.log({contract});
+  console.log({ contract })
 
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty },
+    clearErrors,
     control,
     setValue,
+    getValues,
+    watch,
+    trigger
   } = useForm({
     mode: "onChange",
     defaultValues
@@ -43,7 +52,7 @@ const SmartContractFormPage = ({}) => {
 
   const { dirtyFields } = useFormState({
     control
-  });
+  })
 
   const { fields, append, remove } = useFieldArray(
     {
@@ -53,29 +62,28 @@ const SmartContractFormPage = ({}) => {
   )
 
   useEffect(() => {
-    if(contract_id) {
+    if (contract_id) {
       setId(contract_id)
     }
   }, [contract_id])
 
 
   useEffect(() => {
-      if(contract) {
-        Object.keys(contract).map(key => {
-          if(key === 'walletAddresses') {
-            contract[key]?.map((row, index) => {
-              setValue(`${key}[${index}].split`, row.percent)
-              setValue(`${key}[${index}].address`, row.address)
-            })
-          }
-          else setValue(key, contract[key]?.toString());
-        })
-      }
-  }, [contract]);
+    if (contract) {
+      Object.keys(contract).map(key => {
+        if (key === "walletAddresses") {
+          contract[key]?.map((row, index) => {
+            setValue(`${key}[${index}].split`, row.percent)
+            setValue(`${key}[${index}].address`, row.address)
+          })
+        } else setValue(key, contract[key]?.toString())
+      })
+    }
+  }, [contract])
 
   const { mutate } = useMutation(contract ? editContract : createContract, {
-    onSuccess: data  =>  {
-      if(data?.contractId) {
+    onSuccess: data => {
+      if (data?.contractId) {
         navigate(`/deploy/${data?.contractId}`)
       } else {
 
@@ -87,18 +95,18 @@ const SmartContractFormPage = ({}) => {
     },
     onSettled: () => {
     }
-  });
+  })
 
   const onSubmit = (data) => {
 
-    if(contract && dirtyFields) {
-      console.log('mtav');
-      return  mutate({
+    if (contract && dirtyFields) {
+      console.log("mtav")
+      return mutate({
         ...data,
         contractId: contract.id
       })
     }
-    console.log('mtav2')
+    console.log("mtav2")
     mutate(data)
   }
 
@@ -106,9 +114,29 @@ const SmartContractFormPage = ({}) => {
     ? errors.walletAddresses[idx][name]?.message
     : ""
 
+  // total supply errors
+  const totalSupplyValue = watch("totalCount")
+
+  const checkValue = (field) => {
+    if (getValues(field) < +totalSupplyValue) {
+      clearErrors(field)
+    } else {
+      trigger(field)
+    }
+  }
+
+  useEffect(() => {
+    if (isDirty) {
+      checkValue("reserveCount")
+      checkValue("presaleLimitPerWallet")
+      checkValue("limitPerWallet")
+    }
+  }, [totalSupplyValue])
+
+
   return (
     <MainLayout
-      back={(!isLoading || !isFetching) &&"/dashboard"}
+      back={(!isLoading || !isFetching) && "/dashboard"}
       discardModal={isDirty}
     >
 
@@ -137,7 +165,8 @@ const SmartContractFormPage = ({}) => {
                   />
 
                   <div className="form__contract-type">
-                    <span className="text-c font-semibold">ETH Contract Type*</span>
+                    <span
+                      className="text-c font-semibold">ETH Contract Type*</span>
 
                     <div className="form__radio-group">
                       <Radio
@@ -195,7 +224,7 @@ const SmartContractFormPage = ({}) => {
                   <Controller
                     name="totalCount"
                     control={control}
-                    rules={validateRequired}
+                    rules={validateMinMaxRequired({ max: 30_000 })}
 
                     render={({ field: { onChange, onBlur, value, ref } }) => (
                       <Input
@@ -212,7 +241,10 @@ const SmartContractFormPage = ({}) => {
                   <Controller
                     name="reserveCount"
                     control={control}
-                    rules={validateRequired}
+                    rules={validateMinMaxRequired({
+                      max: getValues("totalCount"),
+                      less: "total supply"
+                    })}
 
                     render={({ field: { onChange, onBlur, value, ref } }) => (
                       <Input
@@ -230,7 +262,10 @@ const SmartContractFormPage = ({}) => {
                     <Controller
                       name="presaleMintPrice"
                       control={control}
-                      rules={validateRequired}
+                      rules={validateMinMaxRequired({
+                        max: 999_999,
+                        less: 1_000_000
+                      })}
 
                       render={({ field: { onChange, onBlur, value, ref } }) => (
                         <Input
@@ -249,7 +284,10 @@ const SmartContractFormPage = ({}) => {
                     <Controller
                       name="presaleLimitPerWallet"
                       control={control}
-                      rules={validateRequired}
+                      rules={validateMinMaxRequired({
+                        max: getValues("totalCount"),
+                        less: "total supply"
+                      })}
 
                       render={({ field: { onChange, onBlur, value, ref } }) => (
                         <Input
@@ -268,7 +306,10 @@ const SmartContractFormPage = ({}) => {
                     <Controller
                       name="mintPrice"
                       control={control}
-                      rules={validateRequired}
+                      rules={validateMinMaxRequired({
+                        max: 999_999,
+                        less: 1_000_000
+                      })}
 
                       render={({ field: { onChange, onBlur, value, ref } }) => (
                         <Input
@@ -287,7 +328,10 @@ const SmartContractFormPage = ({}) => {
                     <Controller
                       name="limitPerWallet"
                       control={control}
-                      rules={validateRequired}
+                      rules={validateMinMaxRequired({
+                        max: getValues("totalCount"),
+                        less: "total supply"
+                      })}
 
                       render={({ field: { onChange, onBlur, value, ref } }) => (
                         <Input
@@ -354,7 +398,7 @@ const SmartContractFormPage = ({}) => {
                               name={`walletAddresses[${index}].split`}
                               control={control}
                               // rules={validateMinMax(0, 100)}
-                              rules={validateMinMax(0, 100)}
+                              rules={validateMinMaxRequired({ max: 100 })}
 
                               render={({
                                          field: {
