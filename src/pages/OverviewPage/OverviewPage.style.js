@@ -46,26 +46,24 @@ export const OverviewPageStyle = styled.div`
     }
 
     &__footer {
-      margin-top: 24px;
-      display: flex;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      column-gap: 16px;
       justify-content: end;
       width: 100%;
-
-     &__btn-deploy, &__btn-view {
-       margin-left: 16px;
-     }
+      margin-top: 24px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-        flex-direction: column;
-        align-items: center;
+        grid-auto-columns: unset;
+        grid-auto-flow: unset;
+        row-gap: 16px;
+        column-gap: 0;
+        grid-template-columns: 1fr;
+
 
         >.btn {
           width: 100%;
-        }
-
-        &__btn-deploy {
-          margin-left: 0;
-          margin-top: 16px;
         }
       }
     }
