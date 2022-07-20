@@ -31,7 +31,7 @@ export const deployContract = async (chainId, abi, bytecode, isLoading, callback
 
   console.log({ contract })
 
-    // isLoading(true)
+    isLoading(true)
     const deployTransaction = await contract.deployTransaction.wait()
   console.log({deployTransaction})
     return  deployTransaction?.contractAddress
