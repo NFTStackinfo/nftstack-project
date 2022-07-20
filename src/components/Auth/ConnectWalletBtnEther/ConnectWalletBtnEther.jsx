@@ -23,8 +23,8 @@ export const ConnectWalletBtnEther = ({
       });
       const account = accounts[0]
       dispatch(userActions.addUser(account))
-      LocalStorage.setItem('address', account)
-      if (account) {
+       LocalStorage.setItem('address', account)
+      if (LocalStorage.getItem('address') !== null) {
         const message = await login()
         const signature = await provider.getSigner().signMessage(message)
         const verifyResponse = await verifyLogin({signature: signature})

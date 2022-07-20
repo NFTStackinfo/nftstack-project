@@ -39,7 +39,7 @@ export const createContract = async (data) => {
 
 };
 
-export const editContract = async (data, dirtyFields) => {
+export const editContract = async (data) => {
   const api = new API();
   return await api.put(Endpoints.EDIT_CONTRACT, data)
 };

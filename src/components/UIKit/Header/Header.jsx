@@ -68,7 +68,7 @@ export const Header = ({ setPageLeaveCallback }) => {
   }
 
   const handleLogout = async () => {
-    await logout(accountAddress)
+    await logout()
     LocalStorage.clear()
     dispatch(userActions.clearUser())
   }

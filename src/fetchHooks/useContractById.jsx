@@ -3,12 +3,13 @@ import {getContractById} from 'services/WeblyApi';
 
 const useContractById = (id) => {
   return useQuery(
-    ['dashboardData', id],
+    ['contractById', id],
     () => getContractById(id),
     {
       enabled: !!id,
+      // cacheTime: 0,
       // keepPreviousData: true,
-      // staleTime: Infinity
+      // staleTime: 0,
     },
   );
 };

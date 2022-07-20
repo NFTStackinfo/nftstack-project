@@ -28,6 +28,8 @@ const SmartContractFormPage = ({}) => {
 
   const contract = data?.contract
 
+  console.log({contract});
+
   const {
     register,
     handleSubmit,
@@ -74,25 +76,29 @@ const SmartContractFormPage = ({}) => {
   const { mutate } = useMutation(contract ? editContract : createContract, {
     onSuccess: data  =>  {
       if(data?.contractId) {
-        return navigate(`/deploy/${data?.contractId}`)
+        navigate(`/deploy/${data?.contractId}`)
+      } else {
+
+        navigate(`/deploy/${id}`)
       }
-      navigate(`/deploy/${id}`)
     },
     onError: () => {
       console.log("there was an error")
+    },
+    onSettled: () => {
     }
   });
 
   const onSubmit = (data) => {
 
     if(contract && dirtyFields) {
-      mutate({
+      console.log('mtav');
+      return  mutate({
         ...data,
         contractId: contract.id
       })
-
-      return navigate(`/deploy/${id}`)
     }
+    console.log('mtav2')
     mutate(data)
   }
 

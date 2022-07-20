@@ -15,16 +15,23 @@ export const deployContract = async (chainId, abi, bytecode, isLoading, callback
       console.log('payman')
       return  callback();
     }
-  console.log({ networkId })
-  console.log({ abi })
+  // console.log({ networkId })
+  // console.log({ abi })
     const factory = new ethers.ContractFactory(abi, bytecode, signature)
   console.log({ factory })
 
-    // isLoading(true)
-    const contract = await factory.deploy(parseUnits("0"))
-  console.log({contract})
 
-    isLoading(true)
+  // const getBlock = await provider.getBlock()
+
+  // console.log({getBlock});
+
+  // const gasLimit = ethers.utils.parseUnits('500000', 'wei');
+  // const contract = await factory.deploy(parseUnits("100"), {gasPrice: 3_000_000_000, gasLimit: 50000000});
+  const contract = await factory.deploy(parseUnits("100"));
+
+  console.log({ contract })
+
+    // isLoading(true)
     const deployTransaction = await contract.deployTransaction.wait()
   console.log({deployTransaction})
     return  deployTransaction?.contractAddress
