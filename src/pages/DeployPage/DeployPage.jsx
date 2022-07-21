@@ -98,7 +98,7 @@ const DeployPage = () => {
                       <p className="text-c">To be able to deploy on Rinkeby you must
                         have
                         test ETH. <a
-                          href="#" target="_blank" className="link">Get Free
+                          href="https://rinkebyfaucet.com/" target="_blank" className="link">Get Free
                           0.1ETH</a>
                       </p>
                       <Button className="rinkeby-button" variant="primary"

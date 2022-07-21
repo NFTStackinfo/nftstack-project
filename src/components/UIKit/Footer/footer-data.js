@@ -1,21 +1,16 @@
 export const socialList = [
   {
-    icon: 'instagram',
-    link: '#',
-  },
-
-  {
     icon: 'linkedin',
-    link: '#',
+    link: 'https://www.linkedin.com/company/3webly/mycompany/',
   },
 
   {
     icon: 'twitter',
-    link: '#',
+    link: 'https://twitter.com/3Webly',
   },
 
   {
     icon: 'discord',
-    link: '#',
+    link: 'https://discord.com/invite/K77rwjCFQq',
   }
 ]

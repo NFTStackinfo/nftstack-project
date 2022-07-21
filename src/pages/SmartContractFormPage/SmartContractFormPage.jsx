@@ -5,7 +5,7 @@ import {
   useForm,
   Controller,
   useFieldArray,
-  useFormState
+  useFormState, useWatch
 } from "react-hook-form"
 import {
   SmartContractForm,
@@ -14,7 +14,8 @@ import {
 import { ContainerSm, Content, Title } from "styles/components"
 import {
   validateMinMaxRequired,
-  validateRequired
+  validateRequired,
+  validateCollectionName
 } from "../../helpers/validations/validations"
 import { MainLayout } from "components/layouts"
 import { Input, Button, Radio } from "components/UIKit"
@@ -32,7 +33,7 @@ const SmartContractFormPage = ({}) => {
 
 
   const contract = data?.contract
-  
+
 
   const {
     register,
@@ -72,8 +73,17 @@ const SmartContractFormPage = ({}) => {
       Object.keys(contract).map(key => {
         if (key === "walletAddresses") {
           contract[key]?.map((row, index) => {
-            setValue(`${key}[${index}].split`, row.percent)
-            setValue(`${key}[${index}].address`, row.address)
+            console.log("index : ", index)
+            console.log("row : ", row)
+            if (index === 0) {
+              setValue(`${key}[${index}].split`, row.percent)
+              setValue(`${key}[${index}].address`, row.address)
+            } else {
+              append({
+                split: row.percent,
+                address: row.address
+              })
+            }
           })
         } else setValue(key, contract[key]?.toString())
       })
@@ -98,8 +108,8 @@ const SmartContractFormPage = ({}) => {
 
   const onSubmit = (data) => {
 
-    if(contract && dirtyFields) {
-      return  mutate({
+    if (contract && dirtyFields) {
+      return mutate({
         ...data,
         contractId: contract.id
       })
@@ -189,7 +199,7 @@ const SmartContractFormPage = ({}) => {
                   <Controller
                     name="collectionName"
                     control={control}
-                    rules={validateRequired}
+                    rules={validateCollectionName}
 
                     render={({ field: { onChange, onBlur, value, ref } }) => (
                       <Input

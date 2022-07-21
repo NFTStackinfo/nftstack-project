@@ -198,6 +198,12 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   //typography
 
   // components

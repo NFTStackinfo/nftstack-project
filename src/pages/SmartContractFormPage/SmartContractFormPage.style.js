@@ -74,5 +74,10 @@ export const SmartContractForm = styled.form`
         margin-top: 16px;
       }
     }
+
+    &__wallet-address__error {
+      color: ${({ theme }) => theme.colors.vividCrimson};
+      margin-top: 16px;
+    }
   }
 `
