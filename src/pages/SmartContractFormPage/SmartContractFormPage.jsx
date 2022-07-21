@@ -5,7 +5,7 @@ import {
   useForm,
   Controller,
   useFieldArray,
-  useFormState, useWatch
+  useFormState
 } from "react-hook-form"
 import {
   SmartContractForm,
@@ -73,8 +73,6 @@ const SmartContractFormPage = ({}) => {
       Object.keys(contract).map(key => {
         if (key === "walletAddresses") {
           contract[key]?.map((row, index) => {
-            console.log("index : ", index)
-            console.log("row : ", row)
             if (index === 0) {
               setValue(`${key}[${index}].split`, row.percent)
               setValue(`${key}[${index}].address`, row.address)
