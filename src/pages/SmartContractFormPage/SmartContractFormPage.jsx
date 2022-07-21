@@ -28,8 +28,6 @@ const SmartContractFormPage = ({}) => {
 
   const contract = data?.contract
 
-  console.log({contract});
-
   const {
     register,
     handleSubmit,
@@ -92,13 +90,11 @@ const SmartContractFormPage = ({}) => {
   const onSubmit = (data) => {
 
     if(contract && dirtyFields) {
-      console.log('mtav');
       return  mutate({
         ...data,
         contractId: contract.id
       })
     }
-    console.log('mtav2')
     mutate(data)
   }
 

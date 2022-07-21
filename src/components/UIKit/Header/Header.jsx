@@ -45,10 +45,7 @@ export const Header = ({ setPageLeaveCallback }) => {
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     if (provider) {
-      provider.provider.on("accountsChanged", () => handleLogout())
-    } else {
-
-      console.error("Please, install Metamask.")
+      provider.provider.on("accountsChanged", () => !!LocalStorage.getItem('address') && handleLogout())
     }
   }, [])
 
@@ -69,8 +66,8 @@ export const Header = ({ setPageLeaveCallback }) => {
 
   const handleLogout = async () => {
     await logout()
-    LocalStorage.clear()
     dispatch(userActions.clearUser())
+    LocalStorage.clear()
   }
 
   const handleDashboard = () => navigate("/dashboard")
@@ -112,7 +109,7 @@ export const Header = ({ setPageLeaveCallback }) => {
 
                   <Button
                     variant="secondary"
-                    onClick={() => setPageLeaveCallback(handleLogout)}
+                    onClick={handleLogout}
                   >
                     Logout
                   </Button>
@@ -151,7 +148,7 @@ export const Header = ({ setPageLeaveCallback }) => {
 
                        onClick={() => {
                          handleMenuToggle()
-                         setPageLeaveCallback(handleLogout)
+                         handleLogout()
                        }}
                      >
                     Logout

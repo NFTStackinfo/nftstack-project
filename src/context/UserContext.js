@@ -47,7 +47,8 @@ export const UserProvider = (props) => {
             }
             case CLEAR_USER: {
                 return {
-                    ...state,
+                  user: null,
+                  address: '',
                   isLoggedIn: false,
                 };
             }

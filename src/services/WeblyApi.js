@@ -15,7 +15,6 @@ export const logout = async () => {
 
   try {
     await api.get(Endpoints.GET_LOGOUT)
-    LocalStorage.clear()
   } catch (e) {
     console.log(e);
   }
@@ -65,10 +64,3 @@ export const getContractById = async (id) => {
 
 };
 
-export const setAccount = async () => {
-  const accounts = await window.ethereum.request({
-    method: "eth_requestAccounts",
-  });
-  const account = accounts[0]
-  return userActions.addUser(account)
-}
