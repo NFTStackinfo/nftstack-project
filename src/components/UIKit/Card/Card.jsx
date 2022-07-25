@@ -31,7 +31,7 @@ export const Card = ({
           </>)
           : (<>
             <div className="card__content__header">
-              <h3 className="text-b2 font-semibold">{projectName}</h3>
+              <h3 className="text-b2 font-semibold truncate">{projectName}</h3>
 
               <Tag type={typeId} />
             </div>

@@ -84,4 +84,12 @@ export const validateMinMaxRequired = ({
   }
 })
 
+export const validateCollectionName = {
+  required: { value: true, message: formMessages.required },
+  pattern: {
+    value: regex.collectionName,
+    message: formMessages.collectionName
+  }
+}
+
 

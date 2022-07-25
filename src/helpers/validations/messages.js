@@ -1,8 +1,9 @@
 export const formMessages = {
-    required: 'This field is required',
-    email: 'Wrong email format.',
-    phone: 'Wrong phone format.',
-    invalidType: 'File type is invalid',
+  required: "This field is required",
+  email: "Wrong email format.",
+  phone: "Wrong phone format.",
+  invalidType: "File type is invalid",
+  collectionName: "Collection name should start with a letter"
 }
 
 export const formMessageMinLength = (length) => `Characters length should be more then ${length}`
