@@ -55,8 +55,9 @@ export const CardStyle = styled.div`
         display: flex;
         justify-content: space-between;
 
-        .tag {
+        >.tag {
           flex-shrink: 0;
+          margin-left: 12px;
         }
       }
 

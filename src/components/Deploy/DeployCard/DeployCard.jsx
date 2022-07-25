@@ -48,7 +48,7 @@ const DeployCard = ({data}) => {
           return (
             <li key={label}>
               <span className="label text-c">{label}</span>
-              <span className="value text-b3">{value}</span>
+              <span className="value text-b3 truncate">{value}</span>
             </li>
           )
         })
