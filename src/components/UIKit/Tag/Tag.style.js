@@ -10,8 +10,10 @@ export const TagStyle = styled.div`
   border-radius: 50px;
   color: ${({ theme }) => theme.colors.outerSpace};
 
-  .icon {
+  >.icon {
     margin-right: 4px;
+    display: flex;
+    width: 16px;
   }
 
   &.default {
