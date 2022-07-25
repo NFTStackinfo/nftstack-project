@@ -1,13 +1,15 @@
 import {API} from './api';
 import {Endpoints} from '../helpers/endpoints';
-import LocalStorage from './localStorage';
-import {userActions} from '../context/UserContext';
 
 export const login = async () => {
-  const api = new API();
+  try {
+    const api = new API();
 
-  const response = await api.get(Endpoints.GET_LOGIN_MESSAGE)
-  return response.nonce
+    const response = await api.get(Endpoints.GET_LOGIN_MESSAGE)
+    return response.nonce
+  } catch (e) {
+    console.error(e)
+  }
 };
 
 export const logout = async () => {
