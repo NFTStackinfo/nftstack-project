@@ -33,7 +33,7 @@ export const ConnectWalletBtnEther = ({
       }
     } else {
       window.location.replace(
-        "https://metamask.app.link/dapp/app-webly.netlify.app/"
+        process.env.REACT_APP_DAPP_LINK
       )
     }
   }
