@@ -17,8 +17,6 @@ import {deployContract} from '../../utils/deploy';
 
 const DeployPage = () => {
   const [isModalDeployingActive, setIsModalDeployingActive] = useState(false);
-  const [error, setError] = useState(false);
-  const [confirmed, setConfirmed] = useState(false);
   const [isDeploying, setIsDeploying] = useState(false);
   const navigate = useNavigate();
   const {contract_id} = useParams();
@@ -29,17 +27,6 @@ const DeployPage = () => {
 
   const toggleModalDeploying = () => setIsModalDeployingActive(
     () => !isModalDeployingActive);
-  const handleChange = (e) => {
-    setError(!e.target.checked);
-    setConfirmed(e.target.checked);
-  };
-
-  useEffect(() => {
-    if(contract?.rinkebyAddress) {
-      setConfirmed(true)
-      setError(false);
-    }
-  }, [contract?.rinkebyAddress]);
 
   const { mutate } = useMutation(updateContract, {
     onSuccess: data  =>  {
@@ -51,11 +38,7 @@ const DeployPage = () => {
   });
 
   const handleDeploy = async (chainId, abi, bytecode) => {
-    if (!confirmed) {
-      return setError(true);
-    }
     if (typeof window.ethereum !== 'undefined') {
-
 
       const contractAddress = await deployContract(chainId, abi, bytecode, (e) =>setIsDeploying(e), toggleModalDeploying)
 
@@ -89,8 +72,6 @@ const DeployPage = () => {
                     <Title>Review and Deploy</Title>
 
                     <Content>
-                      <PaymentBox className="payment-box" error={error}
-                                  onchange={handleChange} checked={confirmed}/>
                       <DeployCard data={contract}/>
                       <p className="text-c warning-text">Note: Ethereum network must
                         be on
