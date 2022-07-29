@@ -14,7 +14,7 @@ export const ConnectWalletBtnEther = ({
   const dispatch = useUserDispatch()
 
 
-  const  handleConnectWallet = async () => {
+  const handleConnectWallet = async () => {
     if(typeof window.ethereum !== 'undefined') {
 
       const provider = new ethers.providers.Web3Provider(window.ethereum);
